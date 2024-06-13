@@ -1,8 +1,8 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import * as Core from 'prelude/core';
-import { APIResource } from 'prelude/resource';
-import * as LookupAPI from 'prelude/resources/lookup';
+import * as Core from '../core';
+import { APIResource } from '../resource';
+import * as LookupAPI from './lookup';
 
 export class Lookup extends APIResource {
   /**
