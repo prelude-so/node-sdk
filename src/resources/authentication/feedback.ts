@@ -1,8 +1,8 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import * as Core from 'prelude/core';
-import { APIResource } from 'prelude/resource';
-import * as FeedbackAPI from 'prelude/resources/authentication/feedback';
+import * as Core from '../../core';
+import { APIResource } from '../../resource';
+import * as FeedbackAPI from './feedback';
 
 export class Feedback extends APIResource {
   /**

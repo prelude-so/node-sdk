@@ -1,9 +1,9 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import * as Core from 'prelude/core';
-import { APIResource } from 'prelude/resource';
-import * as AuthenticationAPI from 'prelude/resources/authentication/authentication';
-import * as FeedbackAPI from 'prelude/resources/authentication/feedback';
+import * as Core from '../../core';
+import { APIResource } from '../../resource';
+import * as AuthenticationAPI from './authentication';
+import * as FeedbackAPI from './feedback';
 
 export class Authentication extends APIResource {
   feedback: FeedbackAPI.Feedback = new FeedbackAPI.Feedback(this._client);

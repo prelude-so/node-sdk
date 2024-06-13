@@ -1,6 +1,6 @@
 # Prelude Node API Library
 
-[![NPM version](https://img.shields.io/npm/v/prelude.svg)](https://npmjs.org/package/prelude)
+[![NPM version](https://img.shields.io/npm/v/prelude.svg)](https://npmjs.org/package/prelude) ![npm bundle size](https://img.shields.io/bundlephobia/minzip/prelude)
 
 This library provides convenient access to the Prelude REST API from server-side TypeScript or JavaScript.
 
@@ -11,7 +11,7 @@ It is generated with [Stainless](https://www.stainlessapi.com/).
 ## Installation
 
 ```sh
-npm install git+ssh://git@github.com:stainless-sdks/prelude/prelude-node.git
+npm install git+ssh://git@github.com:stainless-sdks/prelude-node.git
 ```
 
 > [!NOTE]
@@ -232,7 +232,7 @@ import Prelude from 'prelude';
 ```
 
 To do the inverse, add `import "prelude/shims/node"` (which does import polyfills).
-This can also be useful if you are getting the wrong TypeScript types for `Response` ([more details](https://github.com/stainless-sdks/tree/main/src/_shims#readme)).
+This can also be useful if you are getting the wrong TypeScript types for `Response` ([more details](https://github.com/stainless-sdks/prelude-node/tree/main/src/_shims#readme)).
 
 ### Logging and middleware
 
@@ -291,7 +291,7 @@ This package generally follows [SemVer](https://semver.org/spec/v2.0.0.html) con
 
 We take backwards-compatibility seriously and work hard to ensure you can rely on a smooth upgrade experience.
 
-We are keen for your feedback; please open an [issue](https://www.github.com/stainless-sdks/prelude/prelude-node/issues) with questions, bugs, or suggestions.
+We are keen for your feedback; please open an [issue](https://www.github.com/stainless-sdks/prelude-node/issues) with questions, bugs, or suggestions.
 
 ## Requirements
 

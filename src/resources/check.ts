@@ -1,8 +1,8 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import * as Core from 'prelude/core';
-import { APIResource } from 'prelude/resource';
-import * as CheckAPI from 'prelude/resources/check';
+import * as Core from '../core';
+import { APIResource } from '../resource';
+import * as CheckAPI from './check';
 
 export class Check extends APIResource {
   /**
