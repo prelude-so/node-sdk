@@ -3,14 +3,14 @@
 import Prelude from 'prelude';
 import { Response } from 'node-fetch';
 
-const prelude = new Prelude({
+const client = new Prelude({
   apiKey: 'My API Key',
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
 describe('resource retry', () => {
   test('create: only required params', async () => {
-    const responsePromise = prelude.retry.create({
+    const responsePromise = client.retry.create({
       authentication_uuid: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
       customer_uuid: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
     });
@@ -24,7 +24,7 @@ describe('resource retry', () => {
   });
 
   test('create: required and optional params', async () => {
-    const response = await prelude.retry.create({
+    const response = await client.retry.create({
       authentication_uuid: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
       customer_uuid: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
     });
