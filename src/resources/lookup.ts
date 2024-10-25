@@ -77,6 +77,6 @@ export interface LookupRetrieveParams {
 }
 
 export namespace Lookup {
-  export import LookupRetrieveResponse = LookupAPI.LookupRetrieveResponse;
-  export import LookupRetrieveParams = LookupAPI.LookupRetrieveParams;
+  export type LookupRetrieveResponse = LookupAPI.LookupRetrieveResponse;
+  export type LookupRetrieveParams = LookupAPI.LookupRetrieveParams;
 }
