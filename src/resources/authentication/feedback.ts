@@ -38,6 +38,6 @@ export interface FeedbackCreateParams {
 }
 
 export namespace Feedback {
-  export import FeedbackCreateResponse = FeedbackAPI.FeedbackCreateResponse;
-  export import FeedbackCreateParams = FeedbackAPI.FeedbackCreateParams;
+  export type FeedbackCreateResponse = FeedbackAPI.FeedbackCreateResponse;
+  export type FeedbackCreateParams = FeedbackAPI.FeedbackCreateParams;
 }
