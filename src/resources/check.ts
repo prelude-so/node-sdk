@@ -50,6 +50,6 @@ export interface CheckCreateParams {
 }
 
 export namespace Check {
-  export type CheckCreateResponse = CheckAPI.CheckCreateResponse;
-  export type CheckCreateParams = CheckAPI.CheckCreateParams;
+  export import CheckCreateResponse = CheckAPI.CheckCreateResponse;
+  export import CheckCreateParams = CheckAPI.CheckCreateParams;
 }
