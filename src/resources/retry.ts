@@ -57,6 +57,6 @@ export interface RetryCreateParams {
 }
 
 export namespace Retry {
-  export type RetryCreateResponse = RetryAPI.RetryCreateResponse;
-  export type RetryCreateParams = RetryAPI.RetryCreateParams;
+  export import RetryCreateResponse = RetryAPI.RetryCreateResponse;
+  export import RetryCreateParams = RetryAPI.RetryCreateParams;
 }

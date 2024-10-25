@@ -180,23 +180,23 @@ export import toFile = Uploads.toFile;
 export import fileFromPath = Uploads.fileFromPath;
 
 export namespace Prelude {
-  export type RequestOptions = Core.RequestOptions;
+  export import RequestOptions = Core.RequestOptions;
 
   export import Authentication = API.Authentication;
-  export type AuthenticationCreateResponse = API.AuthenticationCreateResponse;
-  export type AuthenticationCreateParams = API.AuthenticationCreateParams;
+  export import AuthenticationCreateResponse = API.AuthenticationCreateResponse;
+  export import AuthenticationCreateParams = API.AuthenticationCreateParams;
 
   export import Check = API.Check;
-  export type CheckCreateResponse = API.CheckCreateResponse;
-  export type CheckCreateParams = API.CheckCreateParams;
+  export import CheckCreateResponse = API.CheckCreateResponse;
+  export import CheckCreateParams = API.CheckCreateParams;
 
   export import Retry = API.Retry;
-  export type RetryCreateResponse = API.RetryCreateResponse;
-  export type RetryCreateParams = API.RetryCreateParams;
+  export import RetryCreateResponse = API.RetryCreateResponse;
+  export import RetryCreateParams = API.RetryCreateParams;
 
   export import Lookup = API.Lookup;
-  export type LookupRetrieveResponse = API.LookupRetrieveResponse;
-  export type LookupRetrieveParams = API.LookupRetrieveParams;
+  export import LookupRetrieveResponse = API.LookupRetrieveResponse;
+  export import LookupRetrieveParams = API.LookupRetrieveParams;
 }
 
 export default Prelude;

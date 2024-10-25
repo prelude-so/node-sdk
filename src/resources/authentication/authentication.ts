@@ -113,9 +113,9 @@ export interface AuthenticationCreateParams {
 }
 
 export namespace Authentication {
-  export type AuthenticationCreateResponse = AuthenticationAPI.AuthenticationCreateResponse;
-  export type AuthenticationCreateParams = AuthenticationAPI.AuthenticationCreateParams;
+  export import AuthenticationCreateResponse = AuthenticationAPI.AuthenticationCreateResponse;
+  export import AuthenticationCreateParams = AuthenticationAPI.AuthenticationCreateParams;
   export import Feedback = FeedbackAPI.Feedback;
-  export type FeedbackCreateResponse = FeedbackAPI.FeedbackCreateResponse;
-  export type FeedbackCreateParams = FeedbackAPI.FeedbackCreateParams;
+  export import FeedbackCreateResponse = FeedbackAPI.FeedbackCreateResponse;
+  export import FeedbackCreateParams = FeedbackAPI.FeedbackCreateParams;
 }
