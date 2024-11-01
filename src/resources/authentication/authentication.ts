@@ -2,8 +2,8 @@
 
 import { APIResource } from '../../resource';
 import * as Core from '../../core';
-import * as AuthenticationAPI from './authentication';
 import * as FeedbackAPI from './feedback';
+import { Feedback, FeedbackCreateParams, FeedbackCreateResponse } from './feedback';
 
 export class Authentication extends APIResource {
   feedback: FeedbackAPI.Feedback = new FeedbackAPI.Feedback(this._client);
@@ -112,10 +112,17 @@ export interface AuthenticationCreateParams {
   template_id?: string;
 }
 
-export namespace Authentication {
-  export import AuthenticationCreateResponse = AuthenticationAPI.AuthenticationCreateResponse;
-  export import AuthenticationCreateParams = AuthenticationAPI.AuthenticationCreateParams;
-  export import Feedback = FeedbackAPI.Feedback;
-  export import FeedbackCreateResponse = FeedbackAPI.FeedbackCreateResponse;
-  export import FeedbackCreateParams = FeedbackAPI.FeedbackCreateParams;
+Authentication.Feedback = Feedback;
+
+export declare namespace Authentication {
+  export {
+    type AuthenticationCreateResponse as AuthenticationCreateResponse,
+    type AuthenticationCreateParams as AuthenticationCreateParams,
+  };
+
+  export {
+    Feedback as Feedback,
+    type FeedbackCreateResponse as FeedbackCreateResponse,
+    type FeedbackCreateParams as FeedbackCreateParams,
+  };
 }

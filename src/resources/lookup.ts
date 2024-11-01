@@ -2,7 +2,6 @@
 
 import { APIResource } from '../resource';
 import * as Core from '../core';
-import * as LookupAPI from './lookup';
 
 export class Lookup extends APIResource {
   /**
@@ -76,7 +75,9 @@ export interface LookupRetrieveParams {
   'customer-uuid': string;
 }
 
-export namespace Lookup {
-  export import LookupRetrieveResponse = LookupAPI.LookupRetrieveResponse;
-  export import LookupRetrieveParams = LookupAPI.LookupRetrieveParams;
+export declare namespace Lookup {
+  export {
+    type LookupRetrieveResponse as LookupRetrieveResponse,
+    type LookupRetrieveParams as LookupRetrieveParams,
+  };
 }

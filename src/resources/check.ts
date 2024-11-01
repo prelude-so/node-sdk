@@ -2,7 +2,6 @@
 
 import { APIResource } from '../resource';
 import * as Core from '../core';
-import * as CheckAPI from './check';
 
 export class Check extends APIResource {
   /**
@@ -49,7 +48,6 @@ export interface CheckCreateParams {
   customer_uuid: string;
 }
 
-export namespace Check {
-  export import CheckCreateResponse = CheckAPI.CheckCreateResponse;
-  export import CheckCreateParams = CheckAPI.CheckCreateParams;
+export declare namespace Check {
+  export { type CheckCreateResponse as CheckCreateResponse, type CheckCreateParams as CheckCreateParams };
 }

@@ -2,7 +2,6 @@
 
 import { APIResource } from '../../resource';
 import * as Core from '../../core';
-import * as FeedbackAPI from './feedback';
 
 export class Feedback extends APIResource {
   /**
@@ -37,7 +36,9 @@ export interface FeedbackCreateParams {
   status: 'onboarded' | 'not_onboarded';
 }
 
-export namespace Feedback {
-  export import FeedbackCreateResponse = FeedbackAPI.FeedbackCreateResponse;
-  export import FeedbackCreateParams = FeedbackAPI.FeedbackCreateParams;
+export declare namespace Feedback {
+  export {
+    type FeedbackCreateResponse as FeedbackCreateResponse,
+    type FeedbackCreateParams as FeedbackCreateParams,
+  };
 }
