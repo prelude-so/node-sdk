@@ -1,10 +1,18 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import * as Errors from './error';
-import * as Uploads from './uploads';
 import { type Agent } from './_shims/index';
 import * as Core from './core';
+import * as Errors from './error';
+import * as Uploads from './uploads';
 import * as API from './resources/index';
+import { Check, CheckCreateParams, CheckCreateResponse } from './resources/check';
+import { Lookup, LookupRetrieveParams, LookupRetrieveResponse } from './resources/lookup';
+import { Retry, RetryCreateParams, RetryCreateResponse } from './resources/retry';
+import {
+  Authentication,
+  AuthenticationCreateParams,
+  AuthenticationCreateResponse,
+} from './resources/authentication/authentication';
 
 export interface ClientOptions {
   /**
@@ -160,43 +168,54 @@ export class Prelude extends Core.APIClient {
   static fileFromPath = Uploads.fileFromPath;
 }
 
-export const {
-  PreludeError,
-  APIError,
-  APIConnectionError,
-  APIConnectionTimeoutError,
-  APIUserAbortError,
-  NotFoundError,
-  ConflictError,
-  RateLimitError,
-  BadRequestError,
-  AuthenticationError,
-  InternalServerError,
-  PermissionDeniedError,
-  UnprocessableEntityError,
-} = Errors;
+export const PreludeError = Errors.PreludeError;
+export const APIError = Errors.APIError;
+export const APIConnectionError = Errors.APIConnectionError;
+export const APIConnectionTimeoutError = Errors.APIConnectionTimeoutError;
+export const APIUserAbortError = Errors.APIUserAbortError;
+export const NotFoundError = Errors.NotFoundError;
+export const ConflictError = Errors.ConflictError;
+export const RateLimitError = Errors.RateLimitError;
+export const BadRequestError = Errors.BadRequestError;
+export const AuthenticationError = Errors.AuthenticationError;
+export const InternalServerError = Errors.InternalServerError;
+export const PermissionDeniedError = Errors.PermissionDeniedError;
+export const UnprocessableEntityError = Errors.UnprocessableEntityError;
 
 export import toFile = Uploads.toFile;
 export import fileFromPath = Uploads.fileFromPath;
 
-export namespace Prelude {
-  export import RequestOptions = Core.RequestOptions;
+Prelude.Authentication = Authentication;
+Prelude.Check = Check;
+Prelude.Retry = Retry;
+Prelude.Lookup = Lookup;
 
-  export import Authentication = API.Authentication;
-  export import AuthenticationCreateResponse = API.AuthenticationCreateResponse;
-  export import AuthenticationCreateParams = API.AuthenticationCreateParams;
+export declare namespace Prelude {
+  export type RequestOptions = Core.RequestOptions;
 
-  export import Check = API.Check;
-  export import CheckCreateResponse = API.CheckCreateResponse;
-  export import CheckCreateParams = API.CheckCreateParams;
+  export {
+    Authentication as Authentication,
+    type AuthenticationCreateResponse as AuthenticationCreateResponse,
+    type AuthenticationCreateParams as AuthenticationCreateParams,
+  };
 
-  export import Retry = API.Retry;
-  export import RetryCreateResponse = API.RetryCreateResponse;
-  export import RetryCreateParams = API.RetryCreateParams;
+  export {
+    Check as Check,
+    type CheckCreateResponse as CheckCreateResponse,
+    type CheckCreateParams as CheckCreateParams,
+  };
 
-  export import Lookup = API.Lookup;
-  export import LookupRetrieveResponse = API.LookupRetrieveResponse;
-  export import LookupRetrieveParams = API.LookupRetrieveParams;
+  export {
+    Retry as Retry,
+    type RetryCreateResponse as RetryCreateResponse,
+    type RetryCreateParams as RetryCreateParams,
+  };
+
+  export {
+    Lookup as Lookup,
+    type LookupRetrieveResponse as LookupRetrieveResponse,
+    type LookupRetrieveParams as LookupRetrieveParams,
+  };
 }
 
 export default Prelude;

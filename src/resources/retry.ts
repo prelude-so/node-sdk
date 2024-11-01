@@ -2,7 +2,6 @@
 
 import { APIResource } from '../resource';
 import * as Core from '../core';
-import * as RetryAPI from './retry';
 
 export class Retry extends APIResource {
   /**
@@ -56,7 +55,6 @@ export interface RetryCreateParams {
   customer_uuid: string;
 }
 
-export namespace Retry {
-  export import RetryCreateResponse = RetryAPI.RetryCreateResponse;
-  export import RetryCreateParams = RetryAPI.RetryCreateParams;
+export declare namespace Retry {
+  export { type RetryCreateResponse as RetryCreateResponse, type RetryCreateParams as RetryCreateParams };
 }
