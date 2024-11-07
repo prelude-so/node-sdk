@@ -12,6 +12,7 @@ import {
   Authentication,
   AuthenticationCreateParams,
   AuthenticationCreateResponse,
+  AuthenticationRetrieveResponse,
 } from './resources/authentication/authentication';
 
 export interface ClientOptions {
@@ -198,6 +199,7 @@ export declare namespace Prelude {
   export {
     Authentication as Authentication,
     type AuthenticationCreateResponse as AuthenticationCreateResponse,
+    type AuthenticationRetrieveResponse as AuthenticationRetrieveResponse,
     type AuthenticationCreateParams as AuthenticationCreateParams,
   };
 
