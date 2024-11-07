@@ -1,11 +1,10 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
+export { Transactional, type TransactionalSendResponse, type TransactionalSendParams } from './transactional';
 export {
-  Authentication,
-  type AuthenticationCreateResponse,
-  type AuthenticationRetrieveResponse,
-  type AuthenticationCreateParams,
-} from './authentication/authentication';
-export { Check, type CheckCreateResponse, type CheckCreateParams } from './check';
-export { Lookup, type LookupRetrieveResponse, type LookupRetrieveParams } from './lookup';
-export { Retry, type RetryCreateResponse, type RetryCreateParams } from './retry';
+  Verification,
+  type VerificationCreateResponse,
+  type VerificationCheckResponse,
+  type VerificationCreateParams,
+  type VerificationCheckParams,
+} from './verification';

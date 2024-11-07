@@ -1,6 +1,6 @@
 # Prelude Node API Library
 
-[![NPM version](https://img.shields.io/npm/v/prelude.svg)](https://npmjs.org/package/prelude) ![npm bundle size](https://img.shields.io/bundlephobia/minzip/prelude)
+[![NPM version](https://img.shields.io/npm/v/@prelude.so/sdk.svg)](https://npmjs.org/package/@prelude.so/sdk) ![npm bundle size](https://img.shields.io/bundlephobia/minzip/@prelude.so/sdk)
 
 This library provides convenient access to the Prelude REST API from server-side TypeScript or JavaScript.
 
@@ -11,11 +11,11 @@ It is generated with [Stainless](https://www.stainlessapi.com/).
 ## Installation
 
 ```sh
-npm install git+ssh://git@github.com:stainless-sdks/prelude-node.git
+npm install git+ssh://git@github.com:prelude-so/node-sdk.git
 ```
 
 > [!NOTE]
-> Once this package is [published to npm](https://app.stainlessapi.com/docs/guides/publish), this will become: `npm install prelude`
+> Once this package is [published to npm](https://app.stainlessapi.com/docs/guides/publish), this will become: `npm install @prelude.so/sdk`
 
 ## Usage
 
@@ -23,20 +23,18 @@ The full API of this library can be found in [api.md](api.md).
 
 <!-- prettier-ignore -->
 ```js
-import Prelude from 'prelude';
+import Prelude from '@prelude.so/sdk';
 
 const client = new Prelude({
-  apiKey: process.env['PRELUDE_API_KEY'], // This is the default and can be omitted
-  customerUuid: 'My Customer Uuid',
+  apiToken: process.env['API_TOKEN'], // This is the default and can be omitted
 });
 
 async function main() {
-  const authentication = await client.authentication.create({
-    customer_uuid: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
-    phone_number: '+1234567890',
+  const verification = await client.verification.create({
+    target: { type: 'phone_number', value: '+30123456789' },
   });
 
-  console.log(authentication.authentication_uuid);
+  console.log(verification.id);
 }
 
 main();
@@ -48,19 +46,17 @@ This library includes TypeScript definitions for all request params and response
 
 <!-- prettier-ignore -->
 ```ts
-import Prelude from 'prelude';
+import Prelude from '@prelude.so/sdk';
 
 const client = new Prelude({
-  apiKey: process.env['PRELUDE_API_KEY'], // This is the default and can be omitted
-  customerUuid: 'My Customer Uuid',
+  apiToken: process.env['API_TOKEN'], // This is the default and can be omitted
 });
 
 async function main() {
-  const params: Prelude.AuthenticationCreateParams = {
-    customer_uuid: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
-    phone_number: '+1234567890',
+  const params: Prelude.VerificationCreateParams = {
+    target: { type: 'phone_number', value: '+30123456789' },
   };
-  const authentication: Prelude.AuthenticationCreateResponse = await client.authentication.create(params);
+  const verification: Prelude.VerificationCreateResponse = await client.verification.create(params);
 }
 
 main();
@@ -77,8 +73,8 @@ a subclass of `APIError` will be thrown:
 <!-- prettier-ignore -->
 ```ts
 async function main() {
-  const authentication = await client.authentication
-    .create({ customer_uuid: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', phone_number: '+1234567890' })
+  const verification = await client.verification
+    .create({ target: { type: 'phone_number', value: '+30123456789' } })
     .catch(async (err) => {
       if (err instanceof Prelude.APIError) {
         console.log(err.status); // 400
@@ -119,11 +115,10 @@ You can use the `maxRetries` option to configure or disable this:
 // Configure the default for all requests:
 const client = new Prelude({
   maxRetries: 0, // default is 2
-  customerUuid: 'My Customer Uuid',
 });
 
 // Or, configure per-request:
-await client.authentication.create({ customer_uuid: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', phone_number: '+1234567890' }, {
+await client.verification.create({ target: { type: 'phone_number', value: '+30123456789' } }, {
   maxRetries: 5,
 });
 ```
@@ -137,11 +132,10 @@ Requests time out after 1 minute by default. You can configure this with a `time
 // Configure the default for all requests:
 const client = new Prelude({
   timeout: 20 * 1000, // 20 seconds (default is 1 minute)
-  customerUuid: 'My Customer Uuid',
 });
 
 // Override per-request:
-await client.authentication.create({ customer_uuid: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', phone_number: '+1234567890' }, {
+await client.verification.create({ target: { type: 'phone_number', value: '+30123456789' } }, {
   timeout: 5 * 1000,
 });
 ```
@@ -162,17 +156,17 @@ You can also use the `.withResponse()` method to get the raw `Response` along wi
 ```ts
 const client = new Prelude();
 
-const response = await client.authentication
-  .create({ customer_uuid: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', phone_number: '+1234567890' })
+const response = await client.verification
+  .create({ target: { type: 'phone_number', value: '+30123456789' } })
   .asResponse();
 console.log(response.headers.get('X-My-Header'));
 console.log(response.statusText); // access the underlying Response object
 
-const { data: authentication, response: raw } = await client.authentication
-  .create({ customer_uuid: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', phone_number: '+1234567890' })
+const { data: verification, response: raw } = await client.verification
+  .create({ target: { type: 'phone_number', value: '+30123456789' } })
   .withResponse();
 console.log(raw.headers.get('X-My-Header'));
-console.log(authentication.authentication_uuid);
+console.log(verification.id);
 ```
 
 ### Making custom/undocumented requests
@@ -230,12 +224,12 @@ add the following import before your first import `from "Prelude"`:
 ```ts
 // Tell TypeScript and the package to use the global web fetch instead of node-fetch.
 // Note, despite the name, this does not add any polyfills, but expects them to be provided if needed.
-import 'prelude/shims/web';
-import Prelude from 'prelude';
+import '@prelude.so/sdk/shims/web';
+import Prelude from '@prelude.so/sdk';
 ```
 
-To do the inverse, add `import "prelude/shims/node"` (which does import polyfills).
-This can also be useful if you are getting the wrong TypeScript types for `Response` ([more details](https://github.com/stainless-sdks/prelude-node/tree/main/src/_shims#readme)).
+To do the inverse, add `import "@prelude.so/sdk/shims/node"` (which does import polyfills).
+This can also be useful if you are getting the wrong TypeScript types for `Response` ([more details](https://github.com/prelude-so/node-sdk/tree/main/src/_shims#readme)).
 
 ### Logging and middleware
 
@@ -244,7 +238,7 @@ which can be used to inspect or alter the `Request` or `Response` before/after e
 
 ```ts
 import { fetch } from 'undici'; // as one example
-import Prelude from 'prelude';
+import Prelude from '@prelude.so/sdk';
 
 const client = new Prelude({
   fetch: async (url: RequestInfo, init?: RequestInit): Promise<Response> => {
@@ -273,12 +267,11 @@ import { HttpsProxyAgent } from 'https-proxy-agent';
 // Configure the default for all requests:
 const client = new Prelude({
   httpAgent: new HttpsProxyAgent(process.env.PROXY_URL),
-  customerUuid: 'My Customer Uuid',
 });
 
 // Override per-request:
-await client.authentication.create(
-  { customer_uuid: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', phone_number: '+1234567890' },
+await client.verification.create(
+  { target: { type: 'phone_number', value: '+30123456789' } },
   {
     httpAgent: new http.Agent({ keepAlive: false }),
   },
@@ -295,7 +288,7 @@ This package generally follows [SemVer](https://semver.org/spec/v2.0.0.html) con
 
 We take backwards-compatibility seriously and work hard to ensure you can rely on a smooth upgrade experience.
 
-We are keen for your feedback; please open an [issue](https://www.github.com/stainless-sdks/prelude-node/issues) with questions, bugs, or suggestions.
+We are keen for your feedback; please open an [issue](https://www.github.com/prelude-so/node-sdk/issues) with questions, bugs, or suggestions.
 
 ## Requirements
 

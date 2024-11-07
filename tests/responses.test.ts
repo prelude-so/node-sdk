@@ -1,5 +1,5 @@
-import { createResponseHeaders } from 'prelude/core';
-import { Headers } from 'prelude/_shims/index';
+import { createResponseHeaders } from '@prelude.so/sdk/core';
+import { Headers } from '@prelude.so/sdk/_shims/index';
 
 describe('response parsing', () => {
   // TODO: test unicode characters

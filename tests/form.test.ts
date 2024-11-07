@@ -1,6 +1,6 @@
-import { multipartFormRequestOptions, createForm } from 'prelude/core';
-import { Blob } from 'prelude/_shims/index';
-import { toFile } from 'prelude';
+import { multipartFormRequestOptions, createForm } from '@prelude.so/sdk/core';
+import { Blob } from '@prelude.so/sdk/_shims/index';
+import { toFile } from '@prelude.so/sdk';
 
 describe('form data validation', () => {
   test('valid values do not error', async () => {

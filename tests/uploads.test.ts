@@ -1,6 +1,6 @@
 import fs from 'fs';
-import { toFile, type ResponseLike } from 'prelude/uploads';
-import { File } from 'prelude/_shims/index';
+import { toFile, type ResponseLike } from '@prelude.so/sdk/uploads';
+import { File } from '@prelude.so/sdk/_shims/index';
 
 class MyClass {
   name: string = 'foo';
