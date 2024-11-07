@@ -27,6 +27,7 @@ import Prelude from 'prelude';
 
 const client = new Prelude({
   apiKey: process.env['PRELUDE_API_KEY'], // This is the default and can be omitted
+  customerUuid: 'My Customer Uuid',
 });
 
 async function main() {
@@ -51,6 +52,7 @@ import Prelude from 'prelude';
 
 const client = new Prelude({
   apiKey: process.env['PRELUDE_API_KEY'], // This is the default and can be omitted
+  customerUuid: 'My Customer Uuid',
 });
 
 async function main() {
@@ -117,6 +119,7 @@ You can use the `maxRetries` option to configure or disable this:
 // Configure the default for all requests:
 const client = new Prelude({
   maxRetries: 0, // default is 2
+  customerUuid: 'My Customer Uuid',
 });
 
 // Or, configure per-request:
@@ -134,6 +137,7 @@ Requests time out after 1 minute by default. You can configure this with a `time
 // Configure the default for all requests:
 const client = new Prelude({
   timeout: 20 * 1000, // 20 seconds (default is 1 minute)
+  customerUuid: 'My Customer Uuid',
 });
 
 // Override per-request:
@@ -269,6 +273,7 @@ import { HttpsProxyAgent } from 'https-proxy-agent';
 // Configure the default for all requests:
 const client = new Prelude({
   httpAgent: new HttpsProxyAgent(process.env.PROXY_URL),
+  customerUuid: 'My Customer Uuid',
 });
 
 // Override per-request:
