@@ -9,9 +9,9 @@
     "esModuleInterop": true,
     "baseUrl": "./",
     "paths": {
-      "prelude/_shims/auto/*": ["src/_shims/auto/*-node"],
-      "prelude/*": ["src/*"],
-      "prelude": ["src/index.ts"]
+      "@prelude.so/sdk/_shims/auto/*": ["src/_shims/auto/*-node"],
+      "@prelude.so/sdk/*": ["src/*"],
+      "@prelude.so/sdk": ["src/index.ts"]
     },
     "noEmit": true,
 

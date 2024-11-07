@@ -42,12 +42,12 @@ export let isFsReadStream: Shims['isFsReadStream'] | undefined = undefined;
 export function setShims(shims: Shims, options: { auto: boolean } = { auto: false }) {
   if (auto) {
     throw new Error(
-      `you must \`import 'prelude/shims/${shims.kind}'\` before importing anything else from prelude`,
+      `you must \`import '@prelude.so/sdk/shims/${shims.kind}'\` before importing anything else from @prelude.so/sdk`,
     );
   }
   if (kind) {
     throw new Error(
-      `can't \`import 'prelude/shims/${shims.kind}'\` after \`import 'prelude/shims/${kind}'\``,
+      `can't \`import '@prelude.so/sdk/shims/${shims.kind}'\` after \`import '@prelude.so/sdk/shims/${kind}'\``,
     );
   }
   auto = options.auto;

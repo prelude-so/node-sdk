@@ -4,8 +4,8 @@
 /**
  * Types will get added to this namespace when you import one of the following:
  *
- *   import 'prelude/shims/node'
- *   import 'prelude/shims/web'
+ *   import '@prelude.so/sdk/shims/node'
+ *   import '@prelude.so/sdk/shims/web'
  *
  * Importing more than one will cause type and runtime errors.
  */

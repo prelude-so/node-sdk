@@ -5,26 +5,20 @@ import * as Core from './core';
 import * as Errors from './error';
 import * as Uploads from './uploads';
 import * as API from './resources/index';
-import { Check, CheckCreateParams, CheckCreateResponse } from './resources/check';
-import { Lookup, LookupRetrieveParams, LookupRetrieveResponse } from './resources/lookup';
-import { Retry, RetryCreateParams, RetryCreateResponse } from './resources/retry';
+import { Transactional, TransactionalSendParams, TransactionalSendResponse } from './resources/transactional';
 import {
-  Authentication,
-  AuthenticationCreateParams,
-  AuthenticationCreateResponse,
-  AuthenticationRetrieveResponse,
-} from './resources/authentication/authentication';
+  Verification,
+  VerificationCheckParams,
+  VerificationCheckResponse,
+  VerificationCreateParams,
+  VerificationCreateResponse,
+} from './resources/verification';
 
 export interface ClientOptions {
   /**
-   * Defaults to process.env['PRELUDE_API_KEY'].
+   * Bearer token for authorizing API requests.
    */
-  apiKey?: string | undefined;
-
-  /**
-   * Defaults to process.env['PRELUDE_CUSTOMER_UUID'].
-   */
-  customerUuid?: string | undefined;
+  apiToken?: string | undefined;
 
   /**
    * Override the default base URL for the API, e.g., "https://api.example.com/v2/"
@@ -87,17 +81,15 @@ export interface ClientOptions {
  * API Client for interfacing with the Prelude API.
  */
 export class Prelude extends Core.APIClient {
-  apiKey: string;
-  customerUuid: string;
+  apiToken: string;
 
   private _options: ClientOptions;
 
   /**
    * API Client for interfacing with the Prelude API.
    *
-   * @param {string | undefined} [opts.apiKey=process.env['PRELUDE_API_KEY'] ?? undefined]
-   * @param {string | undefined} [opts.customerUuid=process.env['PRELUDE_CUSTOMER_UUID'] ?? undefined]
-   * @param {string} [opts.baseURL=process.env['PRELUDE_BASE_URL'] ?? https://api.ding.live/v1] - Override the default base URL for the API.
+   * @param {string | undefined} [opts.apiToken=process.env['API_TOKEN'] ?? undefined]
+   * @param {string} [opts.baseURL=process.env['PRELUDE_BASE_URL'] ?? https://api.prelude.dev] - Override the default base URL for the API.
    * @param {number} [opts.timeout=1 minute] - The maximum amount of time (in milliseconds) the client will wait for a response before timing out.
    * @param {number} [opts.httpAgent] - An HTTP agent used to manage HTTP(s) connections.
    * @param {Core.Fetch} [opts.fetch] - Specify a custom `fetch` function implementation.
@@ -107,26 +99,19 @@ export class Prelude extends Core.APIClient {
    */
   constructor({
     baseURL = Core.readEnv('PRELUDE_BASE_URL'),
-    apiKey = Core.readEnv('PRELUDE_API_KEY'),
-    customerUuid = Core.readEnv('PRELUDE_CUSTOMER_UUID'),
+    apiToken = Core.readEnv('API_TOKEN'),
     ...opts
   }: ClientOptions = {}) {
-    if (apiKey === undefined) {
+    if (apiToken === undefined) {
       throw new Errors.PreludeError(
-        "The PRELUDE_API_KEY environment variable is missing or empty; either provide it, or instantiate the Prelude client with an apiKey option, like new Prelude({ apiKey: 'My API Key' }).",
-      );
-    }
-    if (customerUuid === undefined) {
-      throw new Errors.PreludeError(
-        "The PRELUDE_CUSTOMER_UUID environment variable is missing or empty; either provide it, or instantiate the Prelude client with an customerUuid option, like new Prelude({ customerUuid: 'My Customer Uuid' }).",
+        "The API_TOKEN environment variable is missing or empty; either provide it, or instantiate the Prelude client with an apiToken option, like new Prelude({ apiToken: 'My API Token' }).",
       );
     }
 
     const options: ClientOptions = {
-      apiKey,
-      customerUuid,
+      apiToken,
       ...opts,
-      baseURL: baseURL || `https://api.ding.live/v1`,
+      baseURL: baseURL || `https://api.prelude.dev`,
     };
 
     super({
@@ -139,14 +124,11 @@ export class Prelude extends Core.APIClient {
 
     this._options = options;
 
-    this.apiKey = apiKey;
-    this.customerUuid = customerUuid;
+    this.apiToken = apiToken;
   }
 
-  authentication: API.Authentication = new API.Authentication(this);
-  check: API.Check = new API.Check(this);
-  retry: API.Retry = new API.Retry(this);
-  lookup: API.Lookup = new API.Lookup(this);
+  verification: API.Verification = new API.Verification(this);
+  transactional: API.Transactional = new API.Transactional(this);
 
   protected override defaultQuery(): Core.DefaultQuery | undefined {
     return this._options.defaultQuery;
@@ -155,13 +137,12 @@ export class Prelude extends Core.APIClient {
   protected override defaultHeaders(opts: Core.FinalRequestOptions): Core.Headers {
     return {
       ...super.defaultHeaders(opts),
-      CUSTOMER_UUID: this.customerUuid,
       ...this._options.defaultHeaders,
     };
   }
 
   protected override authHeaders(opts: Core.FinalRequestOptions): Core.Headers {
-    return { 'x-api-key': this.apiKey };
+    return { Authorization: `Bearer ${this.apiToken}` };
   }
 
   static Prelude = this;
@@ -204,37 +185,24 @@ export {
 export import toFile = Uploads.toFile;
 export import fileFromPath = Uploads.fileFromPath;
 
-Prelude.Authentication = Authentication;
-Prelude.Check = Check;
-Prelude.Retry = Retry;
-Prelude.Lookup = Lookup;
+Prelude.Verification = Verification;
+Prelude.Transactional = Transactional;
 
 export declare namespace Prelude {
   export type RequestOptions = Core.RequestOptions;
 
   export {
-    Authentication as Authentication,
-    type AuthenticationCreateResponse as AuthenticationCreateResponse,
-    type AuthenticationRetrieveResponse as AuthenticationRetrieveResponse,
-    type AuthenticationCreateParams as AuthenticationCreateParams,
+    Verification as Verification,
+    type VerificationCreateResponse as VerificationCreateResponse,
+    type VerificationCheckResponse as VerificationCheckResponse,
+    type VerificationCreateParams as VerificationCreateParams,
+    type VerificationCheckParams as VerificationCheckParams,
   };
 
   export {
-    Check as Check,
-    type CheckCreateResponse as CheckCreateResponse,
-    type CheckCreateParams as CheckCreateParams,
-  };
-
-  export {
-    Retry as Retry,
-    type RetryCreateResponse as RetryCreateResponse,
-    type RetryCreateParams as RetryCreateParams,
-  };
-
-  export {
-    Lookup as Lookup,
-    type LookupRetrieveResponse as LookupRetrieveResponse,
-    type LookupRetrieveParams as LookupRetrieveParams,
+    Transactional as Transactional,
+    type TransactionalSendResponse as TransactionalSendResponse,
+    type TransactionalSendParams as TransactionalSendParams,
   };
 }
 

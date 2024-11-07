@@ -42,25 +42,25 @@ If you’d like to use the repository from source, you can either install from g
 To install via git:
 
 ```sh
-$ npm install git+ssh://git@github.com:stainless-sdks/prelude-node.git
+$ npm install git+ssh://git@github.com:prelude-so/node-sdk.git
 ```
 
 Alternatively, to link a local copy of the repo:
 
 ```sh
 # Clone
-$ git clone https://www.github.com/stainless-sdks/prelude-node
-$ cd prelude-node
+$ git clone https://www.github.com/prelude-so/node-sdk
+$ cd node-sdk
 
 # With yarn
 $ yarn link
 $ cd ../my-package
-$ yarn link prelude
+$ yarn link @prelude.so/sdk
 
 # With pnpm
 $ pnpm link --global
 $ cd ../my-package
-$ pnpm link -—global prelude
+$ pnpm link -—global @prelude.so/sdk
 ```
 
 ## Running tests

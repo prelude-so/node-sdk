@@ -1,51 +1,21 @@
-# Authentication
+# Verification
 
 Types:
 
-- <code><a href="./src/resources/authentication/authentication.ts">AuthenticationCreateResponse</a></code>
-- <code><a href="./src/resources/authentication/authentication.ts">AuthenticationRetrieveResponse</a></code>
+- <code><a href="./src/resources/verification.ts">VerificationCreateResponse</a></code>
+- <code><a href="./src/resources/verification.ts">VerificationCheckResponse</a></code>
 
 Methods:
 
-- <code title="post /authentication">client.authentication.<a href="./src/resources/authentication/authentication.ts">create</a>({ ...params }) -> AuthenticationCreateResponse</code>
-- <code title="get /authentication/{auth_uuid}">client.authentication.<a href="./src/resources/authentication/authentication.ts">retrieve</a>(authUuid) -> AuthenticationRetrieveResponse</code>
+- <code title="post /v2/verification">client.verification.<a href="./src/resources/verification.ts">create</a>({ ...params }) -> VerificationCreateResponse</code>
+- <code title="post /v2/verification/check">client.verification.<a href="./src/resources/verification.ts">check</a>({ ...params }) -> VerificationCheckResponse</code>
 
-## Feedback
+# Transactional
 
 Types:
 
-- <code><a href="./src/resources/authentication/feedback.ts">FeedbackCreateResponse</a></code>
+- <code><a href="./src/resources/transactional.ts">TransactionalSendResponse</a></code>
 
 Methods:
 
-- <code title="post /authentication/feedback">client.authentication.feedback.<a href="./src/resources/authentication/feedback.ts">create</a>({ ...params }) -> FeedbackCreateResponse</code>
-
-# Check
-
-Types:
-
-- <code><a href="./src/resources/check.ts">CheckCreateResponse</a></code>
-
-Methods:
-
-- <code title="post /check">client.check.<a href="./src/resources/check.ts">create</a>({ ...params }) -> CheckCreateResponse</code>
-
-# Retry
-
-Types:
-
-- <code><a href="./src/resources/retry.ts">RetryCreateResponse</a></code>
-
-Methods:
-
-- <code title="post /retry">client.retry.<a href="./src/resources/retry.ts">create</a>({ ...params }) -> RetryCreateResponse</code>
-
-# Lookup
-
-Types:
-
-- <code><a href="./src/resources/lookup.ts">LookupRetrieveResponse</a></code>
-
-Methods:
-
-- <code title="get /lookup/{phone_number}">client.lookup.<a href="./src/resources/lookup.ts">retrieve</a>(phoneNumber, { ...params }) -> LookupRetrieveResponse</code>
+- <code title="post /v2/transactional">client.transactional.<a href="./src/resources/transactional.ts">send</a>({ ...params }) -> TransactionalSendResponse</code>

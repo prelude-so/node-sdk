@@ -1,6 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { Prelude } from 'prelude';
+import { Prelude } from '@prelude.so/sdk';
 
 const { stringifyQuery } = Prelude.prototype as any;
 
