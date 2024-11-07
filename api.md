@@ -3,10 +3,12 @@
 Types:
 
 - <code><a href="./src/resources/authentication/authentication.ts">AuthenticationCreateResponse</a></code>
+- <code><a href="./src/resources/authentication/authentication.ts">AuthenticationRetrieveResponse</a></code>
 
 Methods:
 
 - <code title="post /authentication">client.authentication.<a href="./src/resources/authentication/authentication.ts">create</a>({ ...params }) -> AuthenticationCreateResponse</code>
+- <code title="get /authentication/{auth_uuid}">client.authentication.<a href="./src/resources/authentication/authentication.ts">retrieve</a>(authUuid) -> AuthenticationRetrieveResponse</code>
 
 ## Feedback
 

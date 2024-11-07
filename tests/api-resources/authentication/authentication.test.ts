@@ -30,13 +30,36 @@ describe('resource authentication', () => {
       app_realm: 'app_realm',
       app_version: 'app_version',
       callback_url: 'callback_url',
+      correlation_id: 'correlation_id',
       device_id: 'device_id',
       device_model: 'device_model',
       device_type: 'IOS',
       ip: 'ip',
       is_returning_user: true,
+      locale: 'en-US',
       os_version: 'os_version',
+      sender_id: 'sender_id',
       template_id: 'template_id',
     });
+  });
+
+  test('retrieve', async () => {
+    const responsePromise = client.authentication.retrieve('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e');
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  test('retrieve: request options instead of params are passed correctly', async () => {
+    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
+    await expect(
+      client.authentication.retrieve('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', {
+        path: '/_stainless_unknown_path',
+      }),
+    ).rejects.toThrow(Prelude.NotFoundError);
   });
 });

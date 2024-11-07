@@ -3,6 +3,7 @@
 export {
   Authentication,
   type AuthenticationCreateResponse,
+  type AuthenticationRetrieveResponse,
   type AuthenticationCreateParams,
 } from './authentication/authentication';
 export { Check, type CheckCreateResponse, type CheckCreateParams } from './check';
