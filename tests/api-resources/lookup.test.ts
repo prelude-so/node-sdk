@@ -5,6 +5,7 @@ import { Response } from 'node-fetch';
 
 const client = new Prelude({
   apiKey: 'My API Key',
+  customerUuid: 'My Customer Uuid',
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 

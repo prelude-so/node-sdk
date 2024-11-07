@@ -22,6 +22,11 @@ export interface ClientOptions {
   apiKey?: string | undefined;
 
   /**
+   * Defaults to process.env['PRELUDE_CUSTOMER_UUID'].
+   */
+  customerUuid?: string | undefined;
+
+  /**
    * Override the default base URL for the API, e.g., "https://api.example.com/v2/"
    *
    * Defaults to process.env['PRELUDE_BASE_URL'].
@@ -83,6 +88,7 @@ export interface ClientOptions {
  */
 export class Prelude extends Core.APIClient {
   apiKey: string;
+  customerUuid: string;
 
   private _options: ClientOptions;
 
@@ -90,6 +96,7 @@ export class Prelude extends Core.APIClient {
    * API Client for interfacing with the Prelude API.
    *
    * @param {string | undefined} [opts.apiKey=process.env['PRELUDE_API_KEY'] ?? undefined]
+   * @param {string | undefined} [opts.customerUuid=process.env['PRELUDE_CUSTOMER_UUID'] ?? undefined]
    * @param {string} [opts.baseURL=process.env['PRELUDE_BASE_URL'] ?? https://api.ding.live/v1] - Override the default base URL for the API.
    * @param {number} [opts.timeout=1 minute] - The maximum amount of time (in milliseconds) the client will wait for a response before timing out.
    * @param {number} [opts.httpAgent] - An HTTP agent used to manage HTTP(s) connections.
@@ -101,6 +108,7 @@ export class Prelude extends Core.APIClient {
   constructor({
     baseURL = Core.readEnv('PRELUDE_BASE_URL'),
     apiKey = Core.readEnv('PRELUDE_API_KEY'),
+    customerUuid = Core.readEnv('PRELUDE_CUSTOMER_UUID'),
     ...opts
   }: ClientOptions = {}) {
     if (apiKey === undefined) {
@@ -108,9 +116,15 @@ export class Prelude extends Core.APIClient {
         "The PRELUDE_API_KEY environment variable is missing or empty; either provide it, or instantiate the Prelude client with an apiKey option, like new Prelude({ apiKey: 'My API Key' }).",
       );
     }
+    if (customerUuid === undefined) {
+      throw new Errors.PreludeError(
+        "The PRELUDE_CUSTOMER_UUID environment variable is missing or empty; either provide it, or instantiate the Prelude client with an customerUuid option, like new Prelude({ customerUuid: 'My Customer Uuid' }).",
+      );
+    }
 
     const options: ClientOptions = {
       apiKey,
+      customerUuid,
       ...opts,
       baseURL: baseURL || `https://api.ding.live/v1`,
     };
@@ -126,6 +140,7 @@ export class Prelude extends Core.APIClient {
     this._options = options;
 
     this.apiKey = apiKey;
+    this.customerUuid = customerUuid;
   }
 
   authentication: API.Authentication = new API.Authentication(this);
@@ -140,6 +155,7 @@ export class Prelude extends Core.APIClient {
   protected override defaultHeaders(opts: Core.FinalRequestOptions): Core.Headers {
     return {
       ...super.defaultHeaders(opts),
+      CUSTOMER_UUID: this.customerUuid,
       ...this._options.defaultHeaders,
     };
   }
