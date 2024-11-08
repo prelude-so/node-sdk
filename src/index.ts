@@ -15,8 +15,8 @@ import {
 } from './resources/verification';
 import {
   Watch,
-  WatchFeedbackParams,
-  WatchFeedbackResponse,
+  WatchFeedBackParams,
+  WatchFeedBackResponse,
   WatchPredictParams,
   WatchPredictResponse,
 } from './resources/watch';
@@ -216,9 +216,9 @@ export declare namespace Prelude {
 
   export {
     Watch as Watch,
-    type WatchFeedbackResponse as WatchFeedbackResponse,
+    type WatchFeedBackResponse as WatchFeedBackResponse,
     type WatchPredictResponse as WatchPredictResponse,
-    type WatchFeedbackParams as WatchFeedbackParams,
+    type WatchFeedBackParams as WatchFeedBackParams,
     type WatchPredictParams as WatchPredictParams,
   };
 }

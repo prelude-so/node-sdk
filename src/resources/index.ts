@@ -10,8 +10,8 @@ export {
 } from './verification';
 export {
   Watch,
-  type WatchFeedbackResponse,
+  type WatchFeedBackResponse,
   type WatchPredictResponse,
-  type WatchFeedbackParams,
+  type WatchFeedBackParams,
   type WatchPredictParams,
 } from './watch';

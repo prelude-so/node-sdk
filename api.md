@@ -24,10 +24,10 @@ Methods:
 
 Types:
 
-- <code><a href="./src/resources/watch.ts">WatchFeedbackResponse</a></code>
+- <code><a href="./src/resources/watch.ts">WatchFeedBackResponse</a></code>
 - <code><a href="./src/resources/watch.ts">WatchPredictResponse</a></code>
 
 Methods:
 
-- <code title="post /v2/watch/feedback">client.watch.<a href="./src/resources/watch.ts">feedback</a>({ ...params }) -> WatchFeedbackResponse</code>
+- <code title="post /v2/watch/feedback">client.watch.<a href="./src/resources/watch.ts">feedBack</a>({ ...params }) -> WatchFeedBackResponse</code>
 - <code title="post /v2/watch/predict">client.watch.<a href="./src/resources/watch.ts">predict</a>({ ...params }) -> WatchPredictResponse</code>
