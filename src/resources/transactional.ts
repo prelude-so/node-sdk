@@ -5,7 +5,7 @@ import * as Core from '../core';
 
 export class Transactional extends APIResource {
   /**
-   * Send a transactional message
+   * Send a transactional message to your user.
    */
   send(
     body: TransactionalSendParams,

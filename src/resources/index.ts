@@ -8,3 +8,10 @@ export {
   type VerificationCreateParams,
   type VerificationCheckParams,
 } from './verification';
+export {
+  Watch,
+  type WatchFeedbackResponse,
+  type WatchPredictResponse,
+  type WatchFeedbackParams,
+  type WatchPredictParams,
+} from './watch';

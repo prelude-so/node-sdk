@@ -17,7 +17,7 @@ export class Verification extends APIResource {
   }
 
   /**
-   * Check a code
+   * Check the validity of a verification code.
    */
   check(
     body: VerificationCheckParams,
@@ -88,8 +88,7 @@ export namespace VerificationCheckResponse {
 
 export interface VerificationCreateParams {
   /**
-   * The target to verify. Currently this can only be an E.164 formatted phone
-   * number.
+   * The target. Currently this can only be an E.164 formatted phone number.
    */
   target: VerificationCreateParams.Target;
 
@@ -112,12 +111,11 @@ export interface VerificationCreateParams {
 
 export namespace VerificationCreateParams {
   /**
-   * The target to verify. Currently this can only be an E.164 formatted phone
-   * number.
+   * The target. Currently this can only be an E.164 formatted phone number.
    */
   export interface Target {
     /**
-     * The type of the target to verify. Currently this can only be "phone_number".
+     * The type of the target. Currently this can only be "phone_number".
      */
     type: 'phone_number';
 
@@ -215,8 +213,7 @@ export namespace VerificationCreateParams {
 
 export interface VerificationCheckParams {
   /**
-   * The target to verify. Currently this can only be an E.164 formatted phone
-   * number.
+   * The target. Currently this can only be an E.164 formatted phone number.
    */
   target: VerificationCheckParams.Target;
 
@@ -228,12 +225,11 @@ export interface VerificationCheckParams {
 
 export namespace VerificationCheckParams {
   /**
-   * The target to verify. Currently this can only be an E.164 formatted phone
-   * number.
+   * The target. Currently this can only be an E.164 formatted phone number.
    */
   export interface Target {
     /**
-     * The type of the target to verify. Currently this can only be "phone_number".
+     * The type of the target. Currently this can only be "phone_number".
      */
     type: 'phone_number';
 
