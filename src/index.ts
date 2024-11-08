@@ -13,6 +13,13 @@ import {
   VerificationCreateParams,
   VerificationCreateResponse,
 } from './resources/verification';
+import {
+  Watch,
+  WatchFeedbackParams,
+  WatchFeedbackResponse,
+  WatchPredictParams,
+  WatchPredictResponse,
+} from './resources/watch';
 
 export interface ClientOptions {
   /**
@@ -127,8 +134,9 @@ export class Prelude extends Core.APIClient {
     this.apiToken = apiToken;
   }
 
-  verification: API.Verification = new API.Verification(this);
   transactional: API.Transactional = new API.Transactional(this);
+  verification: API.Verification = new API.Verification(this);
+  watch: API.Watch = new API.Watch(this);
 
   protected override defaultQuery(): Core.DefaultQuery | undefined {
     return this._options.defaultQuery;
@@ -185,11 +193,18 @@ export {
 export import toFile = Uploads.toFile;
 export import fileFromPath = Uploads.fileFromPath;
 
-Prelude.Verification = Verification;
 Prelude.Transactional = Transactional;
+Prelude.Verification = Verification;
+Prelude.Watch = Watch;
 
 export declare namespace Prelude {
   export type RequestOptions = Core.RequestOptions;
+
+  export {
+    Transactional as Transactional,
+    type TransactionalSendResponse as TransactionalSendResponse,
+    type TransactionalSendParams as TransactionalSendParams,
+  };
 
   export {
     Verification as Verification,
@@ -200,9 +215,11 @@ export declare namespace Prelude {
   };
 
   export {
-    Transactional as Transactional,
-    type TransactionalSendResponse as TransactionalSendResponse,
-    type TransactionalSendParams as TransactionalSendParams,
+    Watch as Watch,
+    type WatchFeedbackResponse as WatchFeedbackResponse,
+    type WatchPredictResponse as WatchPredictResponse,
+    type WatchFeedbackParams as WatchFeedbackParams,
+    type WatchPredictParams as WatchPredictParams,
   };
 }
 
