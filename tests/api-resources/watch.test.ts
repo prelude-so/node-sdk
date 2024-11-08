@@ -9,8 +9,9 @@ const client = new Prelude({
 });
 
 describe('resource watch', () => {
-  test('feedback: only required params', async () => {
-    const responsePromise = client.watch.feedback({
+  test('feedBack: only required params', async () => {
+    const responsePromise = client.watch.feedBack({
+      feedback: { type: 'CONFIRM_TARGET' },
       target: { type: 'phone_number', value: '+30123456789' },
     });
     const rawResponse = await responsePromise.asResponse();
@@ -22,10 +23,10 @@ describe('resource watch', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  test('feedback: required and optional params', async () => {
-    const response = await client.watch.feedback({
+  test('feedBack: required and optional params', async () => {
+    const response = await client.watch.feedBack({
+      feedback: { type: 'CONFIRM_TARGET' },
       target: { type: 'phone_number', value: '+30123456789' },
-      feedback: { type: 'CONFIRM_PHONE_NUMBER' },
     });
   });
 

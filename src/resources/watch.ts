@@ -8,7 +8,7 @@ export class Watch extends APIResource {
    * Once the user with a trustworthy phone number demonstrates authentic behaviour,
    * call this endpoint to report their authenticity to our systems.
    */
-  feedback(body: WatchFeedbackParams, options?: Core.RequestOptions): Core.APIPromise<WatchFeedbackResponse> {
+  feedBack(body: WatchFeedBackParams, options?: Core.RequestOptions): Core.APIPromise<WatchFeedBackResponse> {
     return this._client.post('/v2/watch/feedback', { body, ...options });
   }
 
@@ -22,7 +22,7 @@ export class Watch extends APIResource {
   }
 }
 
-export interface WatchFeedbackResponse {
+export interface WatchFeedBackResponse {
   /**
    * A unique identifier for your feedback request.
    */
@@ -58,20 +58,32 @@ export namespace WatchPredictResponse {
   }
 }
 
-export interface WatchFeedbackParams {
-  /**
-   * The target. Currently this can only be an E.164 formatted phone number.
-   */
-  target: WatchFeedbackParams.Target;
-
+export interface WatchFeedBackParams {
   /**
    * You should send a feedback event back to Watch API when your user demonstrates
    * authentic behaviour.
    */
-  feedback?: WatchFeedbackParams.Feedback;
+  feedback: WatchFeedBackParams.Feedback;
+
+  /**
+   * The target. Currently this can only be an E.164 formatted phone number.
+   */
+  target: WatchFeedBackParams.Target;
 }
 
-export namespace WatchFeedbackParams {
+export namespace WatchFeedBackParams {
+  /**
+   * You should send a feedback event back to Watch API when your user demonstrates
+   * authentic behaviour.
+   */
+  export interface Feedback {
+    /**
+     * `CONFIRM_TARGET` should be sent when you are sure that the user with this target
+     * (e.g. phone number) is trustworthy.
+     */
+    type: 'CONFIRM_TARGET';
+  }
+
   /**
    * The target. Currently this can only be an E.164 formatted phone number.
    */
@@ -85,18 +97,6 @@ export namespace WatchFeedbackParams {
      * An E.164 formatted phone number to verify.
      */
     value: string;
-  }
-
-  /**
-   * You should send a feedback event back to Watch API when your user demonstrates
-   * authentic behaviour.
-   */
-  export interface Feedback {
-    /**
-     * `CONFIRM_PHONE_NUMBER` should be sent when you are sure that the user with this
-     * phone number is trustworthy.
-     */
-    type?: 'CONFIRM_PHONE_NUMBER';
   }
 }
 
@@ -159,9 +159,9 @@ export namespace WatchPredictParams {
 
 export declare namespace Watch {
   export {
-    type WatchFeedbackResponse as WatchFeedbackResponse,
+    type WatchFeedBackResponse as WatchFeedBackResponse,
     type WatchPredictResponse as WatchPredictResponse,
-    type WatchFeedbackParams as WatchFeedbackParams,
+    type WatchFeedBackParams as WatchFeedBackParams,
     type WatchPredictParams as WatchPredictParams,
   };
 }
