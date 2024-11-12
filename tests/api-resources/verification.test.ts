@@ -37,7 +37,7 @@ describe('resource verification', () => {
         device_id: 'device_id',
         device_model: 'device_model',
         device_platform: 'android',
-        ip: 'ip',
+        ip: '8.8.8.8',
         is_trusted_user: 'is_trusted_user',
         os_version: 'os_version',
       },
