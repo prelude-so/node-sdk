@@ -174,29 +174,9 @@ export class Prelude extends Core.APIClient {
   static fileFromPath = Uploads.fileFromPath;
 }
 
-export {
-  PreludeError,
-  APIError,
-  APIConnectionError,
-  APIConnectionTimeoutError,
-  APIUserAbortError,
-  NotFoundError,
-  ConflictError,
-  RateLimitError,
-  BadRequestError,
-  AuthenticationError,
-  InternalServerError,
-  PermissionDeniedError,
-  UnprocessableEntityError,
-} from './error';
-
-export import toFile = Uploads.toFile;
-export import fileFromPath = Uploads.fileFromPath;
-
 Prelude.Transactional = Transactional;
 Prelude.Verification = Verification;
 Prelude.Watch = Watch;
-
 export declare namespace Prelude {
   export type RequestOptions = Core.RequestOptions;
 
@@ -222,5 +202,22 @@ export declare namespace Prelude {
     type WatchPredictParams as WatchPredictParams,
   };
 }
+
+export { toFile, fileFromPath } from '@prelude.so/sdk/uploads';
+export {
+  PreludeError,
+  APIError,
+  APIConnectionError,
+  APIConnectionTimeoutError,
+  APIUserAbortError,
+  NotFoundError,
+  ConflictError,
+  RateLimitError,
+  BadRequestError,
+  AuthenticationError,
+  InternalServerError,
+  PermissionDeniedError,
+  UnprocessableEntityError,
+} from '@prelude.so/sdk/error';
 
 export default Prelude;
