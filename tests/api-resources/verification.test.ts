@@ -26,13 +26,17 @@ describe('resource verification', () => {
     const response = await client.verification.create({
       target: { type: 'phone_number', value: '+30123456789' },
       metadata: { correlation_id: 'correlation_id' },
-      options: { locale: 'el-GR', sender_id: 'sender_id', template_id: 'template_id' },
-      signals: {
+      options: {
         app_realm: 'app_realm',
+        locale: 'el-GR',
+        sender_id: 'sender_id',
+        template_id: 'template_id',
+      },
+      signals: {
         app_version: 'app_version',
         device_id: 'device_id',
         device_model: 'device_model',
-        device_type: 'IOS',
+        device_platform: 'android',
         ip: 'ip',
         is_trusted_user: 'is_trusted_user',
         os_version: 'os_version',
@@ -42,6 +46,7 @@ describe('resource verification', () => {
 
   test('check: only required params', async () => {
     const responsePromise = client.verification.check({
+      code: '12345',
       target: { type: 'phone_number', value: '+30123456789' },
     });
     const rawResponse = await responsePromise.asResponse();
@@ -55,8 +60,8 @@ describe('resource verification', () => {
 
   test('check: required and optional params', async () => {
     const response = await client.verification.check({
-      target: { type: 'phone_number', value: '+30123456789' },
       code: '12345',
+      target: { type: 'phone_number', value: '+30123456789' },
     });
   });
 });

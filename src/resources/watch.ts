@@ -5,7 +5,7 @@ import * as Core from '../core';
 
 export class Watch extends APIResource {
   /**
-   * Once the user with a trustworthy phone number demonstrates authentic behaviour,
+   * Once the user with a trustworthy phone number demonstrates authentic behavior,
    * call this endpoint to report their authenticity to our systems.
    */
   feedBack(body: WatchFeedBackParams, options?: Core.RequestOptions): Core.APIPromise<WatchFeedBackResponse> {
@@ -13,9 +13,9 @@ export class Watch extends APIResource {
   }
 
   /**
-   * Identify trustworthy phone numbers to mitigate fake trafic or trafic involved in
-   * fraud and international revenue share fraud (IRSF) patterns. This endpoint must
-   * be implemented in conjuction with the `watch/feedback` endpoint.
+   * Identify trustworthy phone numbers to mitigate fake traffic or traffic involved
+   * in fraud and international revenue share fraud (IRSF) patterns. This endpoint
+   * must be implemented in conjunction with the `watch/feedback` endpoint.
    */
   predict(body: WatchPredictParams, options?: Core.RequestOptions): Core.APIPromise<WatchPredictResponse> {
     return this._client.post('/v2/watch/predict', { body, ...options });
@@ -36,7 +36,7 @@ export interface WatchPredictResponse {
   id?: string;
 
   /**
-   * A label indicating the trustworthyness of the phone number.
+   * A label indicating the trustworthiness of the phone number.
    */
   prediction?: 'allow' | 'block';
 
@@ -61,7 +61,7 @@ export namespace WatchPredictResponse {
 export interface WatchFeedBackParams {
   /**
    * You should send a feedback event back to Watch API when your user demonstrates
-   * authentic behaviour.
+   * authentic behavior.
    */
   feedback: WatchFeedBackParams.Feedback;
 
@@ -74,7 +74,7 @@ export interface WatchFeedBackParams {
 export namespace WatchFeedBackParams {
   /**
    * You should send a feedback event back to Watch API when your user demonstrates
-   * authentic behaviour.
+   * authentic behavior.
    */
   export interface Feedback {
     /**

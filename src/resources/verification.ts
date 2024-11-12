@@ -71,6 +71,8 @@ export interface VerificationCheckResponse {
    */
   metadata?: VerificationCheckResponse.Metadata;
 
+  request_id?: string;
+
   /**
    * The status of the check.
    */
@@ -141,6 +143,12 @@ export namespace VerificationCreateParams {
    */
   export interface Options {
     /**
+     * The Android SMS Retriever API hash code that identifies your app. This allows
+     * you to automatically retrieve and fill the OTP code on Android devices.
+     */
+    app_realm?: string;
+
+    /**
      * A BCP-47 formatted locale string with the language the text message will be sent
      * to. If there's no locale set, the language will be determined by the country
      * code of the phone number. If the language specified doesn't exist, it defaults
@@ -167,12 +175,6 @@ export namespace VerificationCreateParams {
    */
   export interface Signals {
     /**
-     * The Android SMS Retriever API hash code that identifies your app. This allows
-     * you to automatically retrieve and fill the OTP code on Android devices.
-     */
-    app_realm?: string;
-
-    /**
      * The version of your application.
      */
     app_version?: string;
@@ -191,7 +193,7 @@ export namespace VerificationCreateParams {
     /**
      * The type of the user's device.
      */
-    device_type?: 'IOS' | 'ANDROID' | 'WEB';
+    device_platform?: 'android' | 'ios' | 'web';
 
     /**
      * The IP address of the user's device.
@@ -213,14 +215,14 @@ export namespace VerificationCreateParams {
 
 export interface VerificationCheckParams {
   /**
+   * The OTP code to validate.
+   */
+  code: string;
+
+  /**
    * The target. Currently this can only be an E.164 formatted phone number.
    */
   target: VerificationCheckParams.Target;
-
-  /**
-   * The OTP code to validate.
-   */
-  code?: string;
 }
 
 export namespace VerificationCheckParams {
