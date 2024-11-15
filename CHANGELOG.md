@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.1.0-alpha.3 (2024-11-15)
+
+Full Changelog: [v0.1.0-alpha.2...v0.1.0-alpha.3](https://github.com/prelude-so/node-sdk/compare/v0.1.0-alpha.2...v0.1.0-alpha.3)
+
+### Chores
+
+* rebuild project due to codegen change ([#7](https://github.com/prelude-so/node-sdk/issues/7)) ([fbd619a](https://github.com/prelude-so/node-sdk/commit/fbd619a97871f32f2f6db1bef742056ff3e88316))
+* rebuild project due to codegen change ([#9](https://github.com/prelude-so/node-sdk/issues/9)) ([4f36b85](https://github.com/prelude-so/node-sdk/commit/4f36b85418435bd41634c259d86f30cac04468fc))
+
 ## 0.1.0-alpha.2 (2024-11-13)
 
 Full Changelog: [v0.1.0-alpha.1...v0.1.0-alpha.2](https://github.com/prelude-so/node-sdk/compare/v0.1.0-alpha.1...v0.1.0-alpha.2)
