@@ -203,7 +203,7 @@ export declare namespace Prelude {
   };
 }
 
-export { toFile, fileFromPath } from '@prelude.so/sdk/uploads';
+export { toFile, fileFromPath } from './uploads';
 export {
   PreludeError,
   APIError,
@@ -218,6 +218,6 @@ export {
   InternalServerError,
   PermissionDeniedError,
   UnprocessableEntityError,
-} from '@prelude.so/sdk/error';
+} from './error';
 
 export default Prelude;
