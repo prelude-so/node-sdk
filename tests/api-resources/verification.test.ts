@@ -28,6 +28,7 @@ describe('resource verification', () => {
       metadata: { correlation_id: 'correlation_id' },
       options: {
         app_realm: 'app_realm',
+        custom_code: 'custom_code',
         locale: 'el-GR',
         sender_id: 'sender_id',
         template_id: 'template_id',
