@@ -149,6 +149,13 @@ export namespace VerificationCreateParams {
     app_realm?: string;
 
     /**
+     * The custom code to use for OTP verification. This feature is only available for
+     * compatibility purposes and subject to Prelude’s approval. Contact us to discuss
+     * your use case.
+     */
+    custom_code?: string;
+
+    /**
      * A BCP-47 formatted locale string with the language the text message will be sent
      * to. If there's no locale set, the language will be determined by the country
      * code of the phone number. If the language specified doesn't exist, it defaults
@@ -193,7 +200,7 @@ export namespace VerificationCreateParams {
     /**
      * The type of the user's device.
      */
-    device_platform?: 'android' | 'ios' | 'web';
+    device_platform?: 'android' | 'ios' | 'ipados' | 'tvos' | 'web';
 
     /**
      * The IP address of the user's device.
