@@ -31,24 +31,24 @@ export interface VerificationCreateResponse {
   /**
    * The verification identifier.
    */
-  id?: string;
+  id: string;
+
+  /**
+   * The method used for verifying this phone number.
+   */
+  method: 'message';
+
+  /**
+   * The status of the verification.
+   */
+  status: 'success' | 'retry' | 'blocked';
 
   /**
    * The metadata for this verification.
    */
   metadata?: VerificationCreateResponse.Metadata;
 
-  /**
-   * The method used for verifying this phone number.
-   */
-  method?: 'message';
-
   request_id?: string;
-
-  /**
-   * The status of the verification.
-   */
-  status?: 'success' | 'retry' | 'blocked';
 }
 
 export namespace VerificationCreateResponse {
@@ -62,6 +62,11 @@ export namespace VerificationCreateResponse {
 
 export interface VerificationCheckResponse {
   /**
+   * The status of the check.
+   */
+  status: 'success' | 'failure' | 'expired_or_not_found';
+
+  /**
    * The verification identifier.
    */
   id?: string;
@@ -72,11 +77,6 @@ export interface VerificationCheckResponse {
   metadata?: VerificationCheckResponse.Metadata;
 
   request_id?: string;
-
-  /**
-   * The status of the check.
-   */
-  status?: 'success' | 'failure' | 'expired';
 }
 
 export namespace VerificationCheckResponse {
