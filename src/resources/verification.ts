@@ -31,24 +31,24 @@ export interface VerificationCreateResponse {
   /**
    * The verification identifier.
    */
-  id?: string;
+  id: string;
+
+  /**
+   * The method used for verifying this phone number.
+   */
+  method: 'message';
+
+  /**
+   * The status of the verification.
+   */
+  status: 'success' | 'retry' | 'blocked';
 
   /**
    * The metadata for this verification.
    */
   metadata?: VerificationCreateResponse.Metadata;
 
-  /**
-   * The method used for verifying this phone number.
-   */
-  method?: 'message';
-
   request_id?: string;
-
-  /**
-   * The status of the verification.
-   */
-  status?: 'success' | 'retry' | 'blocked';
 }
 
 export namespace VerificationCreateResponse {
@@ -62,6 +62,11 @@ export namespace VerificationCreateResponse {
 
 export interface VerificationCheckResponse {
   /**
+   * The status of the check.
+   */
+  status: 'success' | 'failure' | 'expired_or_not_found';
+
+  /**
    * The verification identifier.
    */
   id?: string;
@@ -72,11 +77,6 @@ export interface VerificationCheckResponse {
   metadata?: VerificationCheckResponse.Metadata;
 
   request_id?: string;
-
-  /**
-   * The status of the check.
-   */
-  status?: 'success' | 'failure' | 'expired';
 }
 
 export namespace VerificationCheckResponse {
@@ -149,6 +149,13 @@ export namespace VerificationCreateParams {
     app_realm?: string;
 
     /**
+     * The custom code to use for OTP verification. This feature is only available for
+     * compatibility purposes and subject to Prelude’s approval. Contact us to discuss
+     * your use case.
+     */
+    custom_code?: string;
+
+    /**
      * A BCP-47 formatted locale string with the language the text message will be sent
      * to. If there's no locale set, the language will be determined by the country
      * code of the phone number. If the language specified doesn't exist, it defaults
@@ -193,7 +200,7 @@ export namespace VerificationCreateParams {
     /**
      * The type of the user's device.
      */
-    device_platform?: 'android' | 'ios' | 'web';
+    device_platform?: 'android' | 'ios' | 'ipados' | 'tvos' | 'web';
 
     /**
      * The IP address of the user's device.
