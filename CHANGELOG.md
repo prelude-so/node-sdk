@@ -1,5 +1,26 @@
 # Changelog
 
+## 0.1.0-alpha.3 (2024-11-27)
+
+Full Changelog: [v0.1.0-alpha.2...v0.1.0-alpha.3](https://github.com/prelude-so/node-sdk/compare/v0.1.0-alpha.2...v0.1.0-alpha.3)
+
+### Features
+
+* **api:** update via SDK Studio ([#10](https://github.com/prelude-so/node-sdk/issues/10)) ([d277131](https://github.com/prelude-so/node-sdk/commit/d277131154feb7cce57a19607d47a82e68379cc3))
+* **api:** update via SDK Studio ([#13](https://github.com/prelude-so/node-sdk/issues/13)) ([9076480](https://github.com/prelude-so/node-sdk/commit/90764803242e1f86cc395afb2999cbf65c577e22))
+
+
+### Chores
+
+* rebuild project due to codegen change ([#7](https://github.com/prelude-so/node-sdk/issues/7)) ([fbd619a](https://github.com/prelude-so/node-sdk/commit/fbd619a97871f32f2f6db1bef742056ff3e88316))
+* rebuild project due to codegen change ([#9](https://github.com/prelude-so/node-sdk/issues/9)) ([4f36b85](https://github.com/prelude-so/node-sdk/commit/4f36b85418435bd41634c259d86f30cac04468fc))
+* remove redundant word in comment ([#12](https://github.com/prelude-so/node-sdk/issues/12)) ([df260b2](https://github.com/prelude-so/node-sdk/commit/df260b24e841d66cae8cbd841554703d499a0c82))
+
+
+### Documentation
+
+* remove suggestion to use `npm` call out ([#11](https://github.com/prelude-so/node-sdk/issues/11)) ([21912b9](https://github.com/prelude-so/node-sdk/commit/21912b969ff5b0d0d01d97ffddbcb4ad89b829ea))
+
 ## 0.1.0-alpha.2 (2024-11-13)
 
 Full Changelog: [v0.1.0-alpha.1...v0.1.0-alpha.2](https://github.com/prelude-so/node-sdk/compare/v0.1.0-alpha.1...v0.1.0-alpha.2)
