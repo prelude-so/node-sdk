@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.4 (2024-11-28)
+
+Full Changelog: [v0.1.0-alpha.3...v0.1.0-alpha.4](https://github.com/prelude-so/node-sdk/compare/v0.1.0-alpha.3...v0.1.0-alpha.4)
+
+### Features
+
+* **internal:** make git install file structure match npm ([#15](https://github.com/prelude-so/node-sdk/issues/15)) ([8b107b7](https://github.com/prelude-so/node-sdk/commit/8b107b79b327b23c00f2a8d4a6b5f0b02248cd76))
+
 ## 0.1.0-alpha.3 (2024-11-27)
 
 Full Changelog: [v0.1.0-alpha.2...v0.1.0-alpha.3](https://github.com/prelude-so/node-sdk/compare/v0.1.0-alpha.2...v0.1.0-alpha.3)
