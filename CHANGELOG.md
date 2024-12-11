@@ -1,5 +1,21 @@
 # Changelog
 
+## 0.1.0-alpha.4 (2024-12-11)
+
+Full Changelog: [v0.1.0-alpha.3...v0.1.0-alpha.4](https://github.com/prelude-so/node-sdk/compare/v0.1.0-alpha.3...v0.1.0-alpha.4)
+
+### Features
+
+* **api:** update via SDK Studio ([#20](https://github.com/prelude-so/node-sdk/issues/20)) ([3b283b4](https://github.com/prelude-so/node-sdk/commit/3b283b4065b1a634ac93e1637966fdb713f062a4))
+* **internal:** make git install file structure match npm ([#15](https://github.com/prelude-so/node-sdk/issues/15)) ([8b107b7](https://github.com/prelude-so/node-sdk/commit/8b107b79b327b23c00f2a8d4a6b5f0b02248cd76))
+
+
+### Chores
+
+* **internal:** bump cross-spawn to v7.0.6 ([#18](https://github.com/prelude-so/node-sdk/issues/18)) ([99a2a45](https://github.com/prelude-so/node-sdk/commit/99a2a45a10089a2f066c47c042565a8c16f4ad62))
+* **internal:** remove unnecessary getRequestClient function ([#17](https://github.com/prelude-so/node-sdk/issues/17)) ([f31c4c9](https://github.com/prelude-so/node-sdk/commit/f31c4c92beb9d4c0bb7c6638f4eb83eced681d86))
+* **types:** nicer error class types + jsdocs ([#19](https://github.com/prelude-so/node-sdk/issues/19)) ([6157a80](https://github.com/prelude-so/node-sdk/commit/6157a8033e31185f32ff35de21b58e5396ebe8aa))
+
 ## 0.1.0-alpha.3 (2024-11-27)
 
 Full Changelog: [v0.1.0-alpha.2...v0.1.0-alpha.3](https://github.com/prelude-so/node-sdk/compare/v0.1.0-alpha.2...v0.1.0-alpha.3)

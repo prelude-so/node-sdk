@@ -211,7 +211,7 @@ export namespace VerificationCreateParams {
      * This signal should provide a higher level of trust, indicating that the user is
      * genuine. For more details, refer to [Signals](/guides/prevent-fraud#signals).
      */
-    is_trusted_user?: string;
+    is_trusted_user?: boolean;
 
     /**
      * The version of the user's device operating system.
