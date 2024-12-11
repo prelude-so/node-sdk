@@ -39,7 +39,7 @@ describe('resource verification', () => {
         device_model: 'iPhone17,2',
         device_platform: 'android',
         ip: '192.0.2.1',
-        is_trusted_user: 'is_trusted_user',
+        is_trusted_user: false,
         os_version: '18.0.1',
       },
     });
