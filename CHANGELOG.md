@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.5 (2024-12-12)
+
+Full Changelog: [v0.1.0-alpha.4...v0.1.0-alpha.5](https://github.com/prelude-so/node-sdk/compare/v0.1.0-alpha.4...v0.1.0-alpha.5)
+
+### Chores
+
+* **internal:** update isAbsoluteURL ([#22](https://github.com/prelude-so/node-sdk/issues/22)) ([6019274](https://github.com/prelude-so/node-sdk/commit/6019274f64b9fe77d955d48698e0380691bff4ae))
+
 ## 0.1.0-alpha.4 (2024-12-11)
 
 Full Changelog: [v0.1.0-alpha.3...v0.1.0-alpha.4](https://github.com/prelude-so/node-sdk/compare/v0.1.0-alpha.3...v0.1.0-alpha.4)
