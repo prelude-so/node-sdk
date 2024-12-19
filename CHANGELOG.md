@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.1.0-alpha.6 (2024-12-19)
+
+Full Changelog: [v0.1.0-alpha.5...v0.1.0-alpha.6](https://github.com/prelude-so/node-sdk/compare/v0.1.0-alpha.5...v0.1.0-alpha.6)
+
+### Bug Fixes
+
+* **client:** normalize method ([#27](https://github.com/prelude-so/node-sdk/issues/27)) ([5e7149d](https://github.com/prelude-so/node-sdk/commit/5e7149d751d22d2cc6bf31c579537deaf0c08302))
+
+
+### Chores
+
+* **internal:** fix some typos ([#25](https://github.com/prelude-so/node-sdk/issues/25)) ([6ba700d](https://github.com/prelude-so/node-sdk/commit/6ba700d7a6e7720f5e2100af19322e26d7d18f23))
+
 ## 0.1.0-alpha.5 (2024-12-12)
 
 Full Changelog: [v0.1.0-alpha.4...v0.1.0-alpha.5](https://github.com/prelude-so/node-sdk/compare/v0.1.0-alpha.4...v0.1.0-alpha.5)
