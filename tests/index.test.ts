@@ -122,6 +122,23 @@ describe('instantiate client', () => {
     expect(spy).toHaveBeenCalledTimes(1);
   });
 
+  test('normalized method', async () => {
+    let capturedRequest: RequestInit | undefined;
+    const testFetch = async (url: RequestInfo, init: RequestInit = {}): Promise<Response> => {
+      capturedRequest = init;
+      return new Response(JSON.stringify({}), { headers: { 'Content-Type': 'application/json' } });
+    };
+
+    const client = new Prelude({
+      baseURL: 'http://localhost:5000/',
+      apiToken: 'My API Token',
+      fetch: testFetch,
+    });
+
+    await client.patch('/foo');
+    expect(capturedRequest?.method).toEqual('PATCH');
+  });
+
   describe('baseUrl', () => {
     test('trailing slash', () => {
       const client = new Prelude({ baseURL: 'http://localhost:5000/custom/path/', apiToken: 'My API Token' });
@@ -177,7 +194,7 @@ describe('instantiate client', () => {
     expect(client.apiToken).toBe('My API Token');
   });
 
-  test('with overriden environment variable arguments', () => {
+  test('with overridden environment variable arguments', () => {
     // set options via env var
     process.env['API_TOKEN'] = 'another My API Token';
     const client = new Prelude({ apiToken: 'My API Token' });

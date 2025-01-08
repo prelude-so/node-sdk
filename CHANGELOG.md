@@ -1,5 +1,29 @@
 # Changelog
 
+## 0.1.0-alpha.6 (2025-01-08)
+
+Full Changelog: [v0.1.0-alpha.5...v0.1.0-alpha.6](https://github.com/prelude-so/node-sdk/compare/v0.1.0-alpha.5...v0.1.0-alpha.6)
+
+### Features
+
+* **api:** update via SDK Studio ([#30](https://github.com/prelude-so/node-sdk/issues/30)) ([f0229a8](https://github.com/prelude-so/node-sdk/commit/f0229a8f3ad155e8156ea0d2673b0a1c51b6ffb2))
+
+
+### Bug Fixes
+
+* **client:** normalize method ([#27](https://github.com/prelude-so/node-sdk/issues/27)) ([5e7149d](https://github.com/prelude-so/node-sdk/commit/5e7149d751d22d2cc6bf31c579537deaf0c08302))
+
+
+### Chores
+
+* **internal:** codegen related update ([#29](https://github.com/prelude-so/node-sdk/issues/29)) ([4447825](https://github.com/prelude-so/node-sdk/commit/444782566a59182c2066061765a948daa0ba4c73))
+* **internal:** fix some typos ([#25](https://github.com/prelude-so/node-sdk/issues/25)) ([6ba700d](https://github.com/prelude-so/node-sdk/commit/6ba700d7a6e7720f5e2100af19322e26d7d18f23))
+
+
+### Documentation
+
+* minor formatting changes ([#28](https://github.com/prelude-so/node-sdk/issues/28)) ([86b31fe](https://github.com/prelude-so/node-sdk/commit/86b31fe08898925cd665d684813639cf11f826fa))
+
 ## 0.1.0-alpha.5 (2024-12-12)
 
 Full Changelog: [v0.1.0-alpha.4...v0.1.0-alpha.5](https://github.com/prelude-so/node-sdk/compare/v0.1.0-alpha.4...v0.1.0-alpha.5)
