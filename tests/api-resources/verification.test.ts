@@ -27,7 +27,8 @@ describe('resource verification', () => {
       target: { type: 'phone_number', value: '+30123456789' },
       metadata: { correlation_id: 'correlation_id' },
       options: {
-        app_realm: 'app_realm',
+        app_realm: { platform: 'android', value: 'value' },
+        code_size: 5,
         custom_code: 'custom_code',
         locale: 'el-GR',
         sender_id: 'sender_id',

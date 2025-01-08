@@ -143,10 +143,16 @@ export namespace VerificationCreateParams {
    */
   export interface Options {
     /**
-     * The Android SMS Retriever API hash code that identifies your app. This allows
-     * you to automatically retrieve and fill the OTP code on Android devices.
+     * This allows you to automatically retrieve and fill the OTP code on mobile apps.
+     * Currently only Android devices are supported.
      */
-    app_realm?: string;
+    app_realm?: Options.AppRealm;
+
+    /**
+     * The size of the code generated. It should be between 4 and 8. Defaults to the
+     * code size specified from the Dashboard.
+     */
+    code_size?: number;
 
     /**
      * The custom code to use for OTP verification. This feature is only available for
@@ -175,6 +181,25 @@ export namespace VerificationCreateParams {
      * functionality.
      */
     template_id?: string;
+  }
+
+  export namespace Options {
+    /**
+     * This allows you to automatically retrieve and fill the OTP code on mobile apps.
+     * Currently only Android devices are supported.
+     */
+    export interface AppRealm {
+      /**
+       * The platform the SMS will be sent to. We are currently only supporting
+       * "android".
+       */
+      platform: 'android';
+
+      /**
+       * The Android SMS Retriever API hash code that identifies your app.
+       */
+      value: string;
+    }
   }
 
   /**
