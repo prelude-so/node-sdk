@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.1.0-beta.1 (2025-01-14)
+
+Full Changelog: [v0.1.0-alpha.6...v0.1.0-beta.1](https://github.com/prelude-so/node-sdk/compare/v0.1.0-alpha.6...v0.1.0-beta.1)
+
+### Features
+
+* **api:** update via SDK Studio ([#34](https://github.com/prelude-so/node-sdk/issues/34)) ([f389f96](https://github.com/prelude-so/node-sdk/commit/f389f9692fe092b41846c1e1940bb0c26713293a))
+
+
+### Chores
+
+* **internal:** codegen related update ([#32](https://github.com/prelude-so/node-sdk/issues/32)) ([0d65e75](https://github.com/prelude-so/node-sdk/commit/0d65e755028ffe5a28e804266b3069fadd925d28))
+
 ## 0.1.0-alpha.6 (2025-01-08)
 
 Full Changelog: [v0.1.0-alpha.5...v0.1.0-alpha.6](https://github.com/prelude-so/node-sdk/compare/v0.1.0-alpha.5...v0.1.0-alpha.6)
