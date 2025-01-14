@@ -95,6 +95,11 @@ export interface VerificationCreateParams {
   target: VerificationCreateParams.Target;
 
   /**
+   * The identifier of the dispatch that came from the front-end SDK.
+   */
+  dispatch_id?: string;
+
+  /**
    * The metadata for this verification. This object will be returned with every
    * response or webhook sent that refers to this verification.
    */
