@@ -33,6 +33,7 @@ describe('resource transactional', () => {
       correlation_id: 'correlation_id',
       expires_at: 'expires_at',
       from: 'from',
+      locale: 'el-GR',
       variables: { foo: 'bar' },
     });
   });
