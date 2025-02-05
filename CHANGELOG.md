@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.2.0 (2025-02-05)
+
+Full Changelog: [v0.1.0...v0.2.0](https://github.com/prelude-so/node-sdk/compare/v0.1.0...v0.2.0)
+
+### Features
+
+* **client:** send `X-Stainless-Timeout` header ([#41](https://github.com/prelude-so/node-sdk/issues/41)) ([83e1e4e](https://github.com/prelude-so/node-sdk/commit/83e1e4e4f3977d6b01598d44b30201a2ce88a207))
+
 ## 0.1.0 (2025-02-05)
 
 Full Changelog: [v0.1.0-beta.1...v0.1.0](https://github.com/prelude-so/node-sdk/compare/v0.1.0-beta.1...v0.1.0)
