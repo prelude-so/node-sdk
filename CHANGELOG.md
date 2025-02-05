@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.1.0 (2025-02-05)
+
+Full Changelog: [v0.1.0-beta.1...v0.1.0](https://github.com/prelude-so/node-sdk/compare/v0.1.0-beta.1...v0.1.0)
+
+### Features
+
+* **api:** update via SDK Studio ([#39](https://github.com/prelude-so/node-sdk/issues/39)) ([0e9e297](https://github.com/prelude-so/node-sdk/commit/0e9e2975d3076d93bbc9bdd00590bb741919b065))
+
+
+### Chores
+
+* **internal:** add test ([#38](https://github.com/prelude-so/node-sdk/issues/38)) ([22b71c9](https://github.com/prelude-so/node-sdk/commit/22b71c9321322fd1a699ee57e4cd7aec49de57cf))
+* **types:** add `| undefined` to client options properties ([#36](https://github.com/prelude-so/node-sdk/issues/36)) ([4779869](https://github.com/prelude-so/node-sdk/commit/4779869c13ea7242c9ee9e926cee88091934d703))
+
 ## 0.1.0-beta.1 (2025-01-14)
 
 Full Changelog: [v0.1.0-alpha.6...v0.1.0-beta.1](https://github.com/prelude-so/node-sdk/compare/v0.1.0-alpha.6...v0.1.0-beta.1)
