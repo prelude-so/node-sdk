@@ -162,7 +162,8 @@ export namespace VerificationCreateParams {
     /**
      * The custom code to use for OTP verification. This feature is only available for
      * compatibility purposes and subject to Prelude’s approval. Contact us to discuss
-     * your use case.
+     * your use case. For more details, refer to
+     * [Multi Routing](/concepts/multi-routing).
      */
     custom_code?: string;
 
