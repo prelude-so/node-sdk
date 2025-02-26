@@ -25,21 +25,24 @@ describe('resource verification', () => {
   test('create: required and optional params', async () => {
     const response = await client.verification.create({
       target: { type: 'phone_number', value: '+30123456789' },
+      dispatch_id: 'dispatch_id',
       metadata: { correlation_id: 'correlation_id' },
       options: {
-        app_realm: 'app_realm',
+        app_realm: { platform: 'android', value: 'value' },
+        code_size: 5,
+        custom_code: 'custom_code',
         locale: 'el-GR',
         sender_id: 'sender_id',
         template_id: 'template_id',
       },
       signals: {
-        app_version: 'app_version',
-        device_id: 'device_id',
-        device_model: 'device_model',
+        app_version: '1.2.34',
+        device_id: '8F0B8FDD-C2CB-4387-B20A-56E9B2E5A0D2',
+        device_model: 'iPhone17,2',
         device_platform: 'android',
-        ip: '8.8.8.8',
-        is_trusted_user: 'is_trusted_user',
-        os_version: 'os_version',
+        ip: '192.0.2.1',
+        is_trusted_user: false,
+        os_version: '18.0.1',
       },
     });
   });
