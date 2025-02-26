@@ -94,14 +94,6 @@ export interface TransactionalSendParams {
   from?: string;
 
   /**
-   * A BCP-47 formatted locale string with the language the text message will be sent
-   * to. If there's no locale set, the language will be determined by the country
-   * code of the phone number. If the language specified doesn't exist, the default
-   * set on the template will be used.
-   */
-  locale?: string;
-
-  /**
    * The variables to be replaced in the template.
    */
   variables?: Record<string, string>;
