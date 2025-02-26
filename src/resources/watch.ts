@@ -26,21 +26,21 @@ export interface WatchFeedBackResponse {
   /**
    * A unique identifier for your feedback request.
    */
-  id: string;
+  id?: string;
 }
 
 export interface WatchPredictResponse {
   /**
    * A unique identifier for your prediction request.
    */
-  id: string;
+  id?: string;
 
   /**
    * A label indicating the trustworthiness of the phone number.
    */
-  prediction: 'allow' | 'block';
+  prediction?: 'allow' | 'block';
 
-  reasoning: WatchPredictResponse.Reasoning;
+  reasoning?: WatchPredictResponse.Reasoning;
 }
 
 export namespace WatchPredictResponse {

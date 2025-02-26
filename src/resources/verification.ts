@@ -31,24 +31,24 @@ export interface VerificationCreateResponse {
   /**
    * The verification identifier.
    */
-  id: string;
-
-  /**
-   * The method used for verifying this phone number.
-   */
-  method: 'message';
-
-  /**
-   * The status of the verification.
-   */
-  status: 'success' | 'retry' | 'blocked';
+  id?: string;
 
   /**
    * The metadata for this verification.
    */
   metadata?: VerificationCreateResponse.Metadata;
 
+  /**
+   * The method used for verifying this phone number.
+   */
+  method?: 'message';
+
   request_id?: string;
+
+  /**
+   * The status of the verification.
+   */
+  status?: 'success' | 'retry' | 'blocked';
 }
 
 export namespace VerificationCreateResponse {
@@ -62,11 +62,6 @@ export namespace VerificationCreateResponse {
 
 export interface VerificationCheckResponse {
   /**
-   * The status of the check.
-   */
-  status: 'success' | 'failure' | 'expired_or_not_found';
-
-  /**
    * The verification identifier.
    */
   id?: string;
@@ -77,6 +72,11 @@ export interface VerificationCheckResponse {
   metadata?: VerificationCheckResponse.Metadata;
 
   request_id?: string;
+
+  /**
+   * The status of the check.
+   */
+  status?: 'success' | 'failure' | 'expired';
 }
 
 export namespace VerificationCheckResponse {
@@ -93,11 +93,6 @@ export interface VerificationCreateParams {
    * The target. Currently this can only be an E.164 formatted phone number.
    */
   target: VerificationCreateParams.Target;
-
-  /**
-   * The identifier of the dispatch that came from the front-end SDK.
-   */
-  dispatch_id?: string;
 
   /**
    * The metadata for this verification. This object will be returned with every
@@ -148,24 +143,10 @@ export namespace VerificationCreateParams {
    */
   export interface Options {
     /**
-     * This allows you to automatically retrieve and fill the OTP code on mobile apps.
-     * Currently only Android devices are supported.
+     * The Android SMS Retriever API hash code that identifies your app. This allows
+     * you to automatically retrieve and fill the OTP code on Android devices.
      */
-    app_realm?: Options.AppRealm;
-
-    /**
-     * The size of the code generated. It should be between 4 and 8. Defaults to the
-     * code size specified from the Dashboard.
-     */
-    code_size?: number;
-
-    /**
-     * The custom code to use for OTP verification. This feature is only available for
-     * compatibility purposes and subject to Prelude’s approval. Contact us to discuss
-     * your use case. For more details, refer to
-     * [Multi Routing](/concepts/multi-routing).
-     */
-    custom_code?: string;
+    app_realm?: string;
 
     /**
      * A BCP-47 formatted locale string with the language the text message will be sent
@@ -187,25 +168,6 @@ export namespace VerificationCreateParams {
      * functionality.
      */
     template_id?: string;
-  }
-
-  export namespace Options {
-    /**
-     * This allows you to automatically retrieve and fill the OTP code on mobile apps.
-     * Currently only Android devices are supported.
-     */
-    export interface AppRealm {
-      /**
-       * The platform the SMS will be sent to. We are currently only supporting
-       * "android".
-       */
-      platform: 'android';
-
-      /**
-       * The Android SMS Retriever API hash code that identifies your app.
-       */
-      value: string;
-    }
   }
 
   /**
@@ -231,7 +193,7 @@ export namespace VerificationCreateParams {
     /**
      * The type of the user's device.
      */
-    device_platform?: 'android' | 'ios' | 'ipados' | 'tvos' | 'web';
+    device_platform?: 'android' | 'ios' | 'web';
 
     /**
      * The IP address of the user's device.
@@ -242,7 +204,7 @@ export namespace VerificationCreateParams {
      * This signal should provide a higher level of trust, indicating that the user is
      * genuine. For more details, refer to [Signals](/guides/prevent-fraud#signals).
      */
-    is_trusted_user?: boolean;
+    is_trusted_user?: string;
 
     /**
      * The version of the user's device operating system.
