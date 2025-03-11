@@ -66,7 +66,8 @@ export interface WatchFeedBackParams {
   feedback: WatchFeedBackParams.Feedback;
 
   /**
-   * The target. Currently this can only be an E.164 formatted phone number.
+   * The verification target. Either a phone number or an email address. To use the
+   * email verification feature contact us to discuss your use case.
    */
   target: WatchFeedBackParams.Target;
 }
@@ -85,16 +86,17 @@ export namespace WatchFeedBackParams {
   }
 
   /**
-   * The target. Currently this can only be an E.164 formatted phone number.
+   * The verification target. Either a phone number or an email address. To use the
+   * email verification feature contact us to discuss your use case.
    */
   export interface Target {
     /**
-     * The type of the target. Currently this can only be "phone_number".
+     * The type of the target. Either "phone_number" or "email_address".
      */
-    type: 'phone_number';
+    type: 'phone_number' | 'email_address';
 
     /**
-     * An E.164 formatted phone number to verify.
+     * An E.164 formatted phone number or an email address.
      */
     value: string;
   }
@@ -102,7 +104,8 @@ export namespace WatchFeedBackParams {
 
 export interface WatchPredictParams {
   /**
-   * The target. Currently this can only be an E.164 formatted phone number.
+   * The verification target. Either a phone number or an email address. To use the
+   * email verification feature contact us to discuss your use case.
    */
   target: WatchPredictParams.Target;
 
@@ -115,16 +118,17 @@ export interface WatchPredictParams {
 
 export namespace WatchPredictParams {
   /**
-   * The target. Currently this can only be an E.164 formatted phone number.
+   * The verification target. Either a phone number or an email address. To use the
+   * email verification feature contact us to discuss your use case.
    */
   export interface Target {
     /**
-     * The type of the target. Currently this can only be "phone_number".
+     * The type of the target. Either "phone_number" or "email_address".
      */
-    type: 'phone_number';
+    type: 'phone_number' | 'email_address';
 
     /**
-     * An E.164 formatted phone number to verify.
+     * An E.164 formatted phone number or an email address.
      */
     value: string;
   }

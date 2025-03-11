@@ -90,7 +90,8 @@ export namespace VerificationCheckResponse {
 
 export interface VerificationCreateParams {
   /**
-   * The target. Currently this can only be an E.164 formatted phone number.
+   * The verification target. Either a phone number or an email address. To use the
+   * email verification feature contact us to discuss your use case.
    */
   target: VerificationCreateParams.Target;
 
@@ -111,23 +112,25 @@ export interface VerificationCreateParams {
   options?: VerificationCreateParams.Options;
 
   /**
-   * The signals used for anti-fraud.
+   * The signals used for anti-fraud. For more details, refer to
+   * [Signals](/guides/prevent-fraud#signals).
    */
   signals?: VerificationCreateParams.Signals;
 }
 
 export namespace VerificationCreateParams {
   /**
-   * The target. Currently this can only be an E.164 formatted phone number.
+   * The verification target. Either a phone number or an email address. To use the
+   * email verification feature contact us to discuss your use case.
    */
   export interface Target {
     /**
-     * The type of the target. Currently this can only be "phone_number".
+     * The type of the target. Either "phone_number" or "email_address".
      */
-    type: 'phone_number';
+    type: 'phone_number' | 'email_address';
 
     /**
-     * An E.164 formatted phone number to verify.
+     * An E.164 formatted phone number or an email address.
      */
     value: string;
   }
@@ -152,6 +155,13 @@ export namespace VerificationCreateParams {
      * Currently only Android devices are supported.
      */
     app_realm?: Options.AppRealm;
+
+    /**
+     * The URL where webhooks will be sent when verification events occur, including
+     * verification creation, attempt creation, and delivery status changes. For more
+     * details, refer to [Webhook](/api-reference/v2/verify/webhook).
+     */
+    callback_url?: string;
 
     /**
      * The size of the code generated. It should be between 4 and 8. Defaults to the
@@ -182,11 +192,15 @@ export namespace VerificationCreateParams {
     sender_id?: string;
 
     /**
-     * The identifier of a verification settings template. It is used to be able to
-     * switch behavior for specific use cases. Contact us if you need to use this
-     * functionality.
+     * The identifier of a verification template. It applies use case-specific
+     * settings, such as the message content or certain verification parameters.
      */
     template_id?: string;
+
+    /**
+     * The variables to be replaced in the template.
+     */
+    variables?: Record<string, string>;
   }
 
   export namespace Options {
@@ -209,7 +223,8 @@ export namespace VerificationCreateParams {
   }
 
   /**
-   * The signals used for anti-fraud.
+   * The signals used for anti-fraud. For more details, refer to
+   * [Signals](/guides/prevent-fraud#signals).
    */
   export interface Signals {
     /**
@@ -248,6 +263,13 @@ export namespace VerificationCreateParams {
      * The version of the user's device operating system.
      */
     os_version?: string;
+
+    /**
+     * The user agent of the user's device. If the individual fields (os_version,
+     * device_platform, device_model) are provided, we will prioritize those values
+     * instead of parsing them from the user agent string.
+     */
+    user_agent?: string;
   }
 }
 
@@ -258,23 +280,25 @@ export interface VerificationCheckParams {
   code: string;
 
   /**
-   * The target. Currently this can only be an E.164 formatted phone number.
+   * The verification target. Either a phone number or an email address. To use the
+   * email verification feature contact us to discuss your use case.
    */
   target: VerificationCheckParams.Target;
 }
 
 export namespace VerificationCheckParams {
   /**
-   * The target. Currently this can only be an E.164 formatted phone number.
+   * The verification target. Either a phone number or an email address. To use the
+   * email verification feature contact us to discuss your use case.
    */
   export interface Target {
     /**
-     * The type of the target. Currently this can only be "phone_number".
+     * The type of the target. Either "phone_number" or "email_address".
      */
-    type: 'phone_number';
+    type: 'phone_number' | 'email_address';
 
     /**
-     * An E.164 formatted phone number to verify.
+     * An E.164 formatted phone number or an email address.
      */
     value: string;
   }
