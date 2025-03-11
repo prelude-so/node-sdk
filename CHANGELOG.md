@@ -1,5 +1,29 @@
 # Changelog
 
+## 0.2.0 (2025-03-11)
+
+Full Changelog: [v0.1.0...v0.2.0](https://github.com/prelude-so/node-sdk/compare/v0.1.0...v0.2.0)
+
+### Features
+
+* add SKIP_BREW env var to ./scripts/bootstrap ([#48](https://github.com/prelude-so/node-sdk/issues/48)) ([f0dd09d](https://github.com/prelude-so/node-sdk/commit/f0dd09da5234bee64deb321a85a46eaa966e5644))
+* **api:** update via SDK Studio ([#50](https://github.com/prelude-so/node-sdk/issues/50)) ([c63e1fd](https://github.com/prelude-so/node-sdk/commit/c63e1fd51566c9bf3daf26d9349242147daaf4b6))
+* **client:** accept RFC6838 JSON content types ([#49](https://github.com/prelude-so/node-sdk/issues/49)) ([607dbd4](https://github.com/prelude-so/node-sdk/commit/607dbd4612360159068e4e081f9b65984ac813c2))
+* **client:** send `X-Stainless-Timeout` header ([#41](https://github.com/prelude-so/node-sdk/issues/41)) ([83e1e4e](https://github.com/prelude-so/node-sdk/commit/83e1e4e4f3977d6b01598d44b30201a2ce88a207))
+
+
+### Chores
+
+* **internal:** codegen related update ([#43](https://github.com/prelude-so/node-sdk/issues/43)) ([8093643](https://github.com/prelude-so/node-sdk/commit/80936430023d70b33339d8599893dd85272502f8))
+* **internal:** codegen related update ([#45](https://github.com/prelude-so/node-sdk/issues/45)) ([2b53ac0](https://github.com/prelude-so/node-sdk/commit/2b53ac0ae4ebb22867e7ff8d22a13ec68df77a45))
+* **internal:** codegen related update ([#46](https://github.com/prelude-so/node-sdk/issues/46)) ([56a8e84](https://github.com/prelude-so/node-sdk/commit/56a8e8485212b51b5878f3a0bd24570d007a5322))
+* **internal:** fix devcontainers setup ([#44](https://github.com/prelude-so/node-sdk/issues/44)) ([f4ad10e](https://github.com/prelude-so/node-sdk/commit/f4ad10e43c93e9adffce8a276b49e9de7b48be45))
+
+
+### Documentation
+
+* update URLs from stainlessapi.com to stainless.com ([#47](https://github.com/prelude-so/node-sdk/issues/47)) ([7b0607a](https://github.com/prelude-so/node-sdk/commit/7b0607afb708d30bd0b2ff765afd5175f9102080))
+
 ## 0.1.0 (2025-02-05)
 
 Full Changelog: [v0.1.0-beta.1...v0.1.0](https://github.com/prelude-so/node-sdk/compare/v0.1.0-beta.1...v0.1.0)
