@@ -29,11 +29,13 @@ describe('resource verification', () => {
       metadata: { correlation_id: 'correlation_id' },
       options: {
         app_realm: { platform: 'android', value: 'value' },
+        callback_url: 'callback_url',
         code_size: 5,
         custom_code: 'custom_code',
         locale: 'el-GR',
         sender_id: 'sender_id',
-        template_id: 'template_id',
+        template_id: 'prelude:psd2',
+        variables: { foo: 'bar' },
       },
       signals: {
         app_version: '1.2.34',
@@ -43,6 +45,8 @@ describe('resource verification', () => {
         ip: '192.0.2.1',
         is_trusted_user: false,
         os_version: '18.0.1',
+        user_agent:
+          'Mozilla/5.0 (iPhone; CPU iPhone OS 14_4 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.0.3 Mobile/15E148 Safari/604.1',
       },
     });
   });
