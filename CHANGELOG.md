@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.2.1 (2025-03-13)
+
+Full Changelog: [v0.2.0...v0.2.1](https://github.com/prelude-so/node-sdk/compare/v0.2.0...v0.2.1)
+
+### Chores
+
+* **internal:** remove extra empty newlines ([#52](https://github.com/prelude-so/node-sdk/issues/52)) ([6c54685](https://github.com/prelude-so/node-sdk/commit/6c54685f3eb5d1f65a407e7ea96f58838bd5755b))
+
 ## 0.2.0 (2025-03-11)
 
 Full Changelog: [v0.1.0...v0.2.0](https://github.com/prelude-so/node-sdk/compare/v0.1.0...v0.2.0)
