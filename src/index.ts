@@ -1,10 +1,12 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { type Agent } from './_shims/index';
+import * as qs from './internal/qs';
 import * as Core from './core';
 import * as Errors from './error';
 import * as Uploads from './uploads';
 import * as API from './resources/index';
+import { Lookup, LookupLookupParams, LookupLookupResponse } from './resources/lookup';
 import { Transactional, TransactionalSendParams, TransactionalSendResponse } from './resources/transactional';
 import {
   Verification,
@@ -15,10 +17,12 @@ import {
 } from './resources/verification';
 import {
   Watch,
-  WatchFeedBackParams,
-  WatchFeedBackResponse,
   WatchPredictParams,
   WatchPredictResponse,
+  WatchSendEventsParams,
+  WatchSendEventsResponse,
+  WatchSendFeedbacksParams,
+  WatchSendFeedbacksResponse,
 } from './resources/watch';
 
 export interface ClientOptions {
@@ -134,6 +138,7 @@ export class Prelude extends Core.APIClient {
     this.apiToken = apiToken;
   }
 
+  lookup: API.Lookup = new API.Lookup(this);
   transactional: API.Transactional = new API.Transactional(this);
   verification: API.Verification = new API.Verification(this);
   watch: API.Watch = new API.Watch(this);
@@ -151,6 +156,10 @@ export class Prelude extends Core.APIClient {
 
   protected override authHeaders(opts: Core.FinalRequestOptions): Core.Headers {
     return { Authorization: `Bearer ${this.apiToken}` };
+  }
+
+  protected override stringifyQuery(query: Record<string, unknown>): string {
+    return qs.stringify(query, { arrayFormat: 'comma' });
   }
 
   static Prelude = this;
@@ -174,11 +183,18 @@ export class Prelude extends Core.APIClient {
   static fileFromPath = Uploads.fileFromPath;
 }
 
+Prelude.Lookup = Lookup;
 Prelude.Transactional = Transactional;
 Prelude.Verification = Verification;
 Prelude.Watch = Watch;
 export declare namespace Prelude {
   export type RequestOptions = Core.RequestOptions;
+
+  export {
+    Lookup as Lookup,
+    type LookupLookupResponse as LookupLookupResponse,
+    type LookupLookupParams as LookupLookupParams,
+  };
 
   export {
     Transactional as Transactional,
@@ -196,10 +212,12 @@ export declare namespace Prelude {
 
   export {
     Watch as Watch,
-    type WatchFeedBackResponse as WatchFeedBackResponse,
     type WatchPredictResponse as WatchPredictResponse,
-    type WatchFeedBackParams as WatchFeedBackParams,
+    type WatchSendEventsResponse as WatchSendEventsResponse,
+    type WatchSendFeedbacksResponse as WatchSendFeedbacksResponse,
     type WatchPredictParams as WatchPredictParams,
+    type WatchSendEventsParams as WatchSendEventsParams,
+    type WatchSendFeedbacksParams as WatchSendFeedbacksParams,
   };
 }
 
