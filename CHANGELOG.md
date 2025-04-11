@@ -1,5 +1,34 @@
 # Changelog
 
+## 0.3.0 (2025-04-11)
+
+Full Changelog: [v0.2.0...v0.3.0](https://github.com/prelude-so/node-sdk/compare/v0.2.0...v0.3.0)
+
+### Features
+
+* **api:** update via SDK Studio ([c1acab5](https://github.com/prelude-so/node-sdk/commit/c1acab545663bbc9358c50dd5c0f6667cea17c32))
+* **api:** update via SDK Studio ([704a1b0](https://github.com/prelude-so/node-sdk/commit/704a1b013310556be0b3c243a2b061a36131d538))
+
+
+### Bug Fixes
+
+* **api:** improve type resolution when importing as a package ([#61](https://github.com/prelude-so/node-sdk/issues/61)) ([508ec01](https://github.com/prelude-so/node-sdk/commit/508ec015b15028b6108bb848b3fb21f9ddbd543c))
+* avoid type error in certain environments ([#56](https://github.com/prelude-so/node-sdk/issues/56)) ([7e3852f](https://github.com/prelude-so/node-sdk/commit/7e3852f368001781594400dadf9a29319d8047c8))
+* **client:** send `X-Stainless-Timeout` in seconds ([#59](https://github.com/prelude-so/node-sdk/issues/59)) ([fb34b0c](https://github.com/prelude-so/node-sdk/commit/fb34b0cfc5bbd49b31bc0a84ad74921676309b8b))
+* **internal:** work around https://github.com/vercel/next.js/issues/76881 ([#57](https://github.com/prelude-so/node-sdk/issues/57)) ([e08e717](https://github.com/prelude-so/node-sdk/commit/e08e717ab9caaf2ea009c4b37c83b7ac4bf27dfe))
+* **mcp:** remove unused tools.ts ([#62](https://github.com/prelude-so/node-sdk/issues/62)) ([d17326a](https://github.com/prelude-so/node-sdk/commit/d17326afd814719247c7e5a498a64a3cfdcd691b))
+
+
+### Chores
+
+* **exports:** cleaner resource index imports ([#54](https://github.com/prelude-so/node-sdk/issues/54)) ([136c1e3](https://github.com/prelude-so/node-sdk/commit/136c1e38669e7d48621e96e01bb36886b5f83749))
+* **exports:** stop using path fallbacks ([#55](https://github.com/prelude-so/node-sdk/issues/55)) ([fd6d8bd](https://github.com/prelude-so/node-sdk/commit/fd6d8bdd374b6a573b8f6f8aea518f50a11e6768))
+* **internal:** add aliases for Record and Array ([#60](https://github.com/prelude-so/node-sdk/issues/60)) ([ead983c](https://github.com/prelude-so/node-sdk/commit/ead983cadd202add77144781122428cb69821147))
+* **internal:** reduce CI branch coverage ([9874c3a](https://github.com/prelude-so/node-sdk/commit/9874c3ab109fe2bea6211e91294a987b239c5db8))
+* **internal:** remove extra empty newlines ([#52](https://github.com/prelude-so/node-sdk/issues/52)) ([6c54685](https://github.com/prelude-so/node-sdk/commit/6c54685f3eb5d1f65a407e7ea96f58838bd5755b))
+* **internal:** upload builds and expand CI branch coverage ([#64](https://github.com/prelude-so/node-sdk/issues/64)) ([c4fad20](https://github.com/prelude-so/node-sdk/commit/c4fad20c8af1cc0bd59b5a86bbf890b32004bb59))
+* **tests:** improve enum examples ([#63](https://github.com/prelude-so/node-sdk/issues/63)) ([e484dd2](https://github.com/prelude-so/node-sdk/commit/e484dd221548d4b0f04ee0f4eb4ffdbb83761c3c))
+
 ## 0.2.0 (2025-03-11)
 
 Full Changelog: [v0.1.0...v0.2.0](https://github.com/prelude-so/node-sdk/compare/v0.1.0...v0.2.0)

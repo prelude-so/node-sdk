@@ -1,3 +1,13 @@
+# Lookup
+
+Types:
+
+- <code><a href="./src/resources/lookup.ts">LookupLookupResponse</a></code>
+
+Methods:
+
+- <code title="get /v2/lookup/{phone_number}">client.lookup.<a href="./src/resources/lookup.ts">lookup</a>(phoneNumber, { ...params }) -> LookupLookupResponse</code>
+
 # Transactional
 
 Types:
@@ -24,10 +34,12 @@ Methods:
 
 Types:
 
-- <code><a href="./src/resources/watch.ts">WatchFeedBackResponse</a></code>
 - <code><a href="./src/resources/watch.ts">WatchPredictResponse</a></code>
+- <code><a href="./src/resources/watch.ts">WatchSendEventsResponse</a></code>
+- <code><a href="./src/resources/watch.ts">WatchSendFeedbacksResponse</a></code>
 
 Methods:
 
-- <code title="post /v2/watch/feedback">client.watch.<a href="./src/resources/watch.ts">feedBack</a>({ ...params }) -> WatchFeedBackResponse</code>
 - <code title="post /v2/watch/predict">client.watch.<a href="./src/resources/watch.ts">predict</a>({ ...params }) -> WatchPredictResponse</code>
+- <code title="post /v2/watch/event">client.watch.<a href="./src/resources/watch.ts">sendEvents</a>({ ...params }) -> WatchSendEventsResponse</code>
+- <code title="post /v2/watch/feedback">client.watch.<a href="./src/resources/watch.ts">sendFeedbacks</a>({ ...params }) -> WatchSendFeedbacksResponse</code>

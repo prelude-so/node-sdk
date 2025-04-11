@@ -27,6 +27,7 @@ describe('resource verification', () => {
       target: { type: 'phone_number', value: '+30123456789' },
       dispatch_id: 'dispatch_id',
       metadata: { correlation_id: 'correlation_id' },
+      method: 'auto',
       options: {
         app_realm: { platform: 'android', value: 'value' },
         callback_url: 'callback_url',
@@ -41,7 +42,7 @@ describe('resource verification', () => {
         app_version: '1.2.34',
         device_id: '8F0B8FDD-C2CB-4387-B20A-56E9B2E5A0D2',
         device_model: 'iPhone17,2',
-        device_platform: 'android',
+        device_platform: 'ios',
         ip: '192.0.2.1',
         is_trusted_user: false,
         os_version: '18.0.1',
