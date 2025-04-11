@@ -5,17 +5,15 @@ import * as Core from '../core';
 
 export class Watch extends APIResource {
   /**
-   * Once the user with a trustworthy phone number demonstrates authentic behavior,
-   * call this endpoint to report their authenticity to our systems.
+   * Send feedback regarding your end-users verification funnel. Events will be
+   * analyzed for proactive fraud prevention and risk scoring.
    */
   feedBack(body: WatchFeedBackParams, options?: Core.RequestOptions): Core.APIPromise<WatchFeedBackResponse> {
     return this._client.post('/v2/watch/feedback', { body, ...options });
   }
 
   /**
-   * Identify trustworthy phone numbers to mitigate fake traffic or traffic involved
-   * in fraud and international revenue share fraud (IRSF) patterns. This endpoint
-   * must be implemented in conjunction with the `watch/feedback` endpoint.
+   * Predict the outcome of a verification based on Prelude’s anti-fraud system.
    */
   predict(body: WatchPredictParams, options?: Core.RequestOptions): Core.APIPromise<WatchPredictResponse> {
     return this._client.post('/v2/watch/predict', { body, ...options });
@@ -24,102 +22,176 @@ export class Watch extends APIResource {
 
 export interface WatchFeedBackResponse {
   /**
-   * A unique identifier for your feedback request.
+   * A string that identifies this specific request. Report it back to us to help us
+   * diagnose your issues.
    */
-  id: string;
+  request_id: string;
+
+  /**
+   * The status of the feedbacks sending.
+   */
+  status: 'success';
 }
 
 export interface WatchPredictResponse {
   /**
-   * A unique identifier for your prediction request.
+   * The prediction identifier.
    */
   id: string;
 
   /**
-   * A label indicating the trustworthiness of the phone number.
+   * The prediction outcome.
    */
-  prediction: 'allow' | 'block';
+  prediction: 'legitimate' | 'suspicious';
 
-  reasoning: WatchPredictResponse.Reasoning;
-}
-
-export namespace WatchPredictResponse {
-  export interface Reasoning {
-    /**
-     * A label explaining why the phone number was classified as not trustworthy
-     */
-    cause?: 'none' | 'smart_antifraud' | 'repeat_number' | 'invalid_line';
-
-    /**
-     * Indicates the risk of the phone number being genuine or involved in fraudulent
-     * patterns. The higher the riskier.
-     */
-    score?: number;
-  }
+  /**
+   * A string that identifies this specific request. Report it back to us to help us
+   * diagnose your issues.
+   */
+  request_id: string;
 }
 
 export interface WatchFeedBackParams {
   /**
-   * You should send a feedback event back to Watch API when your user demonstrates
-   * authentic behavior.
+   * A list of feedbacks to send.
    */
-  feedback: WatchFeedBackParams.Feedback;
-
-  /**
-   * The verification target. Either a phone number or an email address. To use the
-   * email verification feature contact us to discuss your use case.
-   */
-  target: WatchFeedBackParams.Target;
+  feedbacks: Array<WatchFeedBackParams.Feedback>;
 }
 
 export namespace WatchFeedBackParams {
-  /**
-   * You should send a feedback event back to Watch API when your user demonstrates
-   * authentic behavior.
-   */
   export interface Feedback {
     /**
-     * `CONFIRM_TARGET` should be sent when you are sure that the user with this target
-     * (e.g. phone number) is trustworthy.
+     * The feedback target. Only supports phone numbers for now.
      */
-    type: 'CONFIRM_TARGET';
+    target: Feedback.Target;
+
+    /**
+     * The type of feedback.
+     */
+    type: 'verification.started' | 'verification.completed';
+
+    /**
+     * The identifier of the dispatch that came from the front-end SDK.
+     */
+    dispatch_id?: string;
+
+    /**
+     * The metadata for this feedback.
+     */
+    metadata?: Feedback.Metadata;
+
+    /**
+     * The signals used for anti-fraud. For more details, refer to
+     * [Signals](/verify/v2/documentation/prevent-fraud#signals).
+     */
+    signals?: Feedback.Signals;
   }
 
-  /**
-   * The verification target. Either a phone number or an email address. To use the
-   * email verification feature contact us to discuss your use case.
-   */
-  export interface Target {
+  export namespace Feedback {
     /**
-     * The type of the target. Either "phone_number" or "email_address".
+     * The feedback target. Only supports phone numbers for now.
      */
-    type: 'phone_number' | 'email_address';
+    export interface Target {
+      /**
+       * The type of the target. Either "phone_number" or "email_address".
+       */
+      type: 'phone_number' | 'email_address';
+
+      /**
+       * An E.164 formatted phone number or an email address.
+       */
+      value: string;
+    }
 
     /**
-     * An E.164 formatted phone number or an email address.
+     * The metadata for this feedback.
      */
-    value: string;
+    export interface Metadata {
+      /**
+       * A user-defined identifier to correlate this feedback with.
+       */
+      correlation_id?: string;
+    }
+
+    /**
+     * The signals used for anti-fraud. For more details, refer to
+     * [Signals](/verify/v2/documentation/prevent-fraud#signals).
+     */
+    export interface Signals {
+      /**
+       * The version of your application.
+       */
+      app_version?: string;
+
+      /**
+       * The unique identifier for the user's device. For Android, this corresponds to
+       * the `ANDROID_ID` and for iOS, this corresponds to the `identifierForVendor`.
+       */
+      device_id?: string;
+
+      /**
+       * The model of the user's device.
+       */
+      device_model?: string;
+
+      /**
+       * The type of the user's device.
+       */
+      device_platform?: 'android' | 'ios' | 'ipados' | 'tvos' | 'web';
+
+      /**
+       * The IP address of the user's device.
+       */
+      ip?: string;
+
+      /**
+       * This signal should provide a higher level of trust, indicating that the user is
+       * genuine. For more details, refer to
+       * [Signals](/verify/v2/documentation/prevent-fraud#signals).
+       */
+      is_trusted_user?: boolean;
+
+      /**
+       * The version of the user's device operating system.
+       */
+      os_version?: string;
+
+      /**
+       * The user agent of the user's device. If the individual fields (os_version,
+       * device_platform, device_model) are provided, we will prioritize those values
+       * instead of parsing them from the user agent string.
+       */
+      user_agent?: string;
+    }
   }
 }
 
 export interface WatchPredictParams {
   /**
-   * The verification target. Either a phone number or an email address. To use the
-   * email verification feature contact us to discuss your use case.
+   * The prediction target. Only supports phone numbers for now.
    */
   target: WatchPredictParams.Target;
 
   /**
-   * It is highly recommended that you provide the signals to increase prediction
-   * performance.
+   * The identifier of the dispatch that came from the front-end SDK.
+   */
+  dispatch_id?: string;
+
+  /**
+   * The metadata for this prediction.
+   */
+  metadata?: WatchPredictParams.Metadata;
+
+  /**
+   * The signals used for anti-fraud. For more details, refer to
+   * [Signals](/verify/v2/documentation/prevent-fraud#signals).
    */
   signals?: WatchPredictParams.Signals;
 }
 
 export namespace WatchPredictParams {
   /**
-   * The verification target. Either a phone number or an email address. To use the
-   * email verification feature contact us to discuss your use case.
+   * The prediction target. Only supports phone numbers for now.
    */
   export interface Target {
     /**
@@ -134,10 +206,25 @@ export namespace WatchPredictParams {
   }
 
   /**
-   * It is highly recommended that you provide the signals to increase prediction
-   * performance.
+   * The metadata for this prediction.
+   */
+  export interface Metadata {
+    /**
+     * A user-defined identifier to correlate this prediction with.
+     */
+    correlation_id?: string;
+  }
+
+  /**
+   * The signals used for anti-fraud. For more details, refer to
+   * [Signals](/verify/v2/documentation/prevent-fraud#signals).
    */
   export interface Signals {
+    /**
+     * The version of your application.
+     */
+    app_version?: string;
+
     /**
      * The unique identifier for the user's device. For Android, this corresponds to
      * the `ANDROID_ID` and for iOS, this corresponds to the `identifierForVendor`.
@@ -152,12 +239,31 @@ export namespace WatchPredictParams {
     /**
      * The type of the user's device.
      */
-    device_type?: string;
+    device_platform?: 'android' | 'ios' | 'ipados' | 'tvos' | 'web';
 
     /**
-     * The IPv4 address of the user's device
+     * The IP address of the user's device.
      */
     ip?: string;
+
+    /**
+     * This signal should provide a higher level of trust, indicating that the user is
+     * genuine. For more details, refer to
+     * [Signals](/verify/v2/documentation/prevent-fraud#signals).
+     */
+    is_trusted_user?: boolean;
+
+    /**
+     * The version of the user's device operating system.
+     */
+    os_version?: string;
+
+    /**
+     * The user agent of the user's device. If the individual fields (os_version,
+     * device_platform, device_model) are provided, we will prioritize those values
+     * instead of parsing them from the user agent string.
+     */
+    user_agent?: string;
   }
 }
 

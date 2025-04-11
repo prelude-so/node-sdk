@@ -11,8 +11,7 @@ const client = new Prelude({
 describe('resource watch', () => {
   test('feedBack: only required params', async () => {
     const responsePromise = client.watch.feedBack({
-      feedback: { type: 'CONFIRM_TARGET' },
-      target: { type: 'phone_number', value: '+30123456789' },
+      feedbacks: [{ target: { type: 'phone_number', value: '+30123456789' }, type: 'verification.started' }],
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -25,8 +24,25 @@ describe('resource watch', () => {
 
   test('feedBack: required and optional params', async () => {
     const response = await client.watch.feedBack({
-      feedback: { type: 'CONFIRM_TARGET' },
-      target: { type: 'phone_number', value: '+30123456789' },
+      feedbacks: [
+        {
+          target: { type: 'phone_number', value: '+30123456789' },
+          type: 'verification.started',
+          dispatch_id: 'dispatch_id',
+          metadata: { correlation_id: 'correlation_id' },
+          signals: {
+            app_version: '1.2.34',
+            device_id: '8F0B8FDD-C2CB-4387-B20A-56E9B2E5A0D2',
+            device_model: 'iPhone17,2',
+            device_platform: 'ios',
+            ip: '192.0.2.1',
+            is_trusted_user: false,
+            os_version: '18.0.1',
+            user_agent:
+              'Mozilla/5.0 (iPhone; CPU iPhone OS 14_4 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.0.3 Mobile/15E148 Safari/604.1',
+          },
+        },
+      ],
     });
   });
 
@@ -44,7 +60,19 @@ describe('resource watch', () => {
   test('predict: required and optional params', async () => {
     const response = await client.watch.predict({
       target: { type: 'phone_number', value: '+30123456789' },
-      signals: { device_id: 'device_id', device_model: 'device_model', device_type: 'device_type', ip: 'ip' },
+      dispatch_id: 'dispatch_id',
+      metadata: { correlation_id: 'correlation_id' },
+      signals: {
+        app_version: '1.2.34',
+        device_id: '8F0B8FDD-C2CB-4387-B20A-56E9B2E5A0D2',
+        device_model: 'iPhone17,2',
+        device_platform: 'ios',
+        ip: '192.0.2.1',
+        is_trusted_user: false,
+        os_version: '18.0.1',
+        user_agent:
+          'Mozilla/5.0 (iPhone; CPU iPhone OS 14_4 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.0.3 Mobile/15E148 Safari/604.1',
+      },
     });
   });
 });
