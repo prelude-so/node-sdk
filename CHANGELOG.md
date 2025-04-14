@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.3.1 (2025-04-14)
+
+Full Changelog: [v0.3.0...v0.3.1](https://github.com/prelude-so/node-sdk/compare/v0.3.0...v0.3.1)
+
+### Chores
+
+* **client:** minor internal fixes ([486bc4d](https://github.com/prelude-so/node-sdk/commit/486bc4d3694b741eee7fcfc576a4dfdec700a61a))
+
 ## 0.3.0 (2025-04-11)
 
 Full Changelog: [v0.2.0...v0.3.0](https://github.com/prelude-so/node-sdk/compare/v0.2.0...v0.3.0)
