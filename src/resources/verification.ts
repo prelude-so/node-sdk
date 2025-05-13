@@ -44,6 +44,11 @@ export interface VerificationCreateResponse {
   status: 'success' | 'retry' | 'blocked';
 
   /**
+   * The ordered sequence of channels to be used for verification
+   */
+  channels?: Array<string>;
+
+  /**
    * The metadata for this verification.
    */
   metadata?: VerificationCreateResponse.Metadata;
@@ -105,15 +110,6 @@ export interface VerificationCreateParams {
    * response or webhook sent that refers to this verification.
    */
   metadata?: VerificationCreateParams.Metadata;
-
-  /**
-   * The method used for verifying this phone number. The 'voice' option provides an
-   * accessible alternative for visually impaired users by delivering the
-   * verification code through a phone call rather than a text message. It also
-   * allows verification of landline numbers that cannot receive SMS messages.
-   * **Coming soon.**
-   */
-  method?: 'auto' | 'voice';
 
   /**
    * Verification options
@@ -179,10 +175,9 @@ export namespace VerificationCreateParams {
     code_size?: number;
 
     /**
-     * The custom code to use for OTP verification. This feature is only available for
-     * compatibility purposes and subject to Prelude’s approval. Contact us to discuss
-     * your use case. For more details, refer to
-     * [Multi Routing](/introduction/concepts/multi-routing).
+     * The custom code to use for OTP verification. To use the custom code feature,
+     * contact us to enable it for your account. For more details, refer to
+     * [Custom Code](/verify/v2/documentation/custom-code).
      */
     custom_code?: string;
 
@@ -193,6 +188,19 @@ export namespace VerificationCreateParams {
      * to US English.
      */
     locale?: string;
+
+    /**
+     * The method used for verifying this phone number. The 'voice' option provides an
+     * accessible alternative for visually impaired users by delivering the
+     * verification code through a phone call rather than a text message. It also
+     * allows verification of landline numbers that cannot receive SMS messages.
+     */
+    method?: 'auto' | 'voice';
+
+    /**
+     * The preferred channel to be used in priority for verification.
+     */
+    preferred_channel?: 'sms' | 'rcs' | 'whatsapp' | 'viber' | 'zalo';
 
     /**
      * The Sender ID to use for this message. The Sender ID needs to be enabled by
@@ -264,7 +272,7 @@ export namespace VerificationCreateParams {
 
     /**
      * This signal should provide a higher level of trust, indicating that the user is
-     * genuine. For more details, refer to
+     * genuine. Contact us to discuss your use case. For more details, refer to
      * [Signals](/verify/v2/documentation/prevent-fraud#signals).
      */
     is_trusted_user?: boolean;
