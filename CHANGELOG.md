@@ -1,5 +1,27 @@
 # Changelog
 
+## 0.4.0 (2025-05-13)
+
+Full Changelog: [v0.3.0...v0.4.0](https://github.com/prelude-so/node-sdk/compare/v0.3.0...v0.4.0)
+
+### Features
+
+* **api:** update via SDK Studio ([1f6b46a](https://github.com/prelude-so/node-sdk/commit/1f6b46aa92305d9df8146a0d3f5bcc51d1cfa022))
+
+
+### Chores
+
+* **ci:** add timeout thresholds for CI jobs ([3e42279](https://github.com/prelude-so/node-sdk/commit/3e42279869485111bb577cd3fc14819ddfb1bd79))
+* **ci:** bump node version for release workflows ([9c7cf33](https://github.com/prelude-so/node-sdk/commit/9c7cf33376940edeb8c7fa44b35926517731614b))
+* **ci:** only use depot for staging repos ([eb84195](https://github.com/prelude-so/node-sdk/commit/eb84195ca5346cc60810bec133bc99d3c557bc02))
+* **ci:** run on more branches and use depot runners ([6a3d14a](https://github.com/prelude-so/node-sdk/commit/6a3d14a15df44e9a758b75cbfc994cb9c5c3981d))
+* **client:** minor internal fixes ([486bc4d](https://github.com/prelude-so/node-sdk/commit/486bc4d3694b741eee7fcfc576a4dfdec700a61a))
+
+
+### Documentation
+
+* **readme:** fix typo ([6dca722](https://github.com/prelude-so/node-sdk/commit/6dca722ec4aa5e847d9bc3344361d29d9dedd2ff))
+
 ## 0.3.0 (2025-04-11)
 
 Full Changelog: [v0.2.0...v0.3.0](https://github.com/prelude-so/node-sdk/compare/v0.2.0...v0.3.0)
