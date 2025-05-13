@@ -9,7 +9,8 @@ const client = new Prelude({
 });
 
 describe('resource verification', () => {
-  test('create: only required params', async () => {
+  // skipped: currently no good way to test endpoints defining callbacks, Prism mock server will fail trying to reach the provided callback url
+  test.skip('create: only required params', async () => {
     const responsePromise = client.verification.create({
       target: { type: 'phone_number', value: '+30123456789' },
     });
@@ -22,18 +23,20 @@ describe('resource verification', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  test('create: required and optional params', async () => {
+  // skipped: currently no good way to test endpoints defining callbacks, Prism mock server will fail trying to reach the provided callback url
+  test.skip('create: required and optional params', async () => {
     const response = await client.verification.create({
       target: { type: 'phone_number', value: '+30123456789' },
       dispatch_id: 'dispatch_id',
       metadata: { correlation_id: 'correlation_id' },
-      method: 'auto',
       options: {
         app_realm: { platform: 'android', value: 'value' },
         callback_url: 'callback_url',
         code_size: 5,
-        custom_code: 'custom_code',
+        custom_code: '123456',
         locale: 'el-GR',
+        method: 'auto',
+        preferred_channel: 'sms',
         sender_id: 'sender_id',
         template_id: 'prelude:psd2',
         variables: { foo: 'bar' },
