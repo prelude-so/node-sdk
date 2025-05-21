@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.4.1 (2025-05-21)
+
+Full Changelog: [v0.4.0...v0.4.1](https://github.com/prelude-so/node-sdk/compare/v0.4.0...v0.4.1)
+
+### Chores
+
+* **docs:** grammar improvements ([9056afb](https://github.com/prelude-so/node-sdk/commit/9056afb78ed4c6d3e7e622097c8cc06b1a1e973b))
+
 ## 0.4.0 (2025-05-13)
 
 Full Changelog: [v0.3.0...v0.4.0](https://github.com/prelude-so/node-sdk/compare/v0.3.0...v0.4.0)
