@@ -36,7 +36,7 @@ export interface VerificationCreateResponse {
   /**
    * The method used for verifying this phone number.
    */
-  method: 'message';
+  method: 'message' | 'silent' | 'voice';
 
   /**
    * The status of the verification.
@@ -53,7 +53,23 @@ export interface VerificationCreateResponse {
    */
   metadata?: VerificationCreateResponse.Metadata;
 
+  /**
+   * The reason why the verification was blocked. Only present when status is
+   * "blocked".
+   */
+  reason?:
+    | 'suspicious'
+    | 'repeated_attempts'
+    | 'invalid_phone_line'
+    | 'invalid_phone_number'
+    | 'in_block_list';
+
   request_id?: string;
+
+  /**
+   * The silent verification specific properties.
+   */
+  silent?: VerificationCreateResponse.Silent;
 }
 
 export namespace VerificationCreateResponse {
@@ -62,6 +78,16 @@ export namespace VerificationCreateResponse {
    */
   export interface Metadata {
     correlation_id?: string;
+  }
+
+  /**
+   * The silent verification specific properties.
+   */
+  export interface Silent {
+    /**
+     * The URL to start the silent verification towards.
+     */
+    request_url: string;
   }
 }
 
@@ -177,7 +203,7 @@ export namespace VerificationCreateParams {
     /**
      * The custom code to use for OTP verification. To use the custom code feature,
      * contact us to enable it for your account. For more details, refer to
-     * [Custom Code](/verify/v2/documentation/custom-code).
+     * [Custom Code](/verify/v2/documentation/custom-codes).
      */
     custom_code?: string;
 
@@ -200,7 +226,7 @@ export namespace VerificationCreateParams {
     /**
      * The preferred channel to be used in priority for verification.
      */
-    preferred_channel?: 'sms' | 'rcs' | 'whatsapp' | 'viber' | 'zalo';
+    preferred_channel?: 'sms' | 'rcs' | 'whatsapp' | 'viber' | 'zalo' | 'telegram' | 'silent' | 'voice';
 
     /**
      * The Sender ID to use for this message. The Sender ID needs to be enabled by
