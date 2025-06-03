@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.5.1 (2025-06-03)
+
+Full Changelog: [v0.5.0...v0.5.1](https://github.com/prelude-so/node-sdk/compare/v0.5.0...v0.5.1)
+
+### Chores
+
+* **docs:** use top-level-await in example snippets ([f2bfc21](https://github.com/prelude-so/node-sdk/commit/f2bfc21853356fdfe64cf6bfc71f707254ddb099))
+
 ## 0.5.0 (2025-06-02)
 
 Full Changelog: [v0.4.0...v0.5.0](https://github.com/prelude-so/node-sdk/compare/v0.4.0...v0.5.0)
