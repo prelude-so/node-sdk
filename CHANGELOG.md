@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.5.1 (2025-06-13)
+
+Full Changelog: [v0.5.0...v0.5.1](https://github.com/prelude-so/node-sdk/compare/v0.5.0...v0.5.1)
+
+### Bug Fixes
+
+* publish script — handle NPM errors correctly ([ffd8e87](https://github.com/prelude-so/node-sdk/commit/ffd8e87da9ece93b4e1f6f0a52cbdb9c4b0870e5))
+
+
+### Chores
+
+* **docs:** use top-level-await in example snippets ([f2bfc21](https://github.com/prelude-so/node-sdk/commit/f2bfc21853356fdfe64cf6bfc71f707254ddb099))
+* **internal:** make base APIResource abstract ([445cfb1](https://github.com/prelude-so/node-sdk/commit/445cfb14d433fa622641dede2aac47e6ad998572))
+
 ## 0.5.0 (2025-06-02)
 
 Full Changelog: [v0.4.0...v0.5.0](https://github.com/prelude-so/node-sdk/compare/v0.4.0...v0.5.0)

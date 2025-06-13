@@ -26,15 +26,11 @@ const client = new Prelude({
   apiToken: process.env['API_TOKEN'], // This is the default and can be omitted
 });
 
-async function main() {
-  const verification = await client.verification.create({
-    target: { type: 'phone_number', value: '+30123456789' },
-  });
+const verification = await client.verification.create({
+  target: { type: 'phone_number', value: '+30123456789' },
+});
 
-  console.log(verification.id);
-}
-
-main();
+console.log(verification.id);
 ```
 
 ### Request & Response types
@@ -49,14 +45,8 @@ const client = new Prelude({
   apiToken: process.env['API_TOKEN'], // This is the default and can be omitted
 });
 
-async function main() {
-  const params: Prelude.VerificationCreateParams = {
-    target: { type: 'phone_number', value: '+30123456789' },
-  };
-  const verification: Prelude.VerificationCreateResponse = await client.verification.create(params);
-}
-
-main();
+const params: Prelude.VerificationCreateParams = { target: { type: 'phone_number', value: '+30123456789' } };
+const verification: Prelude.VerificationCreateResponse = await client.verification.create(params);
 ```
 
 Documentation for each method, request param, and response field are available in docstrings and will appear on hover in most modern editors.
@@ -69,21 +59,17 @@ a subclass of `APIError` will be thrown:
 
 <!-- prettier-ignore -->
 ```ts
-async function main() {
-  const verification = await client.verification
-    .create({ target: { type: 'phone_number', value: '+30123456789' } })
-    .catch(async (err) => {
-      if (err instanceof Prelude.APIError) {
-        console.log(err.status); // 400
-        console.log(err.name); // BadRequestError
-        console.log(err.headers); // {server: 'nginx', ...}
-      } else {
-        throw err;
-      }
-    });
-}
-
-main();
+const verification = await client.verification
+  .create({ target: { type: 'phone_number', value: '+30123456789' } })
+  .catch(async (err) => {
+    if (err instanceof Prelude.APIError) {
+      console.log(err.status); // 400
+      console.log(err.name); // BadRequestError
+      console.log(err.headers); // {server: 'nginx', ...}
+    } else {
+      throw err;
+    }
+  });
 ```
 
 Error codes are as follows:
