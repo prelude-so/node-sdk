@@ -127,6 +127,7 @@ export class Prelude extends Core.APIClient {
 
     super({
       baseURL: options.baseURL!,
+      baseURLOverridden: baseURL ? baseURL !== 'https://api.prelude.dev' : false,
       timeout: options.timeout ?? 60000 /* 1 minute */,
       httpAgent: options.httpAgent,
       maxRetries: options.maxRetries,
@@ -142,6 +143,13 @@ export class Prelude extends Core.APIClient {
   transactional: API.Transactional = new API.Transactional(this);
   verification: API.Verification = new API.Verification(this);
   watch: API.Watch = new API.Watch(this);
+
+  /**
+   * Check whether the base URL is set to its default.
+   */
+  #baseURLOverridden(): boolean {
+    return this.baseURL !== 'https://api.prelude.dev';
+  }
 
   protected override defaultQuery(): Core.DefaultQuery | undefined {
     return this._options.defaultQuery;
