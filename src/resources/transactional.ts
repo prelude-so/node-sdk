@@ -44,7 +44,7 @@ export interface TransactionalSendResponse {
   /**
    * The variables to be replaced in the template.
    */
-  variables: Record<string, string>;
+  variables: { [key: string]: string };
 
   /**
    * The callback URL.
@@ -104,7 +104,7 @@ export interface TransactionalSendParams {
   /**
    * The variables to be replaced in the template.
    */
-  variables?: Record<string, string>;
+  variables?: { [key: string]: string };
 }
 
 export declare namespace Transactional {
