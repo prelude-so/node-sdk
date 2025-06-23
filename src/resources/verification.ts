@@ -243,7 +243,7 @@ export namespace VerificationCreateParams {
     /**
      * The variables to be replaced in the template.
      */
-    variables?: Record<string, string>;
+    variables?: { [key: string]: string };
   }
 
   export namespace Options {
