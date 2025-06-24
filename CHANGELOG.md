@@ -1,5 +1,30 @@
 # Changelog
 
+## 0.6.0 (2025-06-23)
+
+Full Changelog: [v0.5.0...v0.6.0](https://github.com/prelude-so/node-sdk/compare/v0.5.0...v0.6.0)
+
+### Features
+
+* **client:** add support for endpoint-specific base URLs ([30b955d](https://github.com/prelude-so/node-sdk/commit/30b955dc9f8997b67fdbc49c4acf9e2de6e24eb0))
+
+
+### Bug Fixes
+
+* publish script — handle NPM errors correctly ([ffd8e87](https://github.com/prelude-so/node-sdk/commit/ffd8e87da9ece93b4e1f6f0a52cbdb9c4b0870e5))
+
+
+### Chores
+
+* **ci:** enable for pull requests ([fd27788](https://github.com/prelude-so/node-sdk/commit/fd2778867c69d42209ebd79f542a9a7fcb103f29))
+* **docs:** use top-level-await in example snippets ([f2bfc21](https://github.com/prelude-so/node-sdk/commit/f2bfc21853356fdfe64cf6bfc71f707254ddb099))
+* **internal:** make base APIResource abstract ([445cfb1](https://github.com/prelude-so/node-sdk/commit/445cfb14d433fa622641dede2aac47e6ad998572))
+
+
+### Refactors
+
+* **types:** replace Record with mapped types ([7215fbd](https://github.com/prelude-so/node-sdk/commit/7215fbdb34c79e820aca87f0f6f788a3565a6333))
+
 ## 0.5.0 (2025-06-02)
 
 Full Changelog: [v0.4.0...v0.5.0](https://github.com/prelude-so/node-sdk/compare/v0.4.0...v0.5.0)
