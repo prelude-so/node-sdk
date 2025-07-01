@@ -122,7 +122,8 @@ export namespace WatchPredictParams {
    */
   export interface Metadata {
     /**
-     * A user-defined identifier to correlate this prediction with.
+     * A user-defined identifier to correlate this prediction with. It is returned in
+     * the response and any webhook events that refer to this prediction.
      */
     correlation_id?: string;
   }
@@ -279,7 +280,8 @@ export namespace WatchSendFeedbacksParams {
      */
     export interface Metadata {
       /**
-       * A user-defined identifier to correlate this feedback with.
+       * A user-defined identifier to correlate this feedback with. It is returned in the
+       * response and any webhook events that refer to this feedback.
        */
       correlation_id?: string;
     }
