@@ -27,7 +27,7 @@ describe('resource verification', () => {
   test.skip('create: required and optional params', async () => {
     const response = await client.verification.create({
       target: { type: 'phone_number', value: '+30123456789' },
-      dispatch_id: 'dispatch_id',
+      dispatch_id: '123e4567-e89b-12d3-a456-426614174000',
       metadata: { correlation_id: 'correlation_id' },
       options: {
         app_realm: { platform: 'android', value: 'value' },

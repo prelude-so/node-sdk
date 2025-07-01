@@ -46,7 +46,7 @@ export interface VerificationCreateResponse {
   /**
    * The ordered sequence of channels to be used for verification
    */
-  channels?: Array<string>;
+  channels?: Array<'sms' | 'rcs' | 'whatsapp' | 'viber' | 'zalo' | 'telegram' | 'silent' | 'voice'>;
 
   /**
    * The metadata for this verification.
@@ -58,11 +58,13 @@ export interface VerificationCreateResponse {
    * "blocked".
    */
   reason?:
-    | 'suspicious'
-    | 'repeated_attempts'
+    | 'expired_signature'
+    | 'in_block_list'
     | 'invalid_phone_line'
     | 'invalid_phone_number'
-    | 'in_block_list';
+    | 'invalid_signature'
+    | 'repeated_attempts'
+    | 'suspicious';
 
   request_id?: string;
 
@@ -77,6 +79,10 @@ export namespace VerificationCreateResponse {
    * The metadata for this verification.
    */
   export interface Metadata {
+    /**
+     * A user-defined identifier to correlate this verification with. It is returned in
+     * the response and any webhook events that refer to this verification.
+     */
     correlation_id?: string;
   }
 
@@ -115,6 +121,10 @@ export namespace VerificationCheckResponse {
    * The metadata for this verification.
    */
   export interface Metadata {
+    /**
+     * A user-defined identifier to correlate this verification with. It is returned in
+     * the response and any webhook events that refer to this verification.
+     */
     correlation_id?: string;
   }
 }
@@ -172,7 +182,8 @@ export namespace VerificationCreateParams {
    */
   export interface Metadata {
     /**
-     * A user-defined identifier to correlate this verification with.
+     * A user-defined identifier to correlate this verification with. It is returned in
+     * the response and any webhook events that refer to this verification.
      */
     correlation_id?: string;
   }
@@ -226,7 +237,7 @@ export namespace VerificationCreateParams {
     /**
      * The preferred channel to be used in priority for verification.
      */
-    preferred_channel?: 'sms' | 'rcs' | 'whatsapp' | 'viber' | 'zalo' | 'telegram' | 'silent' | 'voice';
+    preferred_channel?: 'sms' | 'rcs' | 'whatsapp' | 'viber' | 'zalo' | 'telegram';
 
     /**
      * The Sender ID to use for this message. The Sender ID needs to be enabled by
