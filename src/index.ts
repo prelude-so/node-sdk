@@ -197,6 +197,7 @@ Prelude.Lookup = Lookup;
 Prelude.Transactional = Transactional;
 Prelude.Verification = Verification;
 Prelude.Watch = Watch;
+
 export declare namespace Prelude {
   export type RequestOptions = Core.RequestOptions;
 
