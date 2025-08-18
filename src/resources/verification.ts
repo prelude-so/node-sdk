@@ -36,7 +36,7 @@ export interface VerificationCreateResponse {
   /**
    * The method used for verifying this phone number.
    */
-  method: 'message' | 'silent' | 'voice';
+  method: 'email' | 'message' | 'silent' | 'voice';
 
   /**
    * The status of the verification.
@@ -46,7 +46,7 @@ export interface VerificationCreateResponse {
   /**
    * The ordered sequence of channels to be used for verification
    */
-  channels?: Array<'sms' | 'rcs' | 'whatsapp' | 'viber' | 'zalo' | 'telegram' | 'silent' | 'voice'>;
+  channels?: Array<'rcs' | 'silent' | 'sms' | 'telegram' | 'viber' | 'voice' | 'whatsapp' | 'zalo'>;
 
   /**
    * The metadata for this verification.
