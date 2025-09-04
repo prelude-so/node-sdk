@@ -1,5 +1,35 @@
 # Changelog
 
+## 0.7.0 (2025-09-02)
+
+Full Changelog: [v0.6.0...v0.7.0](https://github.com/prelude-so/node-sdk/compare/v0.6.0...v0.7.0)
+
+### Features
+
+* **api:** api update ([c006c67](https://github.com/prelude-so/node-sdk/commit/c006c6787df4060aa7cd4483f393719b9a473929))
+* **api:** update via SDK Studio ([77f9439](https://github.com/prelude-so/node-sdk/commit/77f9439098f4de3e7d13b411993b2939d49af9d7))
+
+
+### Bug Fixes
+
+* **ci:** release-doctor — report correct token name ([ef18a1f](https://github.com/prelude-so/node-sdk/commit/ef18a1f254df8a34cf435b5e4686572983b59ecd))
+* **client:** don't send `Content-Type` for bodyless methods ([6ecc6e7](https://github.com/prelude-so/node-sdk/commit/6ecc6e7f32d1e80fef42f1cdbcb94603a1c14a69))
+
+
+### Chores
+
+* **ci:** only run for pushes and fork pull requests ([408934f](https://github.com/prelude-so/node-sdk/commit/408934f536efa050f97ef7643410f139da505d1b))
+* **deps:** update dependency node-fetch to v2.6.13 ([2f00f56](https://github.com/prelude-so/node-sdk/commit/2f00f561284f1314b01affcf5d409b100b85d753))
+* **internal:** formatting change ([68e9cb7](https://github.com/prelude-so/node-sdk/commit/68e9cb7e4632d400962846e69fb2ad04a17db364))
+* **internal:** move publish config ([882dfdd](https://github.com/prelude-so/node-sdk/commit/882dfddeb88d3254f0af2a3ae9c0a3c741cbe244))
+* **internal:** remove redundant imports config ([4d4f088](https://github.com/prelude-so/node-sdk/commit/4d4f088f1ad451d221e3807bcf8063713d2b8616))
+* **internal:** update comment in script ([8765281](https://github.com/prelude-so/node-sdk/commit/876528150c165b76228ec2d9d902adf3cba17de8))
+* **internal:** update test skipping reason ([cf435b5](https://github.com/prelude-so/node-sdk/commit/cf435b562fe956ff0bc0fd1e045279f9e2cd0539))
+* make some internal functions async ([08d3ac5](https://github.com/prelude-so/node-sdk/commit/08d3ac573b26b67f288a461bcb6b723aebd12c3f))
+* mention unit type in timeout docs ([27a44d1](https://github.com/prelude-so/node-sdk/commit/27a44d1fc62624316cb27c3abf3bdcab66acdca5))
+* update @stainless-api/prism-cli to v5.15.0 ([029af1e](https://github.com/prelude-so/node-sdk/commit/029af1e7146a84a041668a089555a07dc56360c3))
+* update CI script ([09af3b2](https://github.com/prelude-so/node-sdk/commit/09af3b2005f127d540cfadbb8cbfc8b489b2d942))
+
 ## 0.6.0 (2025-06-23)
 
 Full Changelog: [v0.5.0...v0.6.0](https://github.com/prelude-so/node-sdk/compare/v0.5.0...v0.6.0)
