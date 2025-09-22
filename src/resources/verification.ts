@@ -232,6 +232,11 @@ export namespace VerificationCreateParams {
     custom_code?: string;
 
     /**
+     * The integration that triggered the verification.
+     */
+    integration?: 'auth0' | 'supabase';
+
+    /**
      * A BCP-47 formatted locale string with the language the text message will be sent
      * to. If there's no locale set, the language will be determined by the country
      * code of the phone number. If the language specified doesn't exist, it defaults
