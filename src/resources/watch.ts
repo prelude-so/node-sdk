@@ -167,6 +167,13 @@ export namespace WatchPredictParams {
     is_trusted_user?: boolean;
 
     /**
+     * The JA4 fingerprint observed for the connection. Prelude will infer it
+     * automatically when requests go through our client SDK (which uses Prelude's
+     * edge), but you can also provide it explicitly if you terminate TLS yourself.
+     */
+    ja4_fingerprint?: string;
+
+    /**
      * The version of the user's device operating system.
      */
     os_version?: string;
@@ -323,6 +330,13 @@ export namespace WatchSendFeedbacksParams {
        * [Signals](/verify/v2/documentation/prevent-fraud#signals).
        */
       is_trusted_user?: boolean;
+
+      /**
+       * The JA4 fingerprint observed for the connection. Prelude will infer it
+       * automatically when requests go through our client SDK (which uses Prelude's
+       * edge), but you can also provide it explicitly if you terminate TLS yourself.
+       */
+      ja4_fingerprint?: string;
 
       /**
        * The version of the user's device operating system.
