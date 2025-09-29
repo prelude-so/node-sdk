@@ -34,6 +34,7 @@ describe('resource verification', () => {
         callback_url: 'callback_url',
         code_size: 5,
         custom_code: '123456',
+        integration: 'auth0',
         locale: 'el-GR',
         method: 'auto',
         preferred_channel: 'sms',
@@ -48,6 +49,7 @@ describe('resource verification', () => {
         device_platform: 'ios',
         ip: '192.0.2.1',
         is_trusted_user: false,
+        ja4_fingerprint: 't13d1516h2_8daaf6152771_e5627efa2ab1',
         os_version: '18.0.1',
         user_agent:
           'Mozilla/5.0 (iPhone; CPU iPhone OS 14_4 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.0.3 Mobile/15E148 Safari/604.1',

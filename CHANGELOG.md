@@ -1,5 +1,35 @@
 # Changelog
 
+## 0.8.0 (2025-09-26)
+
+Full Changelog: [v0.7.0...v0.8.0](https://github.com/prelude-so/node-sdk/compare/v0.7.0...v0.8.0)
+
+### Features
+
+* **api:** api update ([f19dead](https://github.com/prelude-so/node-sdk/commit/f19dead5bd7fb6817eea5db826e3022dd88c6ce9))
+* **api:** api update ([730b7ec](https://github.com/prelude-so/node-sdk/commit/730b7ec5af0de35734ac4e837c83e1d7cef2decc))
+* **api:** api update ([734aef3](https://github.com/prelude-so/node-sdk/commit/734aef3f0293bd9a98bb898bb262df3bda70fa4d))
+
+
+### Bug Fixes
+
+* coerce nullable values to undefined ([2bda06c](https://github.com/prelude-so/node-sdk/commit/2bda06caeafd234537a5507e9f17960a4c9ebbb7))
+
+
+### Performance Improvements
+
+* faster formatting ([53cc399](https://github.com/prelude-so/node-sdk/commit/53cc3994e701cafc80220b3c3ce056d21ca59e9b))
+
+
+### Chores
+
+* do not install brew dependencies in ./scripts/bootstrap by default ([71f641e](https://github.com/prelude-so/node-sdk/commit/71f641e96ae5a79fa6bdbcbe357e6d3b3df93bdd))
+* **internal:** codegen related update ([77fd2cf](https://github.com/prelude-so/node-sdk/commit/77fd2cfddc91c002e3749315cff78bd33e97b0fc))
+* **internal:** codegen related update ([2311ada](https://github.com/prelude-so/node-sdk/commit/2311adaf416eb84a0b0f1f196fcd9f4248f69e2d))
+* **internal:** fix incremental formatting in some cases ([3453aaa](https://github.com/prelude-so/node-sdk/commit/3453aaa983b9e8ab02c7be2ea0b87cce40e9f7e5))
+* **internal:** ignore .eslintcache ([c8d714d](https://github.com/prelude-so/node-sdk/commit/c8d714d428a0efc4db0a81be2c45a2729d9ad9e0))
+* **internal:** remove deprecated `compilerOptions.baseUrl` from tsconfig.json ([b94d9c2](https://github.com/prelude-so/node-sdk/commit/b94d9c22e4f7ef2acafb07f52bd6e19fa57bf451))
+
 ## 0.7.0 (2025-09-02)
 
 Full Changelog: [v0.6.0...v0.7.0](https://github.com/prelude-so/node-sdk/compare/v0.6.0...v0.7.0)

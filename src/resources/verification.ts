@@ -56,6 +56,19 @@ export interface VerificationCreateResponse {
   /**
    * The reason why the verification was blocked. Only present when status is
    * "blocked".
+   *
+   * - `expired_signature` - The signature of the SDK signals is expired. They should
+   *   be sent within the hour following their collection.
+   * - `in_block_list` - The phone number is part of the configured block list.
+   * - `invalid_phone_line` - The phone number is not a valid line number (e.g.
+   *   landline).
+   * - `invalid_phone_number` - The phone number is not a valid phone number (e.g.
+   *   unallocated range).
+   * - `invalid_signature` - The signature of the SDK signals is invalid.
+   * - `repeated_attempts` - The phone number has made too many verification
+   *   attempts.
+   * - `suspicious` - The verification attempt was deemed suspicious by the
+   *   anti-fraud system.
    */
   reason?:
     | 'expired_signature'
@@ -219,6 +232,11 @@ export namespace VerificationCreateParams {
     custom_code?: string;
 
     /**
+     * The integration that triggered the verification.
+     */
+    integration?: 'auth0' | 'supabase';
+
+    /**
      * A BCP-47 formatted locale string with the language the text message will be sent
      * to. If there's no locale set, the language will be determined by the country
      * code of the phone number. If the language specified doesn't exist, it defaults
@@ -313,6 +331,13 @@ export namespace VerificationCreateParams {
      * [Signals](/verify/v2/documentation/prevent-fraud#signals).
      */
     is_trusted_user?: boolean;
+
+    /**
+     * The JA4 fingerprint observed for the connection. Prelude will infer it
+     * automatically when requests go through our client SDK (which uses Prelude's
+     * edge), but you can also provide it explicitly if you terminate TLS yourself.
+     */
+    ja4_fingerprint?: string;
 
     /**
      * The version of the user's device operating system.
