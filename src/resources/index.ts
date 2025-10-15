@@ -10,6 +10,12 @@ export {
   type VerificationCheckParams,
 } from './verification';
 export {
+  VerificationManagement,
+  type VerificationManagementListSenderIDsResponse,
+  type VerificationManagementSubmitSenderIDResponse,
+  type VerificationManagementSubmitSenderIDParams,
+} from './verification-management';
+export {
   Watch,
   type WatchPredictResponse,
   type WatchSendEventsResponse,
