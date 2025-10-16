@@ -14,7 +14,7 @@ export class VerificationManagement extends APIResource {
   }
 
   /**
-   * This endpoint allows you to add a new sender ID for verification purposes.
+   * This endpoint allows you to submit a new sender ID for verification purposes.
    *
    * In order to get access to this endpoint, contact our support team.
    */
@@ -29,24 +29,25 @@ export class VerificationManagement extends APIResource {
 /**
  * A list of Sender ID.
  */
-export type VerificationManagementListSenderIDsResponse =
-  Array<VerificationManagementListSenderIDsResponse.VerificationManagementListSenderIDsResponseItem>;
+export interface VerificationManagementListSenderIDsResponse {
+  sender_ids?: Array<VerificationManagementListSenderIDsResponse.SenderID>;
+}
 
 export namespace VerificationManagementListSenderIDsResponse {
-  export interface VerificationManagementListSenderIDsResponseItem {
-    /**
-     * It indicates the status of the sender ID. Possible values are:
-     *
-     * - `approved` - The sender ID is approved.
-     * - `pending` - The sender ID is pending.
-     * - `rejected` - The sender ID is rejected.
-     */
-    status?: 'approved' | 'pending' | 'rejected';
-
+  export interface SenderID {
     /**
      * Value that will be presented as Sender ID
      */
-    value?: string;
+    sender_id?: string;
+
+    /**
+     * It indicates the status of the Sender ID. Possible values are:
+     *
+     * - `approved` - The Sender ID is approved.
+     * - `pending` - The Sender ID is pending.
+     * - `rejected` - The Sender ID is rejected.
+     */
+    status?: 'approved' | 'pending' | 'rejected';
   }
 }
 
