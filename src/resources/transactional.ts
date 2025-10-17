@@ -106,6 +106,19 @@ export interface TransactionalSendParams {
   locale?: string;
 
   /**
+   * The preferred delivery channel for the message. When specified, the system will
+   * prioritize sending via the requested channel if the template is configured for
+   * it.
+   *
+   * If not specified and the template is configured for WhatsApp, the message will
+   * be sent via WhatsApp first, with automatic fallback to SMS if WhatsApp delivery
+   * is unavailable.
+   *
+   * Supported channels: `sms`, `whatsapp`.
+   */
+  preferred_channel?: 'sms' | 'whatsapp';
+
+  /**
    * The variables to be replaced in the template.
    */
   variables?: { [key: string]: string };
