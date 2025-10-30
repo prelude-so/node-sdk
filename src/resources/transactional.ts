@@ -114,9 +114,9 @@ export interface TransactionalSendParams {
    * be sent via WhatsApp first, with automatic fallback to SMS if WhatsApp delivery
    * is unavailable.
    *
-   * Supported channels: `sms`, `whatsapp`.
+   * Supported channels: `sms`, `rcs`, `whatsapp`.
    */
-  preferred_channel?: 'sms' | 'whatsapp';
+  preferred_channel?: 'sms' | 'rcs' | 'whatsapp';
 
   /**
    * The variables to be replaced in the template.
