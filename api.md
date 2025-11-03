@@ -34,12 +34,18 @@ Methods:
 
 Types:
 
+- <code><a href="./src/resources/verification-management.ts">VerificationManagementDeletePhoneNumberResponse</a></code>
+- <code><a href="./src/resources/verification-management.ts">VerificationManagementListPhoneNumbersResponse</a></code>
 - <code><a href="./src/resources/verification-management.ts">VerificationManagementListSenderIDsResponse</a></code>
+- <code><a href="./src/resources/verification-management.ts">VerificationManagementSetPhoneNumberResponse</a></code>
 - <code><a href="./src/resources/verification-management.ts">VerificationManagementSubmitSenderIDResponse</a></code>
 
 Methods:
 
+- <code title="delete /v2/verification/management/phone-numbers/{action}">client.verificationManagement.<a href="./src/resources/verification-management.ts">deletePhoneNumber</a>(action, { ...params }) -> VerificationManagementDeletePhoneNumberResponse</code>
+- <code title="get /v2/verification/management/phone-numbers/{action}">client.verificationManagement.<a href="./src/resources/verification-management.ts">listPhoneNumbers</a>(action) -> VerificationManagementListPhoneNumbersResponse</code>
 - <code title="get /v2/verification/management/sender-id">client.verificationManagement.<a href="./src/resources/verification-management.ts">listSenderIds</a>() -> VerificationManagementListSenderIDsResponse</code>
+- <code title="post /v2/verification/management/phone-numbers/{action}">client.verificationManagement.<a href="./src/resources/verification-management.ts">setPhoneNumber</a>(action, { ...params }) -> VerificationManagementSetPhoneNumberResponse</code>
 - <code title="post /v2/verification/management/sender-id">client.verificationManagement.<a href="./src/resources/verification-management.ts">submitSenderId</a>({ ...params }) -> VerificationManagementSubmitSenderIDResponse</code>
 
 # Watch
