@@ -5,7 +5,10 @@ import * as Core from '../core';
 
 export class Transactional extends APIResource {
   /**
-   * Send a transactional message to your user.
+   * Legacy route maintained for backward compatibility. Migrate to `/v2/notify`
+   * instead.
+   *
+   * @deprecated
    */
   send(
     body: TransactionalSendParams,
