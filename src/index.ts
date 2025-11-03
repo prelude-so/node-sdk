@@ -17,7 +17,12 @@ import {
 } from './resources/verification';
 import {
   VerificationManagement,
+  VerificationManagementDeletePhoneNumberParams,
+  VerificationManagementDeletePhoneNumberResponse,
+  VerificationManagementListPhoneNumbersResponse,
   VerificationManagementListSenderIDsResponse,
+  VerificationManagementSetPhoneNumberParams,
+  VerificationManagementSetPhoneNumberResponse,
   VerificationManagementSubmitSenderIDParams,
   VerificationManagementSubmitSenderIDResponse,
 } from './resources/verification-management';
@@ -231,8 +236,13 @@ export declare namespace Prelude {
 
   export {
     VerificationManagement as VerificationManagement,
+    type VerificationManagementDeletePhoneNumberResponse as VerificationManagementDeletePhoneNumberResponse,
+    type VerificationManagementListPhoneNumbersResponse as VerificationManagementListPhoneNumbersResponse,
     type VerificationManagementListSenderIDsResponse as VerificationManagementListSenderIDsResponse,
+    type VerificationManagementSetPhoneNumberResponse as VerificationManagementSetPhoneNumberResponse,
     type VerificationManagementSubmitSenderIDResponse as VerificationManagementSubmitSenderIDResponse,
+    type VerificationManagementDeletePhoneNumberParams as VerificationManagementDeletePhoneNumberParams,
+    type VerificationManagementSetPhoneNumberParams as VerificationManagementSetPhoneNumberParams,
     type VerificationManagementSubmitSenderIDParams as VerificationManagementSubmitSenderIDParams,
   };
 

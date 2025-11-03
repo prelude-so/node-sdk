@@ -11,8 +11,13 @@ export {
 } from './verification';
 export {
   VerificationManagement,
+  type VerificationManagementDeletePhoneNumberResponse,
+  type VerificationManagementListPhoneNumbersResponse,
   type VerificationManagementListSenderIDsResponse,
+  type VerificationManagementSetPhoneNumberResponse,
   type VerificationManagementSubmitSenderIDResponse,
+  type VerificationManagementDeletePhoneNumberParams,
+  type VerificationManagementSetPhoneNumberParams,
   type VerificationManagementSubmitSenderIDParams,
 } from './verification-management';
 export {
