@@ -1,5 +1,26 @@
 # Changelog
 
+## 0.9.0 (2025-11-17)
+
+Full Changelog: [v0.8.0...v0.9.0](https://github.com/prelude-so/node-sdk/compare/v0.8.0...v0.9.0)
+
+### Features
+
+* **api:** api update ([1617e34](https://github.com/prelude-so/node-sdk/commit/1617e34f757e1e119e66445e697cba6188a6b903))
+* **api:** api update ([0f61750](https://github.com/prelude-so/node-sdk/commit/0f617509e16c0f813e9f8f3af14dd4a25bb93f47))
+* **api:** api update ([333785b](https://github.com/prelude-so/node-sdk/commit/333785bf20f861d44325da31f033f6e2d210c662))
+* **api:** api update ([e9c5533](https://github.com/prelude-so/node-sdk/commit/e9c553328ca0a5613765c3d47cd570ef72c525ae))
+* **api:** api update ([026e41b](https://github.com/prelude-so/node-sdk/commit/026e41b9eed80bab00de98c305c8d1a45f98854e))
+* **api:** api update ([eeefbe8](https://github.com/prelude-so/node-sdk/commit/eeefbe81bb76cca02255cd3c4c91619933fdde62))
+* **api:** expose phone numbers management methods ([c24544e](https://github.com/prelude-so/node-sdk/commit/c24544ef98a52f50d7f8aaa956fcb8b51cd6d763))
+* **api:** expose verification management methods ([4d0884e](https://github.com/prelude-so/node-sdk/commit/4d0884ea5ee1a1c31452ea1e1cb414750ab466f0))
+
+
+### Chores
+
+* **internal:** remove .eslintcache ([ddec0ac](https://github.com/prelude-so/node-sdk/commit/ddec0ac5878d668b1fcc533321aeed310a47dd7b))
+* **internal:** use npm pack for build uploads ([ffc032e](https://github.com/prelude-so/node-sdk/commit/ffc032e0c52c885f2138d1b662646375ac027ef4))
+
 ## 0.8.0 (2025-09-26)
 
 Full Changelog: [v0.7.0...v0.8.0](https://github.com/prelude-so/node-sdk/compare/v0.7.0...v0.8.0)
