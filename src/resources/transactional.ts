@@ -5,7 +5,10 @@ import * as Core from '../core';
 
 export class Transactional extends APIResource {
   /**
-   * Send a transactional message to your user.
+   * Legacy route maintained for backward compatibility. Migrate to `/v2/notify`
+   * instead.
+   *
+   * @deprecated
    */
   send(
     body: TransactionalSendParams,
@@ -104,6 +107,19 @@ export interface TransactionalSendParams {
    * set on the template will be used.
    */
   locale?: string;
+
+  /**
+   * The preferred delivery channel for the message. When specified, the system will
+   * prioritize sending via the requested channel if the template is configured for
+   * it.
+   *
+   * If not specified and the template is configured for WhatsApp, the message will
+   * be sent via WhatsApp first, with automatic fallback to SMS if WhatsApp delivery
+   * is unavailable.
+   *
+   * Supported channels: `sms`, `rcs`, `whatsapp`.
+   */
+  preferred_channel?: 'sms' | 'rcs' | 'whatsapp';
 
   /**
    * The variables to be replaced in the template.

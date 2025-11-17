@@ -12,7 +12,7 @@ describe('resource transactional', () => {
   // Prism doesn't support callbacks yet
   test.skip('send: only required params', async () => {
     const responsePromise = client.transactional.send({
-      template_id: 'template_01jd1xq0cffycayqtdkdbv4d61',
+      template_id: 'template_01hynf45qvevj844m9az2x2f3c',
       to: '+30123456789',
     });
     const rawResponse = await responsePromise.asResponse();
@@ -27,13 +27,14 @@ describe('resource transactional', () => {
   // Prism doesn't support callbacks yet
   test.skip('send: required and optional params', async () => {
     const response = await client.transactional.send({
-      template_id: 'template_01jd1xq0cffycayqtdkdbv4d61',
+      template_id: 'template_01hynf45qvevj844m9az2x2f3c',
       to: '+30123456789',
       callback_url: 'callback_url',
       correlation_id: 'correlation_id',
       expires_at: 'expires_at',
       from: 'from',
       locale: 'el-GR',
+      preferred_channel: 'whatsapp',
       variables: { foo: 'bar' },
     });
   });

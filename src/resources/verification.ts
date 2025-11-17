@@ -248,9 +248,12 @@ export namespace VerificationCreateParams {
      * The method used for verifying this phone number. The 'voice' option provides an
      * accessible alternative for visually impaired users by delivering the
      * verification code through a phone call rather than a text message. It also
-     * allows verification of landline numbers that cannot receive SMS messages.
+     * allows verification of landline numbers that cannot receive SMS messages. The
+     * 'message' option explicitly requests message delivery (SMS, WhatsApp ...) and
+     * skips silent verification, useful for scenarios requiring direct user
+     * interaction.
      */
-    method?: 'auto' | 'voice';
+    method?: 'auto' | 'voice' | 'message';
 
     /**
      * The preferred channel to be used in priority for verification.
@@ -288,7 +291,9 @@ export namespace VerificationCreateParams {
       platform: 'android';
 
       /**
-       * The Android SMS Retriever API hash code that identifies your app.
+       * The Android SMS Retriever API hash code that identifies your app. For more
+       * information, see
+       * [Google documentation](https://developers.google.com/identity/sms-retriever/verify#computing_your_apps_hash_string).
        */
       value: string;
     }

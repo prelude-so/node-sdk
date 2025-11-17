@@ -16,6 +16,17 @@ import {
   VerificationCreateResponse,
 } from './resources/verification';
 import {
+  VerificationManagement,
+  VerificationManagementDeletePhoneNumberParams,
+  VerificationManagementDeletePhoneNumberResponse,
+  VerificationManagementListPhoneNumbersResponse,
+  VerificationManagementListSenderIDsResponse,
+  VerificationManagementSetPhoneNumberParams,
+  VerificationManagementSetPhoneNumberResponse,
+  VerificationManagementSubmitSenderIDParams,
+  VerificationManagementSubmitSenderIDResponse,
+} from './resources/verification-management';
+import {
   Watch,
   WatchPredictParams,
   WatchPredictResponse,
@@ -144,6 +155,7 @@ export class Prelude extends Core.APIClient {
   lookup: API.Lookup = new API.Lookup(this);
   transactional: API.Transactional = new API.Transactional(this);
   verification: API.Verification = new API.Verification(this);
+  verificationManagement: API.VerificationManagement = new API.VerificationManagement(this);
   watch: API.Watch = new API.Watch(this);
 
   /**
@@ -196,6 +208,7 @@ export class Prelude extends Core.APIClient {
 Prelude.Lookup = Lookup;
 Prelude.Transactional = Transactional;
 Prelude.Verification = Verification;
+Prelude.VerificationManagement = VerificationManagement;
 Prelude.Watch = Watch;
 
 export declare namespace Prelude {
@@ -219,6 +232,18 @@ export declare namespace Prelude {
     type VerificationCheckResponse as VerificationCheckResponse,
     type VerificationCreateParams as VerificationCreateParams,
     type VerificationCheckParams as VerificationCheckParams,
+  };
+
+  export {
+    VerificationManagement as VerificationManagement,
+    type VerificationManagementDeletePhoneNumberResponse as VerificationManagementDeletePhoneNumberResponse,
+    type VerificationManagementListPhoneNumbersResponse as VerificationManagementListPhoneNumbersResponse,
+    type VerificationManagementListSenderIDsResponse as VerificationManagementListSenderIDsResponse,
+    type VerificationManagementSetPhoneNumberResponse as VerificationManagementSetPhoneNumberResponse,
+    type VerificationManagementSubmitSenderIDResponse as VerificationManagementSubmitSenderIDResponse,
+    type VerificationManagementDeletePhoneNumberParams as VerificationManagementDeletePhoneNumberParams,
+    type VerificationManagementSetPhoneNumberParams as VerificationManagementSetPhoneNumberParams,
+    type VerificationManagementSubmitSenderIDParams as VerificationManagementSubmitSenderIDParams,
   };
 
   export {
