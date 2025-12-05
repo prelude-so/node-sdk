@@ -7,6 +7,21 @@ import * as Errors from './error';
 import * as Uploads from './uploads';
 import * as API from './resources/index';
 import { Lookup, LookupLookupParams, LookupLookupResponse } from './resources/lookup';
+import {
+  Notify,
+  NotifyGetSubscriptionConfigResponse,
+  NotifyGetSubscriptionPhoneNumberResponse,
+  NotifyListSubscriptionConfigsParams,
+  NotifyListSubscriptionConfigsResponse,
+  NotifyListSubscriptionPhoneNumberEventsParams,
+  NotifyListSubscriptionPhoneNumberEventsResponse,
+  NotifyListSubscriptionPhoneNumbersParams,
+  NotifyListSubscriptionPhoneNumbersResponse,
+  NotifySendBatchParams,
+  NotifySendBatchResponse,
+  NotifySendParams,
+  NotifySendResponse,
+} from './resources/notify';
 import { Transactional, TransactionalSendParams, TransactionalSendResponse } from './resources/transactional';
 import {
   Verification,
@@ -153,6 +168,7 @@ export class Prelude extends Core.APIClient {
   }
 
   lookup: API.Lookup = new API.Lookup(this);
+  notify: API.Notify = new API.Notify(this);
   transactional: API.Transactional = new API.Transactional(this);
   verification: API.Verification = new API.Verification(this);
   verificationManagement: API.VerificationManagement = new API.VerificationManagement(this);
@@ -206,6 +222,7 @@ export class Prelude extends Core.APIClient {
 }
 
 Prelude.Lookup = Lookup;
+Prelude.Notify = Notify;
 Prelude.Transactional = Transactional;
 Prelude.Verification = Verification;
 Prelude.VerificationManagement = VerificationManagement;
@@ -218,6 +235,22 @@ export declare namespace Prelude {
     Lookup as Lookup,
     type LookupLookupResponse as LookupLookupResponse,
     type LookupLookupParams as LookupLookupParams,
+  };
+
+  export {
+    Notify as Notify,
+    type NotifyGetSubscriptionConfigResponse as NotifyGetSubscriptionConfigResponse,
+    type NotifyGetSubscriptionPhoneNumberResponse as NotifyGetSubscriptionPhoneNumberResponse,
+    type NotifyListSubscriptionConfigsResponse as NotifyListSubscriptionConfigsResponse,
+    type NotifyListSubscriptionPhoneNumberEventsResponse as NotifyListSubscriptionPhoneNumberEventsResponse,
+    type NotifyListSubscriptionPhoneNumbersResponse as NotifyListSubscriptionPhoneNumbersResponse,
+    type NotifySendResponse as NotifySendResponse,
+    type NotifySendBatchResponse as NotifySendBatchResponse,
+    type NotifyListSubscriptionConfigsParams as NotifyListSubscriptionConfigsParams,
+    type NotifyListSubscriptionPhoneNumberEventsParams as NotifyListSubscriptionPhoneNumberEventsParams,
+    type NotifyListSubscriptionPhoneNumbersParams as NotifyListSubscriptionPhoneNumbersParams,
+    type NotifySendParams as NotifySendParams,
+    type NotifySendBatchParams as NotifySendBatchParams,
   };
 
   export {
