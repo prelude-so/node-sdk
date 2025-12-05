@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.10.0 (2025-12-05)
+
+Full Changelog: [v0.9.0...v0.10.0](https://github.com/prelude-so/node-sdk/compare/v0.9.0...v0.10.0)
+
+### Features
+
+* **api:** add Notify API methods ([0a49d8e](https://github.com/prelude-so/node-sdk/commit/0a49d8e1259e21d1610666e92e2ff8d24e86968a))
+
 ## 0.9.0 (2025-11-17)
 
 Full Changelog: [v0.8.0...v0.9.0](https://github.com/prelude-so/node-sdk/compare/v0.8.0...v0.9.0)
