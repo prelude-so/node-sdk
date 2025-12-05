@@ -8,6 +8,28 @@ Methods:
 
 - <code title="get /v2/lookup/{phone_number}">client.lookup.<a href="./src/resources/lookup.ts">lookup</a>(phoneNumber, { ...params }) -> LookupLookupResponse</code>
 
+# Notify
+
+Types:
+
+- <code><a href="./src/resources/notify.ts">NotifyGetSubscriptionConfigResponse</a></code>
+- <code><a href="./src/resources/notify.ts">NotifyGetSubscriptionPhoneNumberResponse</a></code>
+- <code><a href="./src/resources/notify.ts">NotifyListSubscriptionConfigsResponse</a></code>
+- <code><a href="./src/resources/notify.ts">NotifyListSubscriptionPhoneNumberEventsResponse</a></code>
+- <code><a href="./src/resources/notify.ts">NotifyListSubscriptionPhoneNumbersResponse</a></code>
+- <code><a href="./src/resources/notify.ts">NotifySendResponse</a></code>
+- <code><a href="./src/resources/notify.ts">NotifySendBatchResponse</a></code>
+
+Methods:
+
+- <code title="get /v2/notify/management/subscriptions/{config_id}">client.notify.<a href="./src/resources/notify.ts">getSubscriptionConfig</a>(configId) -> NotifyGetSubscriptionConfigResponse</code>
+- <code title="get /v2/notify/management/subscriptions/{config_id}/phone_numbers/{phone_number}">client.notify.<a href="./src/resources/notify.ts">getSubscriptionPhoneNumber</a>(configId, phoneNumber) -> NotifyGetSubscriptionPhoneNumberResponse</code>
+- <code title="get /v2/notify/management/subscriptions">client.notify.<a href="./src/resources/notify.ts">listSubscriptionConfigs</a>({ ...params }) -> NotifyListSubscriptionConfigsResponse</code>
+- <code title="get /v2/notify/management/subscriptions/{config_id}/phone_numbers/{phone_number}/events">client.notify.<a href="./src/resources/notify.ts">listSubscriptionPhoneNumberEvents</a>(configId, phoneNumber, { ...params }) -> NotifyListSubscriptionPhoneNumberEventsResponse</code>
+- <code title="get /v2/notify/management/subscriptions/{config_id}/phone_numbers">client.notify.<a href="./src/resources/notify.ts">listSubscriptionPhoneNumbers</a>(configId, { ...params }) -> NotifyListSubscriptionPhoneNumbersResponse</code>
+- <code title="post /v2/notify">client.notify.<a href="./src/resources/notify.ts">send</a>({ ...params }) -> NotifySendResponse</code>
+- <code title="post /v2/notify/batch">client.notify.<a href="./src/resources/notify.ts">sendBatch</a>({ ...params }) -> NotifySendBatchResponse</code>
+
 # Transactional
 
 Types:
