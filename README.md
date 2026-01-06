@@ -45,7 +45,9 @@ const client = new Prelude({
   apiToken: process.env['API_TOKEN'], // This is the default and can be omitted
 });
 
-const params: Prelude.VerificationCreateParams = { target: { type: 'phone_number', value: '+30123456789' } };
+const params: Prelude.VerificationCreateParams = {
+  target: { type: 'phone_number', value: '+30123456789' },
+};
 const verification: Prelude.VerificationCreateResponse = await client.verification.create(params);
 ```
 

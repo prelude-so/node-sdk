@@ -73,7 +73,12 @@ describe('resource watch', () => {
 
   test('sendFeedbacks: only required params', async () => {
     const responsePromise = client.watch.sendFeedbacks({
-      feedbacks: [{ target: { type: 'phone_number', value: '+30123456789' }, type: 'verification.started' }],
+      feedbacks: [
+        {
+          target: { type: 'phone_number', value: '+30123456789' },
+          type: 'verification.started',
+        },
+      ],
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
