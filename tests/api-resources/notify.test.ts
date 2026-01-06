@@ -130,7 +130,11 @@ describe('resource notify', () => {
     await expect(
       client.notify.listSubscriptionPhoneNumbers(
         'config_id',
-        { cursor: 'cursor', limit: 1, state: 'SUB' },
+        {
+          cursor: 'cursor',
+          limit: 1,
+          state: 'SUB',
+        },
         { path: '/_stainless_unknown_path' },
       ),
     ).rejects.toThrow(Prelude.NotFoundError);
