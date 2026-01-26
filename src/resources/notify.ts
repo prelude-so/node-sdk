@@ -485,6 +485,20 @@ export interface NotifySendResponse {
   correlation_id?: string;
 
   /**
+   * The SMS encoding type based on message content. GSM-7 supports standard
+   * characters (up to 160 chars per segment), while UCS-2 supports Unicode including
+   * emoji (up to 70 chars per segment). Only present for SMS messages.
+   */
+  encoding?: 'GSM-7' | 'UCS-2';
+
+  /**
+   * The estimated number of SMS segments for this message. This value is not
+   * contractual; the actual segment count will be determined after the SMS is sent
+   * by the provider. Only present for SMS messages.
+   */
+  estimated_segment_count?: number;
+
+  /**
    * The Sender ID used for this message.
    */
   from?: string;
@@ -596,6 +610,20 @@ export namespace NotifySendBatchResponse {
        * The message creation date in RFC3339 format.
        */
       created_at?: string;
+
+      /**
+       * The SMS encoding type based on message content. GSM-7 supports standard
+       * characters (up to 160 chars per segment), while UCS-2 supports Unicode including
+       * emoji (up to 70 chars per segment). Only present for SMS messages.
+       */
+      encoding?: 'GSM-7' | 'UCS-2';
+
+      /**
+       * The estimated number of SMS segments for this message. This value is not
+       * contractual; the actual segment count will be determined after the SMS is sent
+       * by the provider. Only present for SMS messages.
+       */
+      estimated_segment_count?: number;
 
       /**
        * The message expiration date in RFC3339 format.
