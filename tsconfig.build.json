@@ -6,7 +6,7 @@
     "rootDir": "./dist/src",
     "paths": {
       "@prelude.so/sdk/*": ["./dist/src/*"],
-      "@prelude.so/sdk": ["./dist/src/index.ts"]
+      "@prelude.so/sdk": ["./dist/src/index.ts"],
     },
     "noEmit": false,
     "declaration": true,
