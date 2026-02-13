@@ -718,6 +718,12 @@ export interface NotifySendParams {
   correlation_id?: string;
 
   /**
+   * A document to attach to the message. Only supported on WhatsApp templates that
+   * have a document header.
+   */
+  document?: NotifySendParams.Document;
+
+  /**
    * The message expiration date in RFC3339 format. The message will not be sent if
    * this time is reached.
    */
@@ -755,6 +761,24 @@ export interface NotifySendParams {
   variables?: { [key: string]: string };
 }
 
+export namespace NotifySendParams {
+  /**
+   * A document to attach to the message. Only supported on WhatsApp templates that
+   * have a document header.
+   */
+  export interface Document {
+    /**
+     * The filename to display for the document.
+     */
+    filename: string;
+
+    /**
+     * The URL of the document to attach. Must be a valid HTTP or HTTPS URL.
+     */
+    url: string;
+  }
+}
+
 export interface NotifySendBatchParams {
   /**
    * The template identifier configured by your Customer Success team.
@@ -775,6 +799,12 @@ export interface NotifySendBatchParams {
    * A user-defined identifier to correlate this request with your internal systems.
    */
   correlation_id?: string;
+
+  /**
+   * A document to attach to the message. Only supported on WhatsApp templates that
+   * have a document header.
+   */
+  document?: NotifySendBatchParams.Document;
 
   /**
    * The message expiration date in RFC3339 format. Messages will not be sent after
@@ -807,6 +837,24 @@ export interface NotifySendBatchParams {
    * The variables to be replaced in the template.
    */
   variables?: { [key: string]: string };
+}
+
+export namespace NotifySendBatchParams {
+  /**
+   * A document to attach to the message. Only supported on WhatsApp templates that
+   * have a document header.
+   */
+  export interface Document {
+    /**
+     * The filename to display for the document.
+     */
+    filename: string;
+
+    /**
+     * The URL of the document to attach. Must be a valid HTTP or HTTPS URL.
+     */
+    url: string;
+  }
 }
 
 export declare namespace Notify {

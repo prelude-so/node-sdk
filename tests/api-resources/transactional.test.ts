@@ -31,6 +31,7 @@ describe('resource transactional', () => {
       to: '+30123456789',
       callback_url: 'callback_url',
       correlation_id: 'correlation_id',
+      document: { filename: 'invoice.pdf', url: 'https://example.com/invoice.pdf' },
       expires_at: 'expires_at',
       from: 'from',
       locale: 'el-GR',
