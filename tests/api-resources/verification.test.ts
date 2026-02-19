@@ -9,7 +9,7 @@ const client = new Prelude({
 });
 
 describe('resource verification', () => {
-  // Prism doesn't support callbacks yet
+  // Mock server doesn't support callbacks yet
   test.skip('create: only required params', async () => {
     const responsePromise = client.verification.create({
       target: { type: 'phone_number', value: '+30123456789' },
@@ -23,7 +23,7 @@ describe('resource verification', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism doesn't support callbacks yet
+  // Mock server doesn't support callbacks yet
   test.skip('create: required and optional params', async () => {
     const response = await client.verification.create({
       target: { type: 'phone_number', value: '+30123456789' },
