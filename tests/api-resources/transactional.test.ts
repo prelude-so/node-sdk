@@ -9,7 +9,7 @@ const client = new Prelude({
 });
 
 describe('resource transactional', () => {
-  // Prism doesn't support callbacks yet
+  // Mock server doesn't support callbacks yet
   test.skip('send: only required params', async () => {
     const responsePromise = client.transactional.send({
       template_id: 'template_01hynf45qvevj844m9az2x2f3c',
@@ -24,7 +24,7 @@ describe('resource transactional', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism doesn't support callbacks yet
+  // Mock server doesn't support callbacks yet
   test.skip('send: required and optional params', async () => {
     const response = await client.transactional.send({
       template_id: 'template_01hynf45qvevj844m9az2x2f3c',
