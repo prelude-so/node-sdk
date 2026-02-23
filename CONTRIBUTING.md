@@ -60,7 +60,7 @@ $ yarn link @prelude.so/sdk
 # With pnpm
 $ pnpm link --global
 $ cd ../my-package
-$ pnpm link -—global @prelude.so/sdk
+$ pnpm link --global @prelude.so/sdk
 ```
 
 ## Running tests
