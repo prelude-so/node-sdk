@@ -3,6 +3,9 @@
 import { APIResource } from '../resource';
 import * as Core from '../core';
 
+/**
+ * Verify phone numbers.
+ */
 export class Verification extends APIResource {
   /**
    * Create a new verification for a specific phone number. If another non-expired

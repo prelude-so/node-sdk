@@ -3,6 +3,9 @@
 import { APIResource } from '../resource';
 import * as Core from '../core';
 
+/**
+ * Verify phone numbers.
+ */
 export class VerificationManagement extends APIResource {
   /**
    * Remove a phone number from the allow or block list.

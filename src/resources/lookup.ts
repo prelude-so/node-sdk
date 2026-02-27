@@ -4,6 +4,9 @@ import { APIResource } from '../resource';
 import { isRequestOptions } from '../core';
 import * as Core from '../core';
 
+/**
+ * Retrieve detailed information about a phone number including carrier data, line type, and portability status.
+ */
 export class Lookup extends APIResource {
   /**
    * Retrieve detailed information about a phone number including carrier data, line

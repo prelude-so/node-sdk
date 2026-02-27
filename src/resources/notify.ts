@@ -4,6 +4,9 @@ import { APIResource } from '../resource';
 import { isRequestOptions } from '../core';
 import * as Core from '../core';
 
+/**
+ * Send transactional and marketing messages with compliance enforcement.
+ */
 export class Notify extends APIResource {
   /**
    * Retrieve a specific subscription management configuration by its ID.

@@ -3,6 +3,9 @@
 import { APIResource } from '../resource';
 import * as Core from '../core';
 
+/**
+ * Send transactional messages (deprecated - use Notify API instead).
+ */
 export class Transactional extends APIResource {
   /**
    * Legacy route maintained for backward compatibility. Migrate to `/v2/notify`
