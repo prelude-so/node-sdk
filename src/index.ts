@@ -167,11 +167,29 @@ export class Prelude extends Core.APIClient {
     this.apiToken = apiToken;
   }
 
+  /**
+   * Retrieve detailed information about a phone number including carrier data, line type, and portability status.
+   */
   lookup: API.Lookup = new API.Lookup(this);
+  /**
+   * Send transactional and marketing messages with compliance enforcement.
+   */
   notify: API.Notify = new API.Notify(this);
+  /**
+   * Send transactional messages (deprecated - use Notify API instead).
+   */
   transactional: API.Transactional = new API.Transactional(this);
+  /**
+   * Verify phone numbers.
+   */
   verification: API.Verification = new API.Verification(this);
+  /**
+   * Verify phone numbers.
+   */
   verificationManagement: API.VerificationManagement = new API.VerificationManagement(this);
+  /**
+   * Evaluate email addresses and phone numbers for trustworthiness.
+   */
   watch: API.Watch = new API.Watch(this);
 
   /**

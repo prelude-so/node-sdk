@@ -3,6 +3,9 @@
 import { APIResource } from '../resource';
 import * as Core from '../core';
 
+/**
+ * Evaluate email addresses and phone numbers for trustworthiness.
+ */
 export class Watch extends APIResource {
   /**
    * Predict the outcome of a verification based on Prelude’s anti-fraud system.
