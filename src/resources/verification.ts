@@ -43,8 +43,15 @@ export interface VerificationCreateResponse {
 
   /**
    * The status of the verification.
+   *
+   * - `success` - A new verification window was created.
+   * - `retry` - A new attempt was created for an existing verification window.
+   * - `challenged` - The verification is suspicious and is restricted to non-SMS and
+   *   non-voice channels only. This mode must be enabled for your customer account
+   *   by Prelude support.
+   * - `blocked` - The verification was blocked.
    */
-  status: 'success' | 'retry' | 'blocked';
+  status: 'success' | 'retry' | 'challenged' | 'blocked';
 
   /**
    * The ordered sequence of channels to be used for verification
