@@ -140,8 +140,7 @@ describe('resource notify', () => {
     ).rejects.toThrow(Prelude.NotFoundError);
   });
 
-  // Mock server doesn't support callbacks yet
-  test.skip('send: only required params', async () => {
+  test('send: only required params', async () => {
     const responsePromise = client.notify.send({
       template_id: 'template_01k8ap1btqf5r9fq2c8ax5fhc9',
       to: '+33612345678',
@@ -155,8 +154,7 @@ describe('resource notify', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Mock server doesn't support callbacks yet
-  test.skip('send: required and optional params', async () => {
+  test('send: required and optional params', async () => {
     const response = await client.notify.send({
       template_id: 'template_01k8ap1btqf5r9fq2c8ax5fhc9',
       to: '+33612345678',
