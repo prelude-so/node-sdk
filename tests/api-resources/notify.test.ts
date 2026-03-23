@@ -130,14 +130,17 @@ describe('resource notify', () => {
     await expect(
       client.notify.listSubscriptionPhoneNumbers(
         'config_id',
-        { cursor: 'cursor', limit: 1, state: 'SUB' },
+        {
+          cursor: 'cursor',
+          limit: 1,
+          state: 'SUB',
+        },
         { path: '/_stainless_unknown_path' },
       ),
     ).rejects.toThrow(Prelude.NotFoundError);
   });
 
-  // Prism doesn't support callbacks yet
-  test.skip('send: only required params', async () => {
+  test('send: only required params', async () => {
     const responsePromise = client.notify.send({
       template_id: 'template_01k8ap1btqf5r9fq2c8ax5fhc9',
       to: '+33612345678',
@@ -151,13 +154,13 @@ describe('resource notify', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism doesn't support callbacks yet
-  test.skip('send: required and optional params', async () => {
+  test('send: required and optional params', async () => {
     const response = await client.notify.send({
       template_id: 'template_01k8ap1btqf5r9fq2c8ax5fhc9',
       to: '+33612345678',
       callback_url: 'https://your-app.com/webhooks/notify',
       correlation_id: 'order-12345',
+      document: { filename: 'invoice.pdf', url: 'https://example.com/invoice.pdf' },
       expires_at: '2025-12-25T18:00:00Z',
       from: 'from',
       locale: 'el-GR',
@@ -187,6 +190,7 @@ describe('resource notify', () => {
       to: ['+33612345678', '+15551234567'],
       callback_url: 'https://your-app.com/webhooks/notify',
       correlation_id: 'campaign-12345',
+      document: { filename: 'invoice.pdf', url: 'https://example.com/invoice.pdf' },
       expires_at: '2025-12-25T18:00:00Z',
       from: 'from',
       locale: 'el-GR',

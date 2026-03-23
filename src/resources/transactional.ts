@@ -3,6 +3,9 @@
 import { APIResource } from '../resource';
 import * as Core from '../core';
 
+/**
+ * Send transactional messages (deprecated - use Notify API instead).
+ */
 export class Transactional extends APIResource {
   /**
    * Legacy route maintained for backward compatibility. Migrate to `/v2/notify`
@@ -91,6 +94,12 @@ export interface TransactionalSendParams {
   correlation_id?: string;
 
   /**
+   * A document to attach to the message. Only supported on WhatsApp templates that
+   * have a document header.
+   */
+  document?: TransactionalSendParams.Document;
+
+  /**
    * The message expiration date.
    */
   expires_at?: string;
@@ -125,6 +134,24 @@ export interface TransactionalSendParams {
    * The variables to be replaced in the template.
    */
   variables?: { [key: string]: string };
+}
+
+export namespace TransactionalSendParams {
+  /**
+   * A document to attach to the message. Only supported on WhatsApp templates that
+   * have a document header.
+   */
+  export interface Document {
+    /**
+     * The filename to display for the document.
+     */
+    filename: string;
+
+    /**
+     * The URL of the document to attach. Must be a valid HTTP or HTTPS URL.
+     */
+    url: string;
+  }
 }
 
 export declare namespace Transactional {

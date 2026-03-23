@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { type Agent } from './_shims/index';
-import * as qs from './internal/qs';
+import { stringifyQuery } from './internal/utils/query';
 import * as Core from './core';
 import * as Errors from './error';
 import * as Uploads from './uploads';
@@ -167,11 +167,29 @@ export class Prelude extends Core.APIClient {
     this.apiToken = apiToken;
   }
 
+  /**
+   * Retrieve detailed information about a phone number including carrier data, line type, and portability status.
+   */
   lookup: API.Lookup = new API.Lookup(this);
+  /**
+   * Send transactional and marketing messages with compliance enforcement.
+   */
   notify: API.Notify = new API.Notify(this);
+  /**
+   * Send transactional messages (deprecated - use Notify API instead).
+   */
   transactional: API.Transactional = new API.Transactional(this);
+  /**
+   * Verify phone numbers.
+   */
   verification: API.Verification = new API.Verification(this);
+  /**
+   * Verify phone numbers.
+   */
   verificationManagement: API.VerificationManagement = new API.VerificationManagement(this);
+  /**
+   * Evaluate email addresses and phone numbers for trustworthiness.
+   */
   watch: API.Watch = new API.Watch(this);
 
   /**
@@ -196,8 +214,8 @@ export class Prelude extends Core.APIClient {
     return { Authorization: `Bearer ${this.apiToken}` };
   }
 
-  protected override stringifyQuery(query: Record<string, unknown>): string {
-    return qs.stringify(query, { arrayFormat: 'comma' });
+  protected override stringifyQuery(query: object | Record<string, unknown>): string {
+    return stringifyQuery(query);
   }
 
   static Prelude = this;

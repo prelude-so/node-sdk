@@ -3,6 +3,9 @@
 import { APIResource } from '../resource';
 import * as Core from '../core';
 
+/**
+ * Verify phone numbers.
+ */
 export class Verification extends APIResource {
   /**
    * Create a new verification for a specific phone number. If another non-expired
@@ -40,8 +43,15 @@ export interface VerificationCreateResponse {
 
   /**
    * The status of the verification.
+   *
+   * - `success` - A new verification window was created.
+   * - `retry` - A new attempt was created for an existing verification window.
+   * - `challenged` - The verification is suspicious and is restricted to non-SMS and
+   *   non-voice channels only. This mode must be enabled for your customer account
+   *   by Prelude support.
+   * - `blocked` - The verification was blocked.
    */
-  status: 'success' | 'retry' | 'blocked';
+  status: 'success' | 'retry' | 'challenged' | 'blocked';
 
   /**
    * The ordered sequence of channels to be used for verification
@@ -206,8 +216,8 @@ export namespace VerificationCreateParams {
    */
   export interface Options {
     /**
-     * This allows you to automatically retrieve and fill the OTP code on mobile apps.
-     * Currently only Android devices are supported.
+     * This allows automatic OTP retrieval on mobile apps and web browsers. Supported
+     * platforms are Android (SMS Retriever API) and Web (WebOTP API).
      */
     app_realm?: Options.AppRealm;
 
@@ -230,11 +240,6 @@ export namespace VerificationCreateParams {
      * [Custom Code](/verify/v2/documentation/custom-codes).
      */
     custom_code?: string;
-
-    /**
-     * The integration that triggered the verification.
-     */
-    integration?: 'auth0' | 'supabase';
 
     /**
      * A BCP-47 formatted locale string with the language the text message will be sent
@@ -280,20 +285,23 @@ export namespace VerificationCreateParams {
 
   export namespace Options {
     /**
-     * This allows you to automatically retrieve and fill the OTP code on mobile apps.
-     * Currently only Android devices are supported.
+     * This allows automatic OTP retrieval on mobile apps and web browsers. Supported
+     * platforms are Android (SMS Retriever API) and Web (WebOTP API).
      */
     export interface AppRealm {
       /**
-       * The platform the SMS will be sent to. We are currently only supporting
-       * "android".
+       * The platform for automatic OTP retrieval. Use "android" for the SMS Retriever
+       * API or "web" for the WebOTP API.
        */
-      platform: 'android';
+      platform: 'android' | 'web';
 
       /**
-       * The Android SMS Retriever API hash code that identifies your app. For more
-       * information, see
-       * [Google documentation](https://developers.google.com/identity/sms-retriever/verify#computing_your_apps_hash_string).
+       * The value depends on the platform:
+       *
+       * - For Android: The SMS Retriever API hash code (11 characters). See
+       *   [Google documentation](https://developers.google.com/identity/sms-retriever/verify#computing_your_apps_hash_string).
+       * - For Web: The origin domain (e.g., "example.com" or "www.example.com"). See
+       *   [WebOTP API documentation](https://developer.mozilla.org/en-US/docs/Web/API/WebOTP_API).
        */
       value: string;
     }
@@ -310,8 +318,9 @@ export namespace VerificationCreateParams {
     app_version?: string;
 
     /**
-     * The unique identifier for the user's device. For Android, this corresponds to
-     * the `ANDROID_ID` and for iOS, this corresponds to the `identifierForVendor`.
+     * A unique ID for the user's device. You should ensure that each user device has a
+     * unique `device_id` value. Ideally, for Android, this corresponds to the
+     * `ANDROID_ID` and for iOS, this corresponds to the `identifierForVendor`.
      */
     device_id?: string;
 
@@ -326,21 +335,24 @@ export namespace VerificationCreateParams {
     device_platform?: 'android' | 'ios' | 'ipados' | 'tvos' | 'web';
 
     /**
-     * The IP address of the user's device.
+     * The public IP v4 or v6 address of the end-user's device. You should collect this
+     * from your backend. If your backend is behind a proxy, use the `X-Forwarded-For`,
+     * `Forwarded`, `True-Client-IP`, `CF-Connecting-IP` or an equivalent header to get
+     * the actual public IP of the end-user's device.
      */
     ip?: string;
 
     /**
-     * This signal should provide a higher level of trust, indicating that the user is
-     * genuine. Contact us to discuss your use case. For more details, refer to
+     * This signal should indicate a higher level of trust, explicitly stating that the
+     * user is genuine. Contact us to discuss your use case. For more details, refer to
      * [Signals](/verify/v2/documentation/prevent-fraud#signals).
      */
     is_trusted_user?: boolean;
 
     /**
-     * The JA4 fingerprint observed for the connection. Prelude will infer it
-     * automatically when requests go through our client SDK (which uses Prelude's
-     * edge), but you can also provide it explicitly if you terminate TLS yourself.
+     * The JA4 fingerprint observed for the end-user's connection. Prelude will infer
+     * it automatically when you use our Frontend SDKs (which use Prelude's edge
+     * network), but you can also forward the value if you terminate TLS yourself.
      */
     ja4_fingerprint?: string;
 

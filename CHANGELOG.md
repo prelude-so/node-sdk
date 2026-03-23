@@ -1,5 +1,56 @@
 # Changelog
 
+## 0.11.0 (2026-03-23)
+
+Full Changelog: [v0.10.0...v0.11.0](https://github.com/prelude-so/node-sdk/compare/v0.10.0...v0.11.0)
+
+### Features
+
+* **api:** api update ([36c782f](https://github.com/prelude-so/node-sdk/commit/36c782f237cb45d1a1af1a0967dfd1fbf4bc6d18))
+* **api:** api update ([baa8512](https://github.com/prelude-so/node-sdk/commit/baa8512167da1ff802c606fff93cf5545a38a7b9))
+* **api:** api update ([0e93d7c](https://github.com/prelude-so/node-sdk/commit/0e93d7c08e112fb0a85e78c12347d98e0a0f28ff))
+* **api:** api update ([98db38d](https://github.com/prelude-so/node-sdk/commit/98db38dc8e6b008edd8bf433fa85bf254b72faae))
+* **api:** api update ([84ffc66](https://github.com/prelude-so/node-sdk/commit/84ffc66bdd9cd735e73bcc747d1663fb60210f94))
+* **api:** api update ([a4366a6](https://github.com/prelude-so/node-sdk/commit/a4366a6c0048b87482df46818880bde2a062d57d))
+* **api:** api update ([857aff6](https://github.com/prelude-so/node-sdk/commit/857aff64ecd9d97f000cc6e07b343047e5a4b10b))
+* **api:** api update ([df599e6](https://github.com/prelude-so/node-sdk/commit/df599e6b242058c103c1175ac319bbdb422b5c3d))
+
+
+### Bug Fixes
+
+* **client:** preserve URL params already embedded in path ([3593a41](https://github.com/prelude-so/node-sdk/commit/3593a4153f5e542c86153aa9f1711bd17c11ad60))
+* **docs/contributing:** correct pnpm link command ([3222537](https://github.com/prelude-so/node-sdk/commit/32225377ae57306e214c142a02e13dd76b4c0a8b))
+* fix request delays for retrying to be more respectful of high requested delays ([d3204c6](https://github.com/prelude-so/node-sdk/commit/d3204c6236ed1084e4f4bf0f9479e0b80891a082))
+* **mcp:** correct code tool API endpoint ([776b1cf](https://github.com/prelude-so/node-sdk/commit/776b1cfa3f5d7cac98b12fab59f819394df470af))
+* **mcp:** return correct lines on typescript errors ([ac15657](https://github.com/prelude-so/node-sdk/commit/ac15657f5f1cd5e7409c54b63490c929d1a41767))
+
+
+### Chores
+
+* break long lines in snippets into multiline ([9c84150](https://github.com/prelude-so/node-sdk/commit/9c84150a85a6593a751a266eddd6ecb5bddc8e10))
+* **ci:** skip uploading artifacts on stainless-internal branches ([7dd2359](https://github.com/prelude-so/node-sdk/commit/7dd2359653d49cc646bd579bca8cc28c42f12ed5))
+* **ci:** upgrade `actions/github-script` ([bee598d](https://github.com/prelude-so/node-sdk/commit/bee598def7ae58112db2abd7c61c40490f31a2c8))
+* **client:** do not parse responses with empty content-length ([407e9f7](https://github.com/prelude-so/node-sdk/commit/407e9f740c1838b969f7062e4ec5ff652672e4df))
+* **docs:** add missing descriptions ([ebe0487](https://github.com/prelude-so/node-sdk/commit/ebe048744dd6a8d1ea16a6bf405c764355d26ac6))
+* **internal:** codegen related update ([4db8948](https://github.com/prelude-so/node-sdk/commit/4db89481b20d7f6cd47c82824a6d9878196fec92))
+* **internal:** codegen related update ([6b189a6](https://github.com/prelude-so/node-sdk/commit/6b189a60522491d0f5b1bbb6acf7049b3fb8f780))
+* **internal:** codegen related update ([9cad431](https://github.com/prelude-so/node-sdk/commit/9cad431abd64c39ebf404b3a0add58f19270982b))
+* **internal:** codegen related update ([e0792e1](https://github.com/prelude-so/node-sdk/commit/e0792e1540561751ed8155243ef09e060c320def))
+* **internal:** move stringifyQuery implementation to internal function ([c37f0c6](https://github.com/prelude-so/node-sdk/commit/c37f0c624e2d0ef5c88341f737178598e64fc492))
+* **internal:** tweak CI branches ([f2a1c53](https://github.com/prelude-so/node-sdk/commit/f2a1c53371fcde52437a3841273eaa935d89fb15))
+* **internal:** update `actions/checkout` version ([b9a5f57](https://github.com/prelude-so/node-sdk/commit/b9a5f57ddfe78ddd5ca445d87e14d8cd6b2f1e14))
+* **internal:** update gitignore ([37eb042](https://github.com/prelude-so/node-sdk/commit/37eb0423623894e3e35f1b1b925d79e4e3b826ae))
+* **internal:** upgrade babel, qs, js-yaml ([2203949](https://github.com/prelude-so/node-sdk/commit/22039491f3626d304801203dd13cdf0e7ab9a0a4))
+* **test:** do not count install time for mock server timeout ([198e44e](https://github.com/prelude-so/node-sdk/commit/198e44e6945e7dd02202fa56989674963c085230))
+* **tests:** bump steady to v0.19.4 ([2f272fa](https://github.com/prelude-so/node-sdk/commit/2f272fa8dcb0e63d416caf65dc6d70aecd60280c))
+* **tests:** bump steady to v0.19.5 ([9600cf7](https://github.com/prelude-so/node-sdk/commit/9600cf76bc3e5c32b9bcf61faff1956522bf2ec0))
+* update mock server docs ([4356adc](https://github.com/prelude-so/node-sdk/commit/4356adc4214599d44ec6c9d271a7f5f37e9c4f16))
+
+
+### Refactors
+
+* **tests:** switch from prism to steady ([4e9d7dd](https://github.com/prelude-so/node-sdk/commit/4e9d7dd66c85d76f8f29157ce39e54533690f658))
+
 ## 0.10.0 (2025-12-05)
 
 Full Changelog: [v0.9.0...v0.10.0](https://github.com/prelude-so/node-sdk/compare/v0.9.0...v0.10.0)

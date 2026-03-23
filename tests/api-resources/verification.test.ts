@@ -9,8 +9,7 @@ const client = new Prelude({
 });
 
 describe('resource verification', () => {
-  // Prism doesn't support callbacks yet
-  test.skip('create: only required params', async () => {
+  test('create: only required params', async () => {
     const responsePromise = client.verification.create({
       target: { type: 'phone_number', value: '+30123456789' },
     });
@@ -23,8 +22,7 @@ describe('resource verification', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism doesn't support callbacks yet
-  test.skip('create: required and optional params', async () => {
+  test('create: required and optional params', async () => {
     const response = await client.verification.create({
       target: { type: 'phone_number', value: '+30123456789' },
       dispatch_id: '123e4567-e89b-12d3-a456-426614174000',
@@ -34,7 +32,6 @@ describe('resource verification', () => {
         callback_url: 'callback_url',
         code_size: 5,
         custom_code: '123456',
-        integration: 'auth0',
         locale: 'el-GR',
         method: 'auto',
         preferred_channel: 'sms',
@@ -47,7 +44,7 @@ describe('resource verification', () => {
         device_id: '8F0B8FDD-C2CB-4387-B20A-56E9B2E5A0D2',
         device_model: 'iPhone17,2',
         device_platform: 'ios',
-        ip: '192.0.2.1',
+        ip: '203.0.113.123',
         is_trusted_user: false,
         ja4_fingerprint: 't13d1516h2_8daaf6152771_e5627efa2ab1',
         os_version: '18.0.1',

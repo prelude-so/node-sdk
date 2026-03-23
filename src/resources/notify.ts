@@ -4,6 +4,9 @@ import { APIResource } from '../resource';
 import { isRequestOptions } from '../core';
 import * as Core from '../core';
 
+/**
+ * Send transactional and marketing messages with compliance enforcement.
+ */
 export class Notify extends APIResource {
   /**
    * Retrieve a specific subscription management configuration by its ID.
@@ -485,6 +488,20 @@ export interface NotifySendResponse {
   correlation_id?: string;
 
   /**
+   * The SMS encoding type based on message content. GSM-7 supports standard
+   * characters (up to 160 chars per segment), while UCS-2 supports Unicode including
+   * emoji (up to 70 chars per segment). Only present for SMS messages.
+   */
+  encoding?: 'GSM-7' | 'UCS-2';
+
+  /**
+   * The estimated number of SMS segments for this message. This value is not
+   * contractual; the actual segment count will be determined after the SMS is sent
+   * by the provider. Only present for SMS messages.
+   */
+  estimated_segment_count?: number;
+
+  /**
    * The Sender ID used for this message.
    */
   from?: string;
@@ -598,6 +615,20 @@ export namespace NotifySendBatchResponse {
       created_at?: string;
 
       /**
+       * The SMS encoding type based on message content. GSM-7 supports standard
+       * characters (up to 160 chars per segment), while UCS-2 supports Unicode including
+       * emoji (up to 70 chars per segment). Only present for SMS messages.
+       */
+      encoding?: 'GSM-7' | 'UCS-2';
+
+      /**
+       * The estimated number of SMS segments for this message. This value is not
+       * contractual; the actual segment count will be determined after the SMS is sent
+       * by the provider. Only present for SMS messages.
+       */
+      estimated_segment_count?: number;
+
+      /**
        * The message expiration date in RFC3339 format.
        */
       expires_at?: string;
@@ -690,6 +721,12 @@ export interface NotifySendParams {
   correlation_id?: string;
 
   /**
+   * A document to attach to the message. Only supported on WhatsApp templates that
+   * have a document header.
+   */
+  document?: NotifySendParams.Document;
+
+  /**
    * The message expiration date in RFC3339 format. The message will not be sent if
    * this time is reached.
    */
@@ -727,6 +764,24 @@ export interface NotifySendParams {
   variables?: { [key: string]: string };
 }
 
+export namespace NotifySendParams {
+  /**
+   * A document to attach to the message. Only supported on WhatsApp templates that
+   * have a document header.
+   */
+  export interface Document {
+    /**
+     * The filename to display for the document.
+     */
+    filename: string;
+
+    /**
+     * The URL of the document to attach. Must be a valid HTTP or HTTPS URL.
+     */
+    url: string;
+  }
+}
+
 export interface NotifySendBatchParams {
   /**
    * The template identifier configured by your Customer Success team.
@@ -747,6 +802,12 @@ export interface NotifySendBatchParams {
    * A user-defined identifier to correlate this request with your internal systems.
    */
   correlation_id?: string;
+
+  /**
+   * A document to attach to the message. Only supported on WhatsApp templates that
+   * have a document header.
+   */
+  document?: NotifySendBatchParams.Document;
 
   /**
    * The message expiration date in RFC3339 format. Messages will not be sent after
@@ -779,6 +840,24 @@ export interface NotifySendBatchParams {
    * The variables to be replaced in the template.
    */
   variables?: { [key: string]: string };
+}
+
+export namespace NotifySendBatchParams {
+  /**
+   * A document to attach to the message. Only supported on WhatsApp templates that
+   * have a document header.
+   */
+  export interface Document {
+    /**
+     * The filename to display for the document.
+     */
+    filename: string;
+
+    /**
+     * The URL of the document to attach. Must be a valid HTTP or HTTPS URL.
+     */
+    url: string;
+  }
 }
 
 export declare namespace Notify {

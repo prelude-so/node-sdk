@@ -3,6 +3,9 @@
 import { APIResource } from '../resource';
 import * as Core from '../core';
 
+/**
+ * Evaluate email addresses and phone numbers for trustworthiness.
+ */
 export class Watch extends APIResource {
   /**
    * Predict the outcome of a verification based on Prelude’s anti-fraud system.
@@ -50,6 +53,45 @@ export interface WatchPredictResponse {
    * diagnose your issues.
    */
   request_id: string;
+
+  /**
+   * The risk factors that contributed to the suspicious prediction. Only present
+   * when prediction is "suspicious" and the anti-fraud system detected specific risk
+   * signals.
+   *
+   * - `behavioral_pattern` - The phone number past behavior during verification
+   *   flows exhibits suspicious patterns.
+   * - `device_attribute` - The device exhibits characteristics associated with
+   *   suspicious activity patterns.
+   * - `fraud_database` - The phone number has been flagged as suspicious in one or
+   *   more of our fraud databases.
+   * - `location_discrepancy` - The phone number prefix and IP address discrepancy
+   *   indicates potential fraud.
+   * - `network_fingerprint` - The network connection exhibits characteristics
+   *   associated with suspicious activity patterns.
+   * - `poor_conversion_history` - The phone number has a history of poorly
+   *   converting to a verified phone number.
+   * - `prefix_concentration` - The phone number is part of a range known to be
+   *   associated with suspicious activity patterns.
+   * - `suspected_request_tampering` - The SDK signature is invalid and the request
+   *   is considered to be tampered with.
+   * - `suspicious_ip_address` - The IP address is deemed to be associated with
+   *   suspicious activity patterns.
+   * - `temporary_phone_number` - The phone number is known to be a temporary or
+   *   disposable number.
+   */
+  risk_factors?: Array<
+    | 'behavioral_pattern'
+    | 'device_attribute'
+    | 'fraud_database'
+    | 'location_discrepancy'
+    | 'network_fingerprint'
+    | 'poor_conversion_history'
+    | 'prefix_concentration'
+    | 'suspected_request_tampering'
+    | 'suspicious_ip_address'
+    | 'temporary_phone_number'
+  >;
 }
 
 export interface WatchSendEventsResponse {
@@ -139,8 +181,9 @@ export namespace WatchPredictParams {
     app_version?: string;
 
     /**
-     * The unique identifier for the user's device. For Android, this corresponds to
-     * the `ANDROID_ID` and for iOS, this corresponds to the `identifierForVendor`.
+     * A unique ID for the user's device. You should ensure that each user device has a
+     * unique `device_id` value. Ideally, for Android, this corresponds to the
+     * `ANDROID_ID` and for iOS, this corresponds to the `identifierForVendor`.
      */
     device_id?: string;
 
@@ -155,21 +198,24 @@ export namespace WatchPredictParams {
     device_platform?: 'android' | 'ios' | 'ipados' | 'tvos' | 'web';
 
     /**
-     * The IP address of the user's device.
+     * The public IP v4 or v6 address of the end-user's device. You should collect this
+     * from your backend. If your backend is behind a proxy, use the `X-Forwarded-For`,
+     * `Forwarded`, `True-Client-IP`, `CF-Connecting-IP` or an equivalent header to get
+     * the actual public IP of the end-user's device.
      */
     ip?: string;
 
     /**
-     * This signal should provide a higher level of trust, indicating that the user is
-     * genuine. Contact us to discuss your use case. For more details, refer to
+     * This signal should indicate a higher level of trust, explicitly stating that the
+     * user is genuine. Contact us to discuss your use case. For more details, refer to
      * [Signals](/verify/v2/documentation/prevent-fraud#signals).
      */
     is_trusted_user?: boolean;
 
     /**
-     * The JA4 fingerprint observed for the connection. Prelude will infer it
-     * automatically when requests go through our client SDK (which uses Prelude's
-     * edge), but you can also provide it explicitly if you terminate TLS yourself.
+     * The JA4 fingerprint observed for the end-user's connection. Prelude will infer
+     * it automatically when you use our Frontend SDKs (which use Prelude's edge
+     * network), but you can also forward the value if you terminate TLS yourself.
      */
     ja4_fingerprint?: string;
 
@@ -250,20 +296,9 @@ export namespace WatchSendFeedbacksParams {
     type: 'verification.started' | 'verification.completed';
 
     /**
-     * The identifier of the dispatch that came from the front-end SDK.
-     */
-    dispatch_id?: string;
-
-    /**
      * The metadata for this feedback.
      */
     metadata?: Feedback.Metadata;
-
-    /**
-     * The signals used for anti-fraud. For more details, refer to
-     * [Signals](/verify/v2/documentation/prevent-fraud#signals).
-     */
-    signals?: Feedback.Signals;
   }
 
   export namespace Feedback {
@@ -291,64 +326,6 @@ export namespace WatchSendFeedbacksParams {
        * response and any webhook events that refer to this feedback.
        */
       correlation_id?: string;
-    }
-
-    /**
-     * The signals used for anti-fraud. For more details, refer to
-     * [Signals](/verify/v2/documentation/prevent-fraud#signals).
-     */
-    export interface Signals {
-      /**
-       * The version of your application.
-       */
-      app_version?: string;
-
-      /**
-       * The unique identifier for the user's device. For Android, this corresponds to
-       * the `ANDROID_ID` and for iOS, this corresponds to the `identifierForVendor`.
-       */
-      device_id?: string;
-
-      /**
-       * The model of the user's device.
-       */
-      device_model?: string;
-
-      /**
-       * The type of the user's device.
-       */
-      device_platform?: 'android' | 'ios' | 'ipados' | 'tvos' | 'web';
-
-      /**
-       * The IP address of the user's device.
-       */
-      ip?: string;
-
-      /**
-       * This signal should provide a higher level of trust, indicating that the user is
-       * genuine. Contact us to discuss your use case. For more details, refer to
-       * [Signals](/verify/v2/documentation/prevent-fraud#signals).
-       */
-      is_trusted_user?: boolean;
-
-      /**
-       * The JA4 fingerprint observed for the connection. Prelude will infer it
-       * automatically when requests go through our client SDK (which uses Prelude's
-       * edge), but you can also provide it explicitly if you terminate TLS yourself.
-       */
-      ja4_fingerprint?: string;
-
-      /**
-       * The version of the user's device operating system.
-       */
-      os_version?: string;
-
-      /**
-       * The user agent of the user's device. If the individual fields (os_version,
-       * device_platform, device_model) are provided, we will prioritize those values
-       * instead of parsing them from the user agent string.
-       */
-      user_agent?: string;
     }
   }
 }

@@ -9,8 +9,7 @@ const client = new Prelude({
 });
 
 describe('resource transactional', () => {
-  // Prism doesn't support callbacks yet
-  test.skip('send: only required params', async () => {
+  test('send: only required params', async () => {
     const responsePromise = client.transactional.send({
       template_id: 'template_01hynf45qvevj844m9az2x2f3c',
       to: '+30123456789',
@@ -24,13 +23,13 @@ describe('resource transactional', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism doesn't support callbacks yet
-  test.skip('send: required and optional params', async () => {
+  test('send: required and optional params', async () => {
     const response = await client.transactional.send({
       template_id: 'template_01hynf45qvevj844m9az2x2f3c',
       to: '+30123456789',
       callback_url: 'callback_url',
       correlation_id: 'correlation_id',
+      document: { filename: 'invoice.pdf', url: 'https://example.com/invoice.pdf' },
       expires_at: 'expires_at',
       from: 'from',
       locale: 'el-GR',
