@@ -119,8 +119,8 @@ export class Notify extends APIResource {
   }
 
   /**
-   * Send transactional and marketing messages to your users via SMS and WhatsApp
-   * with automatic compliance enforcement.
+   * Send transactional and marketing messages to your users via SMS, RCS and
+   * WhatsApp with automatic compliance enforcement.
    */
   send(body: NotifySendParams, options?: Core.RequestOptions): Core.APIPromise<NotifySendResponse> {
     return this._client.post('/v2/notify', { body, ...options });
@@ -749,7 +749,7 @@ export interface NotifySendParams {
    * The preferred channel to be used in priority for message delivery. If the
    * channel is unavailable, the system will fallback to other available channels.
    */
-  preferred_channel?: 'sms' | 'whatsapp';
+  preferred_channel?: 'sms' | 'rcs' | 'whatsapp';
 
   /**
    * Schedule the message for future delivery in RFC3339 format. Marketing messages
@@ -828,7 +828,7 @@ export interface NotifySendBatchParams {
   /**
    * Preferred channel for delivery. If unavailable, automatic fallback applies.
    */
-  preferred_channel?: 'sms' | 'whatsapp';
+  preferred_channel?: 'sms' | 'rcs' | 'whatsapp';
 
   /**
    * Schedule delivery in RFC3339 format. Marketing sends may be adjusted to comply
