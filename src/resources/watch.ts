@@ -9,6 +9,13 @@ import * as Core from '../core';
 export class Watch extends APIResource {
   /**
    * Predict the outcome of a verification based on Prelude’s anti-fraud system.
+   *
+   * @example
+   * ```ts
+   * const response = await client.watch.predict({
+   *   target: { type: 'phone_number', value: '+30123456789' },
+   * });
+   * ```
    */
   predict(body: WatchPredictParams, options?: Core.RequestOptions): Core.APIPromise<WatchPredictResponse> {
     return this._client.post('/v2/watch/predict', { body, ...options });
@@ -17,6 +24,22 @@ export class Watch extends APIResource {
   /**
    * Send real-time event data from end-user interactions within your application.
    * Events will be analyzed for proactive fraud prevention and risk scoring.
+   *
+   * @example
+   * ```ts
+   * const response = await client.watch.sendEvents({
+   *   events: [
+   *     {
+   *       confidence: 'maximum',
+   *       label: 'onboarding.start',
+   *       target: {
+   *         type: 'phone_number',
+   *         value: '+30123456789',
+   *       },
+   *     },
+   *   ],
+   * });
+   * ```
    */
   sendEvents(
     body: WatchSendEventsParams,
@@ -28,6 +51,21 @@ export class Watch extends APIResource {
   /**
    * Send feedback regarding your end-users verification funnel. Events will be
    * analyzed for proactive fraud prevention and risk scoring.
+   *
+   * @example
+   * ```ts
+   * const response = await client.watch.sendFeedbacks({
+   *   feedbacks: [
+   *     {
+   *       target: {
+   *         type: 'phone_number',
+   *         value: '+30123456789',
+   *       },
+   *       type: 'verification.started',
+   *     },
+   *   ],
+   * });
+   * ```
    */
   sendFeedbacks(
     body: WatchSendFeedbacksParams,

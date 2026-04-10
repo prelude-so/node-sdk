@@ -11,6 +11,13 @@ export class Verification extends APIResource {
    * Create a new verification for a specific phone number. If another non-expired
    * verification exists (the request is performed within the verification window),
    * this endpoint will perform a retry instead.
+   *
+   * @example
+   * ```ts
+   * const verification = await client.verification.create({
+   *   target: { type: 'phone_number', value: '+30123456789' },
+   * });
+   * ```
    */
   create(
     body: VerificationCreateParams,
@@ -21,6 +28,14 @@ export class Verification extends APIResource {
 
   /**
    * Check the validity of a verification code.
+   *
+   * @example
+   * ```ts
+   * const response = await client.verification.check({
+   *   code: '12345',
+   *   target: { type: 'phone_number', value: '+30123456789' },
+   * });
+   * ```
    */
   check(
     body: VerificationCheckParams,
