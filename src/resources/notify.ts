@@ -10,6 +10,13 @@ import * as Core from '../core';
 export class Notify extends APIResource {
   /**
    * Retrieve a specific subscription management configuration by its ID.
+   *
+   * @example
+   * ```ts
+   * const response = await client.notify.getSubscriptionConfig(
+   *   'config_id',
+   * );
+   * ```
    */
   getSubscriptionConfig(
     configId: string,
@@ -21,6 +28,15 @@ export class Notify extends APIResource {
   /**
    * Retrieve the current subscription status for a specific phone number within a
    * subscription configuration.
+   *
+   * @example
+   * ```ts
+   * const response =
+   *   await client.notify.getSubscriptionPhoneNumber(
+   *     'config_id',
+   *     'phone_number',
+   *   );
+   * ```
    */
   getSubscriptionPhoneNumber(
     configId: string,
@@ -39,6 +55,12 @@ export class Notify extends APIResource {
    *
    * Each configuration represents a subscription management setup with phone numbers
    * for receiving opt-out/opt-in requests and a callback URL for webhook events.
+   *
+   * @example
+   * ```ts
+   * const response =
+   *   await client.notify.listSubscriptionConfigs();
+   * ```
    */
   listSubscriptionConfigs(
     query?: NotifyListSubscriptionConfigsParams,
@@ -62,6 +84,15 @@ export class Notify extends APIResource {
    * phone number within a subscription configuration.
    *
    * Events are ordered by timestamp in descending order (most recent first).
+   *
+   * @example
+   * ```ts
+   * const response =
+   *   await client.notify.listSubscriptionPhoneNumberEvents(
+   *     'config_id',
+   *     'phone_number',
+   *   );
+   * ```
    */
   listSubscriptionPhoneNumberEvents(
     configId: string,
@@ -94,6 +125,14 @@ export class Notify extends APIResource {
    * specific subscription configuration.
    *
    * You can optionally filter by subscription state (SUB or UNSUB).
+   *
+   * @example
+   * ```ts
+   * const response =
+   *   await client.notify.listSubscriptionPhoneNumbers(
+   *     'config_id',
+   *   );
+   * ```
    */
   listSubscriptionPhoneNumbers(
     configId: string,
@@ -121,6 +160,14 @@ export class Notify extends APIResource {
   /**
    * Send transactional and marketing messages to your users via SMS, RCS and
    * WhatsApp with automatic compliance enforcement.
+   *
+   * @example
+   * ```ts
+   * const response = await client.notify.send({
+   *   template_id: 'template_01k8ap1btqf5r9fq2c8ax5fhc9',
+   *   to: '+33612345678',
+   * });
+   * ```
    */
   send(body: NotifySendParams, options?: Core.RequestOptions): Core.APIPromise<NotifySendResponse> {
     return this._client.post('/v2/notify', { body, ...options });
@@ -128,6 +175,14 @@ export class Notify extends APIResource {
 
   /**
    * Send the same message to multiple recipients in a single request.
+   *
+   * @example
+   * ```ts
+   * const response = await client.notify.sendBatch({
+   *   template_id: 'template_01k8ap1btqf5r9fq2c8ax5fhc9',
+   *   to: ['+33612345678', '+15551234567'],
+   * });
+   * ```
    */
   sendBatch(
     body: NotifySendBatchParams,

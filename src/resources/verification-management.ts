@@ -15,6 +15,15 @@ export class VerificationManagement extends APIResource {
    * operation will succeed without making any changes.
    *
    * In order to get access to this endpoint, contact our support team.
+   *
+   * @example
+   * ```ts
+   * const response =
+   *   await client.verificationManagement.deletePhoneNumber(
+   *     'allow',
+   *     { phone_number: '+30123456789' },
+   *   );
+   * ```
    */
   deletePhoneNumber(
     action: 'allow' | 'block',
@@ -28,6 +37,14 @@ export class VerificationManagement extends APIResource {
    * Retrieve the list of phone numbers in the allow or block list.
    *
    * In order to get access to this endpoint, contact our support team.
+   *
+   * @example
+   * ```ts
+   * const response =
+   *   await client.verificationManagement.listPhoneNumbers(
+   *     'allow',
+   *   );
+   * ```
    */
   listPhoneNumbers(
     action: 'allow' | 'block',
@@ -40,6 +57,12 @@ export class VerificationManagement extends APIResource {
    * Retrieve sender IDs list.
    *
    * In order to get access to this endpoint, contact our support team.
+   *
+   * @example
+   * ```ts
+   * const response =
+   *   await client.verificationManagement.listSenderIds();
+   * ```
    */
   listSenderIds(options?: Core.RequestOptions): Core.APIPromise<VerificationManagementListSenderIDsResponse> {
     return this._client.get('/v2/verification/management/sender-id', options);
@@ -53,6 +76,15 @@ export class VerificationManagement extends APIResource {
    * specified list, the operation will succeed without making any changes.
    *
    * In order to get access to this endpoint, contact our support team.
+   *
+   * @example
+   * ```ts
+   * const response =
+   *   await client.verificationManagement.setPhoneNumber(
+   *     'allow',
+   *     { phone_number: '+30123456789' },
+   *   );
+   * ```
    */
   setPhoneNumber(
     action: 'allow' | 'block',
@@ -66,6 +98,14 @@ export class VerificationManagement extends APIResource {
    * This endpoint allows you to submit a new sender ID for verification purposes.
    *
    * In order to get access to this endpoint, contact our support team.
+   *
+   * @example
+   * ```ts
+   * const response =
+   *   await client.verificationManagement.submitSenderId({
+   *     sender_id: 'Prelude',
+   *   });
+   * ```
    */
   submitSenderId(
     body: VerificationManagementSubmitSenderIDParams,
