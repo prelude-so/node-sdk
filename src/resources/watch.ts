@@ -273,7 +273,8 @@ export namespace WatchPredictParams {
 
 export interface WatchSendEventsParams {
   /**
-   * A list of events to dispatch.
+   * A list of events to dispatch. A maximum of 100 events can be sent in a single
+   * request.
    */
   events: Array<WatchSendEventsParams.Event>;
 }
@@ -316,7 +317,8 @@ export namespace WatchSendEventsParams {
 
 export interface WatchSendFeedbacksParams {
   /**
-   * A list of feedbacks to send.
+   * A list of feedbacks to send. A maximum of 100 feedbacks can be sent in a single
+   * request.
    */
   feedbacks: Array<WatchSendFeedbacksParams.Feedback>;
 }
