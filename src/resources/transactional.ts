@@ -94,8 +94,16 @@ export interface TransactionalSendParams {
   correlation_id?: string;
 
   /**
-   * A document to attach to the message. Only supported on WhatsApp templates that
-   * have a document header.
+   * A media attachment to include in the message header. Supported on WhatsApp
+   * templates registered with a `DOCUMENT`, `IMAGE`, or `VIDEO` header. The media
+   * type is determined by the template's registered header format; send the matching
+   * file type for each.
+   *
+   * - `DOCUMENT` headers accept PDF and other document formats; `filename` is
+   *   required and displayed to the recipient.
+   * - `IMAGE` headers accept `.png`, `.jpg`, `.jpeg`, and `.webp` URLs; `filename`
+   *   is ignored.
+   * - `VIDEO` headers accept `.mp4` and `.3gp` URLs; `filename` is ignored.
    */
   document?: TransactionalSendParams.Document;
 
@@ -138,19 +146,30 @@ export interface TransactionalSendParams {
 
 export namespace TransactionalSendParams {
   /**
-   * A document to attach to the message. Only supported on WhatsApp templates that
-   * have a document header.
+   * A media attachment to include in the message header. Supported on WhatsApp
+   * templates registered with a `DOCUMENT`, `IMAGE`, or `VIDEO` header. The media
+   * type is determined by the template's registered header format; send the matching
+   * file type for each.
+   *
+   * - `DOCUMENT` headers accept PDF and other document formats; `filename` is
+   *   required and displayed to the recipient.
+   * - `IMAGE` headers accept `.png`, `.jpg`, `.jpeg`, and `.webp` URLs; `filename`
+   *   is ignored.
+   * - `VIDEO` headers accept `.mp4` and `.3gp` URLs; `filename` is ignored.
    */
   export interface Document {
     /**
-     * The filename to display for the document.
-     */
-    filename: string;
-
-    /**
-     * The URL of the document to attach. Must be a valid HTTP or HTTPS URL.
+     * HTTPS URL of the media file. The file extension must match the template's
+     * registered header format (PDF for DOCUMENT; PNG/JPG/JPEG/WEBP for IMAGE; MP4/3GP
+     * for VIDEO).
      */
     url: string;
+
+    /**
+     * Filename displayed to the recipient. Required for templates with a `DOCUMENT`
+     * header; ignored for `IMAGE` and `VIDEO` headers.
+     */
+    filename?: string;
   }
 }
 
