@@ -769,12 +769,6 @@ export interface NotifySendParams {
   callback_url?: string;
 
   /**
-   * Context for replying to an inbound message. When provided, the message is sent
-   * as a WhatsApp reply within the 24-hour conversation window.
-   */
-  context?: NotifySendParams.Context;
-
-  /**
    * A user-defined identifier to correlate this message with your internal systems.
    * It is returned in the response and any webhook events that refer to this
    * message.
@@ -828,31 +822,12 @@ export interface NotifySendParams {
   schedule_at?: string;
 
   /**
-   * The reply message body. Required when `context.reply_to` is provided. Used for
-   * 2-way WhatsApp messaging to send free-form text replies within a conversation
-   * window.
-   */
-  text?: string;
-
-  /**
    * The variables to be replaced in the template.
    */
   variables?: { [key: string]: string };
 }
 
 export namespace NotifySendParams {
-  /**
-   * Context for replying to an inbound message. When provided, the message is sent
-   * as a WhatsApp reply within the 24-hour conversation window.
-   */
-  export interface Context {
-    /**
-     * The inbound message ID (prefixed with `im_`) to reply to. This ID is provided in
-     * the `inbound.message.received` webhook event.
-     */
-    reply_to: string;
-  }
-
   /**
    * A media attachment to include in the message header. Supported on WhatsApp
    * templates registered with a `DOCUMENT`, `IMAGE`, or `VIDEO` header. The media
