@@ -65,8 +65,11 @@ export interface VerificationCreateResponse {
    *   non-voice channels only. This mode must be enabled for your customer account
    *   by Prelude support.
    * - `blocked` - The verification was blocked.
+   * - `shadow_blocked` - The verification triggered a block rule but the decision
+   *   was not enforced; this is used to dry-run anti-fraud configuration. This mode
+   *   must be enabled for your customer account by Prelude support.
    */
-  status: 'success' | 'retry' | 'challenged' | 'blocked';
+  status: 'success' | 'retry' | 'challenged' | 'blocked' | 'shadow_blocked';
 
   /**
    * The ordered sequence of channels to be used for verification
@@ -80,7 +83,7 @@ export interface VerificationCreateResponse {
 
   /**
    * The reason why the verification was blocked. Only present when status is
-   * "blocked".
+   * "blocked" or "shadow_blocked".
    *
    * - `expired_signature` - The signature of the SDK signals is expired. They should
    *   be sent within the hour following their collection.
@@ -108,8 +111,8 @@ export interface VerificationCreateResponse {
 
   /**
    * The risk factors that contributed to the verification being blocked. Only
-   * present when status is "blocked" and the anti-fraud system detected specific
-   * risk signals.
+   * present when status is "blocked" or "shadow_blocked" and the anti-fraud system
+   * detected specific risk signals.
    *
    * - `behavioral_pattern` - The phone number past behavior during verification
    *   flows exhibits suspicious patterns.
