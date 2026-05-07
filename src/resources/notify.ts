@@ -10,6 +10,13 @@ import * as Core from '../core';
 export class Notify extends APIResource {
   /**
    * Retrieve a specific subscription management configuration by its ID.
+   *
+   * @example
+   * ```ts
+   * const response = await client.notify.getSubscriptionConfig(
+   *   'config_id',
+   * );
+   * ```
    */
   getSubscriptionConfig(
     configId: string,
@@ -21,6 +28,15 @@ export class Notify extends APIResource {
   /**
    * Retrieve the current subscription status for a specific phone number within a
    * subscription configuration.
+   *
+   * @example
+   * ```ts
+   * const response =
+   *   await client.notify.getSubscriptionPhoneNumber(
+   *     'config_id',
+   *     'phone_number',
+   *   );
+   * ```
    */
   getSubscriptionPhoneNumber(
     configId: string,
@@ -39,6 +55,12 @@ export class Notify extends APIResource {
    *
    * Each configuration represents a subscription management setup with phone numbers
    * for receiving opt-out/opt-in requests and a callback URL for webhook events.
+   *
+   * @example
+   * ```ts
+   * const response =
+   *   await client.notify.listSubscriptionConfigs();
+   * ```
    */
   listSubscriptionConfigs(
     query?: NotifyListSubscriptionConfigsParams,
@@ -62,6 +84,15 @@ export class Notify extends APIResource {
    * phone number within a subscription configuration.
    *
    * Events are ordered by timestamp in descending order (most recent first).
+   *
+   * @example
+   * ```ts
+   * const response =
+   *   await client.notify.listSubscriptionPhoneNumberEvents(
+   *     'config_id',
+   *     'phone_number',
+   *   );
+   * ```
    */
   listSubscriptionPhoneNumberEvents(
     configId: string,
@@ -94,6 +125,14 @@ export class Notify extends APIResource {
    * specific subscription configuration.
    *
    * You can optionally filter by subscription state (SUB or UNSUB).
+   *
+   * @example
+   * ```ts
+   * const response =
+   *   await client.notify.listSubscriptionPhoneNumbers(
+   *     'config_id',
+   *   );
+   * ```
    */
   listSubscriptionPhoneNumbers(
     configId: string,
@@ -119,8 +158,16 @@ export class Notify extends APIResource {
   }
 
   /**
-   * Send transactional and marketing messages to your users via SMS and WhatsApp
-   * with automatic compliance enforcement.
+   * Send transactional and marketing messages to your users via SMS, RCS and
+   * WhatsApp with automatic compliance enforcement.
+   *
+   * @example
+   * ```ts
+   * const response = await client.notify.send({
+   *   template_id: 'template_01k8ap1btqf5r9fq2c8ax5fhc9',
+   *   to: '+33612345678',
+   * });
+   * ```
    */
   send(body: NotifySendParams, options?: Core.RequestOptions): Core.APIPromise<NotifySendResponse> {
     return this._client.post('/v2/notify', { body, ...options });
@@ -128,6 +175,14 @@ export class Notify extends APIResource {
 
   /**
    * Send the same message to multiple recipients in a single request.
+   *
+   * @example
+   * ```ts
+   * const response = await client.notify.sendBatch({
+   *   template_id: 'template_01k8ap1btqf5r9fq2c8ax5fhc9',
+   *   to: ['+33612345678', '+15551234567'],
+   * });
+   * ```
    */
   sendBatch(
     body: NotifySendBatchParams,
@@ -721,8 +776,16 @@ export interface NotifySendParams {
   correlation_id?: string;
 
   /**
-   * A document to attach to the message. Only supported on WhatsApp templates that
-   * have a document header.
+   * A media attachment to include in the message header. Supported on WhatsApp
+   * templates registered with a `DOCUMENT`, `IMAGE`, or `VIDEO` header. The media
+   * type is determined by the template's registered header format; send the matching
+   * file type for each.
+   *
+   * - `DOCUMENT` headers accept PDF and other document formats; `filename` is
+   *   required and displayed to the recipient.
+   * - `IMAGE` headers accept `.png`, `.jpg`, `.jpeg`, and `.webp` URLs; `filename`
+   *   is ignored.
+   * - `VIDEO` headers accept `.mp4` and `.3gp` URLs; `filename` is ignored.
    */
   document?: NotifySendParams.Document;
 
@@ -749,7 +812,7 @@ export interface NotifySendParams {
    * The preferred channel to be used in priority for message delivery. If the
    * channel is unavailable, the system will fallback to other available channels.
    */
-  preferred_channel?: 'sms' | 'whatsapp';
+  preferred_channel?: 'sms' | 'rcs' | 'whatsapp';
 
   /**
    * Schedule the message for future delivery in RFC3339 format. Marketing messages
@@ -766,19 +829,30 @@ export interface NotifySendParams {
 
 export namespace NotifySendParams {
   /**
-   * A document to attach to the message. Only supported on WhatsApp templates that
-   * have a document header.
+   * A media attachment to include in the message header. Supported on WhatsApp
+   * templates registered with a `DOCUMENT`, `IMAGE`, or `VIDEO` header. The media
+   * type is determined by the template's registered header format; send the matching
+   * file type for each.
+   *
+   * - `DOCUMENT` headers accept PDF and other document formats; `filename` is
+   *   required and displayed to the recipient.
+   * - `IMAGE` headers accept `.png`, `.jpg`, `.jpeg`, and `.webp` URLs; `filename`
+   *   is ignored.
+   * - `VIDEO` headers accept `.mp4` and `.3gp` URLs; `filename` is ignored.
    */
   export interface Document {
     /**
-     * The filename to display for the document.
-     */
-    filename: string;
-
-    /**
-     * The URL of the document to attach. Must be a valid HTTP or HTTPS URL.
+     * HTTPS URL of the media file. The file extension must match the template's
+     * registered header format (PDF for DOCUMENT; PNG/JPG/JPEG/WEBP for IMAGE; MP4/3GP
+     * for VIDEO).
      */
     url: string;
+
+    /**
+     * Filename displayed to the recipient. Required for templates with a `DOCUMENT`
+     * header; ignored for `IMAGE` and `VIDEO` headers.
+     */
+    filename?: string;
   }
 }
 
@@ -804,8 +878,16 @@ export interface NotifySendBatchParams {
   correlation_id?: string;
 
   /**
-   * A document to attach to the message. Only supported on WhatsApp templates that
-   * have a document header.
+   * A media attachment to include in the message header. Supported on WhatsApp
+   * templates registered with a `DOCUMENT`, `IMAGE`, or `VIDEO` header. The media
+   * type is determined by the template's registered header format; send the matching
+   * file type for each.
+   *
+   * - `DOCUMENT` headers accept PDF and other document formats; `filename` is
+   *   required and displayed to the recipient.
+   * - `IMAGE` headers accept `.png`, `.jpg`, `.jpeg`, and `.webp` URLs; `filename`
+   *   is ignored.
+   * - `VIDEO` headers accept `.mp4` and `.3gp` URLs; `filename` is ignored.
    */
   document?: NotifySendBatchParams.Document;
 
@@ -828,7 +910,7 @@ export interface NotifySendBatchParams {
   /**
    * Preferred channel for delivery. If unavailable, automatic fallback applies.
    */
-  preferred_channel?: 'sms' | 'whatsapp';
+  preferred_channel?: 'sms' | 'rcs' | 'whatsapp';
 
   /**
    * Schedule delivery in RFC3339 format. Marketing sends may be adjusted to comply
@@ -844,19 +926,30 @@ export interface NotifySendBatchParams {
 
 export namespace NotifySendBatchParams {
   /**
-   * A document to attach to the message. Only supported on WhatsApp templates that
-   * have a document header.
+   * A media attachment to include in the message header. Supported on WhatsApp
+   * templates registered with a `DOCUMENT`, `IMAGE`, or `VIDEO` header. The media
+   * type is determined by the template's registered header format; send the matching
+   * file type for each.
+   *
+   * - `DOCUMENT` headers accept PDF and other document formats; `filename` is
+   *   required and displayed to the recipient.
+   * - `IMAGE` headers accept `.png`, `.jpg`, `.jpeg`, and `.webp` URLs; `filename`
+   *   is ignored.
+   * - `VIDEO` headers accept `.mp4` and `.3gp` URLs; `filename` is ignored.
    */
   export interface Document {
     /**
-     * The filename to display for the document.
-     */
-    filename: string;
-
-    /**
-     * The URL of the document to attach. Must be a valid HTTP or HTTPS URL.
+     * HTTPS URL of the media file. The file extension must match the template's
+     * registered header format (PDF for DOCUMENT; PNG/JPG/JPEG/WEBP for IMAGE; MP4/3GP
+     * for VIDEO).
      */
     url: string;
+
+    /**
+     * Filename displayed to the recipient. Required for templates with a `DOCUMENT`
+     * header; ignored for `IMAGE` and `VIDEO` headers.
+     */
+    filename?: string;
   }
 }
 

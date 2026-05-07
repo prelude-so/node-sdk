@@ -1,5 +1,38 @@
 # Changelog
 
+## 0.12.0 (2026-05-07)
+
+Full Changelog: [v0.11.0...v0.12.0](https://github.com/prelude-so/node-sdk/compare/v0.11.0...v0.12.0)
+
+### Features
+
+* **api:** api update ([4f2c2c3](https://github.com/prelude-so/node-sdk/commit/4f2c2c3b37d2e889b0c54fce48db13d77bc9b792))
+* **api:** api update ([d74fb38](https://github.com/prelude-so/node-sdk/commit/d74fb3815d70be1543caba23536d9c852fa66b3e))
+* **api:** api update ([560f95a](https://github.com/prelude-so/node-sdk/commit/560f95a0f0b7971389af00ac94f0d438ab7492a2))
+* **api:** api update ([3625d71](https://github.com/prelude-so/node-sdk/commit/3625d718f15b1776f2c61d3a16f074e652433036))
+* **api:** api update ([4eeb2ca](https://github.com/prelude-so/node-sdk/commit/4eeb2ca6ada3d5efa803d184fbce03df0d842219))
+* **api:** api update ([3b91f0a](https://github.com/prelude-so/node-sdk/commit/3b91f0a33f78757de3ac9da1afda466d5ca5015c))
+* **api:** api update ([4ced921](https://github.com/prelude-so/node-sdk/commit/4ced921cab3fb7f499aa70daa24e9f37ba0ca6dd))
+* support setting headers via env ([45acaf3](https://github.com/prelude-so/node-sdk/commit/45acaf36b710a9b8bf6d36269b7f1d8b395206f6))
+
+
+### Chores
+
+* **ci:** skip lint on metadata-only changes ([45b1f6a](https://github.com/prelude-so/node-sdk/commit/45b1f6ab5bc59f52c62069ce17093e49499532d3))
+* **internal:** codegen related update ([36b3bf3](https://github.com/prelude-so/node-sdk/commit/36b3bf3f1bf20ce749591dbd52a8b5ae75f3b0a0))
+* **internal:** more robust bootstrap script ([4ab38c8](https://github.com/prelude-so/node-sdk/commit/4ab38c88b560a8d9d7c62b5673429a4b9a532cff))
+* **internal:** update multipart form array serialization ([59c845e](https://github.com/prelude-so/node-sdk/commit/59c845e86dd454c3bb9e0b308c04baadd208517a))
+* **tests:** bump steady to v0.19.6 ([7f2a749](https://github.com/prelude-so/node-sdk/commit/7f2a7494dbc66872ff3e7903b2dccee76ca2f518))
+* **tests:** bump steady to v0.19.7 ([967c2d4](https://github.com/prelude-so/node-sdk/commit/967c2d4e085f76938552c836a301238a0f362a80))
+* **tests:** bump steady to v0.20.1 ([849256a](https://github.com/prelude-so/node-sdk/commit/849256aa5ce88afecd4e39ac07c965783b5b8a99))
+* **tests:** bump steady to v0.20.2 ([3f48d87](https://github.com/prelude-so/node-sdk/commit/3f48d8750a48563e0ae6094e25ee06fdbe2d04ce))
+* **tests:** bump steady to v0.22.1 ([6ee2d54](https://github.com/prelude-so/node-sdk/commit/6ee2d54d43245ec2b2fc4353d64d1666cf040d96))
+
+
+### Documentation
+
+* update examples ([db4ddc5](https://github.com/prelude-so/node-sdk/commit/db4ddc5ff327a789b9ee7b0863c3f2baaf29680c))
+
 ## 0.11.0 (2026-03-23)
 
 Full Changelog: [v0.10.0...v0.11.0](https://github.com/prelude-so/node-sdk/compare/v0.10.0...v0.11.0)
