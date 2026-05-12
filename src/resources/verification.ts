@@ -299,6 +299,17 @@ export namespace VerificationCreateParams {
     custom_code?: string;
 
     /**
+     * When `true`, the verification is routed through challenge-safe channels
+     * (non-SMS/Voice) regardless of country eligibility or any antispam outcome. The
+     * resulting verification has `status: "challenged"`. Use this when you have your
+     * own signal that the request is suspicious and want stricter routing — the
+     * verification is **not** classified as fraud and does not contribute to
+     * anti-fraud counters or risk factors. This feature is disabled by default —
+     * contact Prelude support to enable it on your account.
+     */
+    force_challenge?: boolean;
+
+    /**
      * A BCP-47 formatted locale string with the language the text message will be sent
      * to. If there's no locale set, the language will be determined by the country
      * code of the phone number. If the language specified doesn't exist, it defaults
