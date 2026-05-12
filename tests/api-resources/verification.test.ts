@@ -32,6 +32,7 @@ describe('resource verification', () => {
         callback_url: 'callback_url',
         code_size: 5,
         custom_code: '123456',
+        force_challenge: true,
         locale: 'el-GR',
         method: 'auto',
         preferred_channel: 'sms',
