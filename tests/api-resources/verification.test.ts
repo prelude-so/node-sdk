@@ -73,6 +73,11 @@ describe('resource verification', () => {
     const response = await client.verification.check({
       code: '12345',
       target: { type: 'phone_number', value: '+30123456789' },
+      psd2: {
+        amount: '99999.99',
+        currency: 'EUR',
+        recipient: 'Rainbow LLC',
+      },
     });
   });
 });
