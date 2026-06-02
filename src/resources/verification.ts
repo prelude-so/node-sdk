@@ -179,9 +179,11 @@ export namespace VerificationCreateResponse {
 
 export interface VerificationCheckResponse {
   /**
-   * The status of the check.
+   * The status of the check. For `prelude:psd2` codes, `transaction_missing` is
+   * returned when the `psd2` block is omitted, and `transaction_mismatch` when the
+   * submitted variables differ from those provided at issuance.
    */
-  status: 'success' | 'failure' | 'expired_or_not_found';
+  status: 'success' | 'failure' | 'expired_or_not_found' | 'transaction_missing' | 'transaction_mismatch';
 
   /**
    * The verification identifier.
@@ -449,6 +451,14 @@ export interface VerificationCheckParams {
    * email verification feature contact us to discuss your use case.
    */
   target: VerificationCheckParams.Target;
+
+  /**
+   * Required when checking a code issued under the `prelude:psd2` template. The
+   * submitted variables must match those provided at issuance; any mismatch
+   * invalidates the code (PSD2 SCA RTS Article 5 dynamic linking). Ignored on
+   * non-PSD2 verifications.
+   */
+  psd2?: VerificationCheckParams.Psd2;
 }
 
 export namespace VerificationCheckParams {
@@ -466,6 +476,29 @@ export namespace VerificationCheckParams {
      * An E.164 formatted phone number or an email address.
      */
     value: string;
+  }
+
+  /**
+   * Required when checking a code issued under the `prelude:psd2` template. The
+   * submitted variables must match those provided at issuance; any mismatch
+   * invalidates the code (PSD2 SCA RTS Article 5 dynamic linking). Ignored on
+   * non-PSD2 verifications.
+   */
+  export interface Psd2 {
+    /**
+     * Decimal amount of the transaction.
+     */
+    amount: string;
+
+    /**
+     * ISO 4217 currency code.
+     */
+    currency: string;
+
+    /**
+     * Payee name displayed to the payer.
+     */
+    recipient: string;
   }
 }
 
