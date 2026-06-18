@@ -33,6 +33,7 @@ describe('resource transactional', () => {
       expires_at: 'expires_at',
       from: 'from',
       locale: 'el-GR',
+      max_auto_retries: 2,
       preferred_channel: 'whatsapp',
       variables: { foo: 'bar' },
     });

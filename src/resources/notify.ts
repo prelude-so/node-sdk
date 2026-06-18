@@ -809,6 +809,15 @@ export interface NotifySendParams {
   locale?: string;
 
   /**
+   * Maximum number of automatic retry attempts across channels for this send, in
+   * addition to the first attempt. For example, `2` allows up to 3 total delivery
+   * attempts. Lower values reduce delivery cost on hard-to-reach numbers at the
+   * expense of deliverability. When omitted, your account's configured default
+   * applies.
+   */
+  max_auto_retries?: number;
+
+  /**
    * The preferred channel to be used in priority for message delivery. If the
    * channel is unavailable, the system will fallback to other available channels.
    */
@@ -906,6 +915,15 @@ export interface NotifySendBatchParams {
    * A BCP-47 formatted locale string.
    */
   locale?: string;
+
+  /**
+   * Maximum number of automatic retry attempts across channels for each send in the
+   * batch, in addition to the first attempt. For example, `2` allows up to 3 total
+   * delivery attempts per recipient. Lower values reduce delivery cost on
+   * hard-to-reach numbers at the expense of deliverability. When omitted, your
+   * account's configured default applies.
+   */
+  max_auto_retries?: number;
 
   /**
    * Preferred channel for delivery. If unavailable, automatic fallback applies.
