@@ -30,6 +30,7 @@ describe('resource verification', () => {
       options: {
         app_realm: { platform: 'android', value: 'value' },
         callback_url: 'callback_url',
+        channels: ['whatsapp', 'sms'],
         code_size: 5,
         custom_code: '123456',
         force_challenge: true,
