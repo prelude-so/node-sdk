@@ -288,6 +288,17 @@ export namespace VerificationCreateParams {
     callback_url?: string;
 
     /**
+     * The channels this verification may use, in the order they are tried. Channels
+     * you omit are never used, including on retries. Every channel you list must be
+     * enabled on your account and active in the destination country, otherwise the
+     * request fails with `channel_not_enabled_in_region`. Prelude still picks the best
+     * provider within each channel. Cannot be combined with `preferred_channel`. Voice
+     * is requested through `method` instead. Disabled by default — contact support to
+     * enable it.
+     */
+    channels?: Array<'sms' | 'rcs' | 'whatsapp' | 'viber' | 'zalo' | 'telegram'>;
+
+    /**
      * The size of the code generated. It should be between 4 and 8. Defaults to the
      * code size specified from the Dashboard.
      */
@@ -336,7 +347,7 @@ export namespace VerificationCreateParams {
      * untried route on that channel remains; once those are exhausted, retries fall
      * back to the next best available route. If the channel is unavailable (for
      * example, when a verification is challenged), Prelude uses the best available
-     * route instead.
+     * route instead. Cannot be combined with `channels`.
      */
     preferred_channel?: 'sms' | 'rcs' | 'whatsapp' | 'viber' | 'zalo' | 'telegram';
 
