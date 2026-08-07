@@ -35,6 +35,7 @@ describe('resource verification', () => {
         custom_code: '123456',
         force_challenge: true,
         locale: 'el-GR',
+        max_auto_fallbacks: 0,
         method: 'auto',
         preferred_channel: 'sms',
         sender_id: 'sender_id',
