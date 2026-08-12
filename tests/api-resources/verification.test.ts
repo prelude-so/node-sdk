@@ -30,9 +30,12 @@ describe('resource verification', () => {
       options: {
         app_realm: { platform: 'android', value: 'value' },
         callback_url: 'callback_url',
+        channels: ['whatsapp', 'sms'],
         code_size: 5,
         custom_code: '123456',
+        force_challenge: true,
         locale: 'el-GR',
+        max_auto_fallbacks: 0,
         method: 'auto',
         preferred_channel: 'sms',
         sender_id: 'sender_id',
@@ -72,6 +75,11 @@ describe('resource verification', () => {
     const response = await client.verification.check({
       code: '12345',
       target: { type: 'phone_number', value: '+30123456789' },
+      psd2: {
+        amount: '99999.99',
+        currency: 'EUR',
+        recipient: 'Rainbow LLC',
+      },
     });
   });
 });

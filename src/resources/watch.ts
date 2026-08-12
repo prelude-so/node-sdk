@@ -8,7 +8,12 @@ import * as Core from '../core';
  */
 export class Watch extends APIResource {
   /**
-   * Predict the outcome of a verification based on Prelude’s anti-fraud system.
+   * At signup, score the user's phone number or email address (target) as legitimate
+   * or suspicious. Scoring-only — does not update counters by itself. When using
+   * Feedback, call predict before verification.started on the same target (and
+   * correlation_id when used) so feedback can warm Watch auth-start counters. Use
+   * Events for product fraud labels; use Feedback only if you run your own phone
+   * verification funnel outside Prelude Verify.
    *
    * @example
    * ```ts
@@ -22,8 +27,11 @@ export class Watch extends APIResource {
   }
 
   /**
-   * Send real-time event data from end-user interactions within your application.
-   * Events will be analyzed for proactive fraud prevention and risk scoring.
+   * Send custom fraud signals from your application (labels and confidence levels).
+   * Events capture product-specific risk patterns and are weighted when scoring
+   * traffic. Use without Predict or Feedback if you only need to report product-side
+   * abuse (for example account.banned). Feedback is a separate, optional endpoint
+   * for self-hosted phone verification funnels.
    *
    * @example
    * ```ts
@@ -31,7 +39,7 @@ export class Watch extends APIResource {
    *   events: [
    *     {
    *       confidence: 'maximum',
-   *       label: 'onboarding.start',
+   *       label: 'account.banned',
    *       target: {
    *         type: 'phone_number',
    *         value: '+30123456789',
@@ -49,8 +57,13 @@ export class Watch extends APIResource {
   }
 
   /**
-   * Send feedback regarding your end-users verification funnel. Events will be
-   * analyzed for proactive fraud prevention and risk scoring.
+   * Optional. Report verification-funnel steps (verification.started,
+   * verification.completed) when you run phone verification outside Prelude Verify.
+   * Feeds Watch abuse-rate counters for your own flow. Call Predict on the same
+   * target before verification.started and reuse metadata.correlation_id so
+   * auth-start counters receive predict signals; without a linked predict, only
+   * attempt-rate counters update on started. Not required if you only use Events
+   * and/or Predict, or if Verify already handles verification for that traffic.
    *
    * @example
    * ```ts
@@ -160,7 +173,7 @@ export interface WatchSendFeedbacksResponse {
 
 export interface WatchPredictParams {
   /**
-   * The prediction target. Only supports phone numbers for now.
+   * The signup identifier to score — a phone number or email address.
    */
   target: WatchPredictParams.Target;
 
@@ -183,7 +196,7 @@ export interface WatchPredictParams {
 
 export namespace WatchPredictParams {
   /**
-   * The prediction target. Only supports phone numbers for now.
+   * The signup identifier to score — a phone number or email address.
    */
   export interface Target {
     /**
@@ -282,7 +295,15 @@ export interface WatchSendEventsParams {
 export namespace WatchSendEventsParams {
   export interface Event {
     /**
-     * A confidence level you want to assign to the event.
+     * How much this event tells us to trust the end-user's legitimacy — not how
+     * certain you are that the event occurred. In increasing order of trust:
+     * `minimum`, `low`, `neutral`, `high`, `maximum`.
+     *
+     * Use `minimum` for an event tied to a user you trust the least to be legitimate
+     * (e.g. a `payment.chargeback`), and `maximum` for an event tied to a highly
+     * trustworthy user (e.g. a confirmed 3DS payment). Prelude weights these signals
+     * when scoring traffic: it filters out users tied to low-confidence events while
+     * preserving the experience for users tied to high-confidence ones.
      */
     confidence: 'maximum' | 'high' | 'neutral' | 'low' | 'minimum';
 

@@ -1,5 +1,22 @@
 # Changelog
 
+## 0.13.0 (2026-08-07)
+
+Full Changelog: [v0.12.0...v0.13.0](https://github.com/prelude-so/node-sdk/compare/v0.12.0...v0.13.0)
+
+### Features
+
+* **api:** api update ([77328e6](https://github.com/prelude-so/node-sdk/commit/77328e683c6f41d49ca21b51726e033afffacbaf))
+* **api:** api update ([a59c73d](https://github.com/prelude-so/node-sdk/commit/a59c73dd4b9cfc715c16ed7008499b650f7af747))
+* **api:** api update ([fc35c4b](https://github.com/prelude-so/node-sdk/commit/fc35c4b081e04ce4dbf6747fc495f39ca002733a))
+* **api:** api update ([0d0c297](https://github.com/prelude-so/node-sdk/commit/0d0c2972c5b0c19e68d7e8fd231e40a04492d3ed))
+* **api:** api update ([f18b0c8](https://github.com/prelude-so/node-sdk/commit/f18b0c8094f3803eab90b4a89cbc61808af34a9a))
+* **api:** api update ([deab3e4](https://github.com/prelude-so/node-sdk/commit/deab3e464640342f579186621d76fd60e9705867))
+* **api:** api update ([516749e](https://github.com/prelude-so/node-sdk/commit/516749ee7cd4eb9e81ffcc68ecd49e870d67bd1f))
+* **api:** api update ([6c2c112](https://github.com/prelude-so/node-sdk/commit/6c2c11284ce9db183b0a455009481364040411a4))
+* **api:** api update ([27b9de9](https://github.com/prelude-so/node-sdk/commit/27b9de984450d6557144a5850c369d8c905b812b))
+* **stlc:** configurable CI runner and private-production-repo support in workflow templates ([a64787c](https://github.com/prelude-so/node-sdk/commit/a64787cee8a1a6c6ef73b8297ac70d676d9b0b53))
+
 ## 0.12.0 (2026-05-07)
 
 Full Changelog: [v0.11.0...v0.12.0](https://github.com/prelude-so/node-sdk/compare/v0.11.0...v0.12.0)

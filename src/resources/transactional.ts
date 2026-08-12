@@ -126,6 +126,13 @@ export interface TransactionalSendParams {
   locale?: string;
 
   /**
+   * Maximum number of automatic retry attempts across channels for this send, in
+   * addition to the first attempt. For example, `2` allows up to 3 total delivery
+   * attempts. When omitted, your account's configured default applies.
+   */
+  max_auto_retries?: number;
+
+  /**
    * The preferred delivery channel for the message. When specified, the system will
    * prioritize sending via the requested channel if the template is configured for
    * it.
