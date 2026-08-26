@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.14.0 (2026-08-26)
+
+Full Changelog: [v0.13.0...v0.14.0](https://github.com/prelude-so/node-sdk/compare/v0.13.0...v0.14.0)
+
+### Features
+
+* **api:** api update ([a07841a](https://github.com/prelude-so/node-sdk/commit/a07841a2f27b115bdfccf550a76fa7ea6defd665))
+* **api:** api update ([029c6e3](https://github.com/prelude-so/node-sdk/commit/029c6e3a5c69023966c4eaf0d09b7de5c553ae04))
+
+
+### Chores
+
+* **internal:** allow the mock server port to be set with STAINLESS_MOCK_PORT ([445d83b](https://github.com/prelude-so/node-sdk/commit/445d83b66e833222a8b3a4f41aeb440f93151aac))
+
 ## 0.13.0 (2026-08-07)
 
 Full Changelog: [v0.12.0...v0.13.0](https://github.com/prelude-so/node-sdk/compare/v0.12.0...v0.13.0)
