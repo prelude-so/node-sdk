@@ -110,6 +110,9 @@ export interface WatchPredictResponse {
    * when prediction is "suspicious" and the anti-fraud system detected specific risk
    * signals.
    *
+   * - `account_risk_profile` - The target matches a risk profile derived from the
+   *   outcomes reported on your own account, rather than from a signal shared across
+   *   accounts.
    * - `behavioral_pattern` - The phone number past behavior during verification
    *   flows exhibits suspicious patterns.
    * - `device_attribute` - The device exhibits characteristics associated with
@@ -132,6 +135,7 @@ export interface WatchPredictResponse {
    *   disposable number.
    */
   risk_factors?: Array<
+    | 'account_risk_profile'
     | 'behavioral_pattern'
     | 'device_attribute'
     | 'fraud_database'
@@ -247,6 +251,15 @@ export namespace WatchPredictParams {
      * The type of the user's device.
      */
     device_platform?: 'android' | 'ios' | 'ipados' | 'tvos' | 'web';
+
+    /**
+     * Whether the end-user already exists in your system, for example an existing
+     * account signing in again rather than a first-time signup. Unlike
+     * `is_trusted_user`, this signal does not bypass fraud checks; it is taken into
+     * account as one additional anti-fraud signal. For more details, refer to
+     * [Signals](/verify/v2/documentation/prevent-fraud#signals).
+     */
+    existing_user?: boolean;
 
     /**
      * The public IP v4 or v6 address of the end-user's device. You should collect this

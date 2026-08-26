@@ -30,6 +30,7 @@ describe('resource watch', () => {
         device_id: '8F0B8FDD-C2CB-4387-B20A-56E9B2E5A0D2',
         device_model: 'iPhone17,2',
         device_platform: 'ios',
+        existing_user: false,
         ip: '203.0.113.123',
         is_trusted_user: false,
         ja4_fingerprint: 't13d1516h2_8daaf6152771_e5627efa2ab1',
