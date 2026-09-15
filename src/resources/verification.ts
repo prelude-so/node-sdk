@@ -443,6 +443,15 @@ export namespace VerificationCreateParams {
     device_platform?: 'android' | 'ios' | 'ipados' | 'tvos' | 'web';
 
     /**
+     * Whether the end-user already exists in your system, for example an existing
+     * account signing in again rather than a first-time signup. Unlike
+     * `is_trusted_user`, this signal does not bypass fraud checks; it is taken into
+     * account as one additional anti-fraud signal. For more details, refer to
+     * [Signals](/verify/v2/documentation/prevent-fraud#signals).
+     */
+    existing_user?: boolean;
+
+    /**
      * The public IP v4 or v6 address of the end-user's device. You should collect this
      * from your backend. If your backend is behind a proxy, use the `X-Forwarded-For`,
      * `Forwarded`, `True-Client-IP`, `CF-Connecting-IP` or an equivalent header to get
