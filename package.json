@@ -7,6 +7,10 @@
   "main": "dist/index.js",
   "type": "commonjs",
   "repository": "github:prelude-so/node-sdk",
+  "homepage": "https://docs.prelude.so",
+  "bugs": {
+    "url": "https://github.com/prelude-so/node-sdk/issues"
+  },
   "license": "Apache-2.0",
   "packageManager": "yarn@1.22.22",
   "files": [
