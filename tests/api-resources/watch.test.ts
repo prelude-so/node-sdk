@@ -9,6 +9,42 @@ const client = new Prelude({
 });
 
 describe('resource watch', () => {
+  test('evaluate: only required params', async () => {
+    const responsePromise = client.watch.evaluate({
+      flow_id: 'flo_01jc0t6fwwfgfsq1md24mhyztj',
+      target: { type: 'phone_number', value: '+30123456789' },
+    });
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  test('evaluate: required and optional params', async () => {
+    const response = await client.watch.evaluate({
+      flow_id: 'flo_01jc0t6fwwfgfsq1md24mhyztj',
+      target: { type: 'phone_number', value: '+30123456789' },
+      attributes: { plan_tier: 'free', account_age_days: '3' },
+      dispatch_id: '123e4567-e89b-12d3-a456-426614174000',
+      signals: {
+        app_version: '1.2.34',
+        device_id: '8F0B8FDD-C2CB-4387-B20A-56E9B2E5A0D2',
+        device_model: 'iPhone17,2',
+        device_platform: 'ios',
+        existing_user: false,
+        ip: '203.0.113.123',
+        is_trusted_user: false,
+        ja4_fingerprint: 't13d1516h2_8daaf6152771_e5627efa2ab1',
+        os_version: '18.0.1',
+        user_agent:
+          'Mozilla/5.0 (iPhone; CPU iPhone OS 14_4 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.0.3 Mobile/15E148 Safari/604.1',
+      },
+    });
+  });
+
   test('predict: only required params', async () => {
     const responsePromise = client.watch.predict({ target: { type: 'phone_number', value: '+30123456789' } });
     const rawResponse = await responsePromise.asResponse();

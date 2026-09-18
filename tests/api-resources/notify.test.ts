@@ -140,6 +140,31 @@ describe('resource notify', () => {
     ).rejects.toThrow(Prelude.NotFoundError);
   });
 
+  test('reply: only required params', async () => {
+    const responsePromise = client.notify.reply({
+      reply_to: 'im_01k8aq2zggeyssvt53zgvpx63a',
+      text: "Thanks for reaching out! We'll look into your request.",
+      to: '+33612345678',
+    });
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  test('reply: required and optional params', async () => {
+    const response = await client.notify.reply({
+      reply_to: 'im_01k8aq2zggeyssvt53zgvpx63a',
+      text: "Thanks for reaching out! We'll look into your request.",
+      to: '+33612345678',
+      callback_url: 'https://your-app.com/webhooks/notify',
+      correlation_id: 'support-ticket-42',
+    });
+  });
+
   test('send: only required params', async () => {
     const responsePromise = client.notify.send({
       template_id: 'template_01k8ap1btqf5r9fq2c8ax5fhc9',
