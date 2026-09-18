@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.15.0 (2026-09-18)
+
+Full Changelog: [v0.14.0...v0.15.0](https://github.com/prelude-so/node-sdk/compare/v0.14.0...v0.15.0)
+
+### Features
+
+* **api:** manual updates ([524243a](https://github.com/prelude-so/node-sdk/commit/524243a641cfb439443592613422465cefd1f8d3))
+
 ## 0.14.0 (2026-09-15)
 
 Full Changelog: [v0.13.0...v0.14.0](https://github.com/prelude-so/node-sdk/compare/v0.13.0...v0.14.0)
