@@ -17,6 +17,8 @@ import {
   NotifyListSubscriptionPhoneNumberEventsResponse,
   NotifyListSubscriptionPhoneNumbersParams,
   NotifyListSubscriptionPhoneNumbersResponse,
+  NotifyReplyParams,
+  NotifyReplyResponse,
   NotifySendBatchParams,
   NotifySendBatchResponse,
   NotifySendParams,
@@ -24,12 +26,17 @@ import {
 } from './resources/notify';
 import { Transactional, TransactionalSendParams, TransactionalSendResponse } from './resources/transactional';
 import {
-  Verification,
-  VerificationCheckParams,
-  VerificationCheckResponse,
-  VerificationCreateParams,
-  VerificationCreateResponse,
-} from './resources/verification';
+  Watch,
+  WatchEvaluateParams,
+  WatchEvaluateResponse,
+  WatchPredictParams,
+  WatchPredictResponse,
+  WatchSendEventsParams,
+  WatchSendEventsResponse,
+  WatchSendFeedbacksParams,
+  WatchSendFeedbacksResponse,
+} from './resources/watch';
+import { Intel } from './resources/intel/intel';
 import {
   VerificationManagement,
   VerificationManagementDeletePhoneNumberParams,
@@ -40,16 +47,14 @@ import {
   VerificationManagementSetPhoneNumberResponse,
   VerificationManagementSubmitSenderIDParams,
   VerificationManagementSubmitSenderIDResponse,
-} from './resources/verification-management';
+} from './resources/verification-management/verification-management';
 import {
-  Watch,
-  WatchPredictParams,
-  WatchPredictResponse,
-  WatchSendEventsParams,
-  WatchSendEventsResponse,
-  WatchSendFeedbacksParams,
-  WatchSendFeedbacksResponse,
-} from './resources/watch';
+  Verification,
+  VerificationCheckParams,
+  VerificationCheckResponse,
+  VerificationCreateParams,
+  VerificationCreateResponse,
+} from './resources/verification/verification';
 
 export interface ClientOptions {
   /**
@@ -203,6 +208,7 @@ export class Prelude extends Core.APIClient {
    * Evaluate email addresses and phone numbers for trustworthiness.
    */
   watch: API.Watch = new API.Watch(this);
+  intel: API.Intel = new API.Intel(this);
 
   /**
    * Check whether the base URL is set to its default.
@@ -257,6 +263,7 @@ Prelude.Transactional = Transactional;
 Prelude.Verification = Verification;
 Prelude.VerificationManagement = VerificationManagement;
 Prelude.Watch = Watch;
+Prelude.Intel = Intel;
 
 export declare namespace Prelude {
   export type RequestOptions = Core.RequestOptions;
@@ -274,11 +281,13 @@ export declare namespace Prelude {
     type NotifyListSubscriptionConfigsResponse as NotifyListSubscriptionConfigsResponse,
     type NotifyListSubscriptionPhoneNumberEventsResponse as NotifyListSubscriptionPhoneNumberEventsResponse,
     type NotifyListSubscriptionPhoneNumbersResponse as NotifyListSubscriptionPhoneNumbersResponse,
+    type NotifyReplyResponse as NotifyReplyResponse,
     type NotifySendResponse as NotifySendResponse,
     type NotifySendBatchResponse as NotifySendBatchResponse,
     type NotifyListSubscriptionConfigsParams as NotifyListSubscriptionConfigsParams,
     type NotifyListSubscriptionPhoneNumberEventsParams as NotifyListSubscriptionPhoneNumberEventsParams,
     type NotifyListSubscriptionPhoneNumbersParams as NotifyListSubscriptionPhoneNumbersParams,
+    type NotifyReplyParams as NotifyReplyParams,
     type NotifySendParams as NotifySendParams,
     type NotifySendBatchParams as NotifySendBatchParams,
   };
@@ -311,13 +320,20 @@ export declare namespace Prelude {
 
   export {
     Watch as Watch,
+    type WatchEvaluateResponse as WatchEvaluateResponse,
     type WatchPredictResponse as WatchPredictResponse,
     type WatchSendEventsResponse as WatchSendEventsResponse,
     type WatchSendFeedbacksResponse as WatchSendFeedbacksResponse,
+    type WatchEvaluateParams as WatchEvaluateParams,
     type WatchPredictParams as WatchPredictParams,
     type WatchSendEventsParams as WatchSendEventsParams,
     type WatchSendFeedbacksParams as WatchSendFeedbacksParams,
   };
+
+  export { Intel as Intel };
+
+  export type Signals = API.Signals;
+  export type Target = API.Target;
 }
 
 export { toFile, fileFromPath } from './uploads';

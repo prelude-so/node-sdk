@@ -168,6 +168,24 @@ export class Notify extends APIResource {
   }
 
   /**
+   * Send a free-form text reply to an inbound WhatsApp message within the 24-hour
+   * conversation window. See
+   * [WhatsApp 2-Way Messaging](/notify/v2/documentation/whatsapp) for details.
+   *
+   * @example
+   * ```ts
+   * const response = await client.notify.reply({
+   *   reply_to: 'im_01k8aq2zggeyssvt53zgvpx63a',
+   *   text: "Thanks for reaching out! We'll look into your request.",
+   *   to: '+33612345678',
+   * });
+   * ```
+   */
+  reply(body: NotifyReplyParams, options?: Core.RequestOptions): Core.APIPromise<NotifyReplyResponse> {
+    return this._client.post('/v2/notify/reply', { body, ...options });
+  }
+
+  /**
    * Send transactional and marketing messages to your users via SMS, RCS and
    * WhatsApp with automatic compliance enforcement.
    *
@@ -511,6 +529,43 @@ export namespace NotifyListSubscriptionPhoneNumbersResponse {
   }
 }
 
+export interface NotifyReplyResponse {
+  /**
+   * The reply message identifier.
+   */
+  id: string;
+
+  /**
+   * The reply creation date in RFC3339 format.
+   */
+  created_at: string;
+
+  /**
+   * The inbound message ID this reply was sent in response to.
+   */
+  reply_to: string;
+
+  /**
+   * The reply message body that was sent.
+   */
+  text: string;
+
+  /**
+   * The recipient's phone number in E.164 format.
+   */
+  to: string;
+
+  /**
+   * The callback URL where webhooks will be sent.
+   */
+  callback_url?: string;
+
+  /**
+   * The user-defined correlation identifier echoed back from the request.
+   */
+  correlation_id?: string;
+}
+
 export interface NotifySendResponse {
   /**
    * The message identifier.
@@ -762,6 +817,36 @@ export interface NotifyListSubscriptionPhoneNumbersParams {
   state?: 'SUB' | 'UNSUB';
 }
 
+export interface NotifyReplyParams {
+  /**
+   * The inbound message ID (prefixed with `im_`) to reply to. This ID is provided in
+   * the `inbound.message.received` webhook event.
+   */
+  reply_to: string;
+
+  /**
+   * The reply message body sent as a free-form WhatsApp text.
+   */
+  text: string;
+
+  /**
+   * The recipient's phone number in E.164 format. Must match the phone number that
+   * sent the original inbound message.
+   */
+  to: string;
+
+  /**
+   * The URL where webhooks will be sent for delivery events of this reply.
+   */
+  callback_url?: string;
+
+  /**
+   * A user-defined identifier to correlate this reply with your internal systems. It
+   * is returned in the response and any webhook events that refer to this message.
+   */
+  correlation_id?: string;
+}
+
 export interface NotifySendParams {
   /**
    * The template identifier configured by your Customer Success team.
@@ -988,11 +1073,13 @@ export declare namespace Notify {
     type NotifyListSubscriptionConfigsResponse as NotifyListSubscriptionConfigsResponse,
     type NotifyListSubscriptionPhoneNumberEventsResponse as NotifyListSubscriptionPhoneNumberEventsResponse,
     type NotifyListSubscriptionPhoneNumbersResponse as NotifyListSubscriptionPhoneNumbersResponse,
+    type NotifyReplyResponse as NotifyReplyResponse,
     type NotifySendResponse as NotifySendResponse,
     type NotifySendBatchResponse as NotifySendBatchResponse,
     type NotifyListSubscriptionConfigsParams as NotifyListSubscriptionConfigsParams,
     type NotifyListSubscriptionPhoneNumberEventsParams as NotifyListSubscriptionPhoneNumberEventsParams,
     type NotifyListSubscriptionPhoneNumbersParams as NotifyListSubscriptionPhoneNumbersParams,
+    type NotifyReplyParams as NotifyReplyParams,
     type NotifySendParams as NotifySendParams,
     type NotifySendBatchParams as NotifySendBatchParams,
   };
