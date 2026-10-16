@@ -106,4 +106,4 @@ You can stage a release by using [the `Publish NPM` GitHub action](https://www.g
 ### Publish manually
 
 If you need to manually stage a release, log in with `npm login` and run the `bin/publish-npm` script. It requires
-npm 11.15.0 or later.
+npm 11.15.0 or later and Node.js 22.14.0 or later.
