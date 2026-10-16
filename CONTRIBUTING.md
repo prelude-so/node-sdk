@@ -94,16 +94,13 @@ $ yarn fix
 
 ## Publishing and releases
 
-Changes made to this repository via the automated release PR pipeline are staged on npm automatically. A
-maintainer then approves the staged version with 2FA, either in the Staged Packages tab of the package on
-npmjs.com or with `npm stage approve <stage-id>`. The version is not installable until it is approved. If the
-changes aren't made through the automated pipeline, you may want to make releases manually.
+Changes made to this repository via the automated release PR pipeline should publish to npm automatically. If
+the changes aren't made through the automated pipeline, you may want to make releases manually.
 
 ### Publish with a GitHub workflow
 
-You can stage a release by using [the `Publish NPM` GitHub action](https://www.github.com/prelude-so/node-sdk/actions/workflows/publish-npm.yml). It authenticates to npm through trusted publishing (GitHub OIDC), so it needs no npm token. The trusted publisher is configured in the settings of the `@prelude.so/sdk` package on npmjs.com.
+You can release to package managers by using [the `Publish NPM` GitHub action](https://www.github.com/prelude-so/node-sdk/actions/workflows/publish-npm.yml). It authenticates to npm through trusted publishing (GitHub OIDC), so it needs no npm token. The trusted publisher is configured in the settings of the `@prelude.so/sdk` package on npmjs.com.
 
 ### Publish manually
 
-If you need to manually stage a release, log in with `npm login` and run the `bin/publish-npm` script. It requires
-npm 11.15.0 or later and Node.js 22.14.0 or later.
+If you need to manually release a package, log in with `npm login` and run the `bin/publish-npm` script.
