@@ -12,21 +12,30 @@ jobs:
   publish:
     name: publish
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
 
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          persist-credentials: false
 
       - name: Set up Node
-        uses: actions/setup-node@3235b876344d2a9aa001b8d1453c930bba69e610 # v3.9.1
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
-          node-version: '20'
+          node-version: '24'
+
+      - name: Set up npm
+        run: |
+          npm install -g npm@11.21.0
 
       - name: Install dependencies
         run: |
-          yarn install
+          yarn install --frozen-lockfile
 
       - name: Publish to NPM
         run: |
           bash ./bin/publish-npm
         env:
-          NPM_TOKEN: ${{ secrets.PRELUDE_NPM_TOKEN || secrets.NPM_TOKEN }}
+          NPM_CONFIG_PROVENANCE: 'true'

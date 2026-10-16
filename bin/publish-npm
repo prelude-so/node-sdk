@@ -2,8 +2,6 @@
 
 set -eux
 
-npm config set '//registry.npmjs.org/:_authToken' "$NPM_TOKEN"
-
 yarn build
 cd dist
 
@@ -53,9 +51,11 @@ fi
 # Use a corresponding alpha/beta tag if there already is a stable release and we're publishing a prerelease.
 if $CURRENT_IS_PRERELEASE && $LAST_IS_STABLE_RELEASE; then
   TAG="$CURRENT_TAG"
+elif $LAST_IS_STABLE_RELEASE && [[ "$(printf '%s\n' "$VERSION" "$LAST_VERSION" | sort -V | tail -n 1)" != "$VERSION" ]]; then
+  TAG="backfill"
 else
   TAG="latest"
 fi
 
 # Publish with the appropriate tag
-yarn publish --tag "$TAG"
+npm publish --tag "$TAG"
